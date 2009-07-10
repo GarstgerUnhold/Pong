@@ -1,0 +1,3 @@
+MODULE waveform
+SUBMODULE template
+INSTANCE UUT

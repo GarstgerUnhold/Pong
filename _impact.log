@@ -1,0 +1,1651 @@
+iMPACT Version: 
+iMPACT log file Started on Fri Jul 10 14:46:07 2009
+
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+AutoDetecting cable. Please wait.
+PROGRESS_START - Starting Operation.
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ LPT base address = 0378h.
+ ECP base address = 0778h.
+Cable connection established.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+Attempting to identify devices in the boundary-scan chain configuration...// *** BATCH CMD : Identify 
+PROGRESS_START - Starting Operation.
+Identifying chain contents ....'1': : Manufacturer's ID =Xilinx xcf02s, Version : 0
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/xcf/data/xcf02s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf02s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'2': : Manufacturer's ID =Xilinx xc3s200, Version : 0
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/spartan3/data/xc3s200.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : assignFile -p 1 -file"Y:/workspace/VHDL/VHDL_tim/pong/vga.bit"
+'1': Loading file 'Y:/workspace/VHDL/VHDL_tim/pong/vga.bit' ...
+done.
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : assignFile -p 1 -file"Y:/workspace/VHDL/VHDL_tim/pong/vga.bit"
+'1': Loading file 'Y:/workspace/VHDL/VHDL_tim/pong/vga.bit' ...
+done.
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 12 differences.
+ERROR:iMPACT:395 - The number of difference is 12
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+done.
+'1': Verification completed successfully.
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+// *** BATCH CMD : saveProjectFile -file"Y:/workspace/VHDL/VHDL_tim/pong/pong.ipf"
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 2
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+WARNING:HDLParsers:3607 - Unit work/SignalTiming is now defined in a different   file.  It was defined in   "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd", and is   now defined in "Y:/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd".
+WARNING:HDLParsers:3607 - Unit work/SignalTiming/Behavioral is now defined in a   different file.  It was defined in   "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd", and is   now defined in "Y:/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd".
+Compiling vhdl file "Y:/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd" in Librarywork.
+Entity <signaltiming> compiled.
+WARNING:HDLParsers:1406 - "Y:/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd" Line   43. No sensitivity list and no wait in the process
+Entity <signaltiming> (Architecture <behavioral>) compiled.
+// *** BATCH CMD : loadProjectFile -file"Y:\workspace\VHDL\VHDL_tim\pong/pong.ipf"
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ LPT base address = 0378h.
+ ECP base address = 0778h.
+Cable connection established.
+'1': Loading file 'Y:/workspace/VHDL/VHDL_tim/pong/vga.bit' ...
+done.
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/spartan3/data/xc3s200.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/xcf/data/xcf02s.bsd...
+INFO:iMPACT:501 - '2': Added Device xcf02s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Active mode is BS
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 3380 differences.
+ERROR:iMPACT:395 - The number of difference is 3380
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 2
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : loadProjectFile -file"Y:\workspace\VHDL\VHDL_tim\pong/pong.ipf"
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ LPT base address = 0378h.
+ ECP base address = 0778h.
+Cable connection established.
+'1': Loading file 'Y:/workspace/VHDL/VHDL_tim/pong/vga.bit' ...
+done.
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/spartan3/data/xc3s200.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/xcf/data/xcf02s.bsd...
+INFO:iMPACT:501 - '2': Added Device xcf02s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Active mode is BS
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+done.
+'1': Verification completed successfully.
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+// *** BATCH CMD : saveProjectFile -file"Y:/workspace/VHDL/VHDL_tim/pong/pong.ipf"
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 2
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : loadProjectFile -file"Y:\workspace\VHDL\VHDL_tim\pong/pong.ipf"
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ LPT base address = 0378h.
+ ECP base address = 0778h.
+Cable connection established.
+'1': Loading file 'Y:/workspace/VHDL/VHDL_tim/pong/vga.bit' ...
+done.
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/spartan3/data/xc3s200.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx92i/xcf/data/xcf02s.bsd...
+INFO:iMPACT:501 - '2': Added Device xcf02s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Active mode is BS
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 2 differences.
+ERROR:iMPACT:395 - The number of difference is 2
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 2 differences.
+ERROR:iMPACT:395 - The number of difference is 2
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+// *** BATCH CMD : assignFile -p 1 -file"Y:/workspace/VHDL/VHDL_tim/pong/vga.bit"
+'1': Loading file 'Y:/workspace/VHDL/VHDL_tim/pong/vga.bit' ...
+done.
+INFO:iMPACT:501 - '1': Added Device xc3s200 successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+done.
+'1': Verification completed successfully.
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '1': Completed downloading bit file to device.
+INFO:iMPACT - '1': Checking done pin....done.
+'1': Programming terminated. DONE did not go high.
+PROGRESS_END - End Operation.
+Elapsed time =      6 sec.
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 9431 differences.
+ERROR:iMPACT:395 - The number of difference is 9431
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+// *** BATCH CMD : ReadIdcode -p 1 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+'1': IDCODE is '00000001010000010100000010010011'
+'1': IDCODE is '01414093' (in hex).
+'1': : Manufacturer's ID =Xilinx xc3s200, Version : 0
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     13 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 3 differences.
+ERROR:iMPACT:395 - The number of difference is 3
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 3 differences.
+ERROR:iMPACT:395 - The number of difference is 3
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     14 sec.
+Updating config file Y:/workspace/VHDL/VHDL_tim/pong/vga.bit...
+// *** BATCH CMD : Program -p 1 -v -defaultVersion 0 
+Maximum TCK operating frequency for this device chain: 0.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'1': Programming device...
+done.
+'1': Reading status register contents...
+CRC error                                         :         0
+RESERVED                                          :         0
+DCM locked                                        :         1
+DCI Matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         0
+status of GWE                                     :         0
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         0
+ID_ERROR                                          :         0
+RESERVED                                          :         0
+RESERVED                                          :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0001 0001 0000 0000 0000 0000 0000 
+'1': Verifying  device...INFO:iMPACT:2495 - Readback Size is 1044736.
+ERROR:Bitstream:98 - There are 1 differences.
+ERROR:iMPACT:395 - The number of difference is 1
+'1': Verification terminated.
+done.
+'1': Programming terminated due to errors.
+PROGRESS_END - End Operation.
+Elapsed time =     15 sec.
+// *** BATCH CMD : saveProjectFile -file"Y:/workspace/VHDL/VHDL_tim/pong/pong.ipf"
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs

@@ -1,0 +1,7 @@
+vhdl work "farbwechsel.vhd"
+vhdl work "vgadriver.vhd"
+vhdl work "ball.vhd"
+vhdl work "balken.vhd"
+vhdl work "background.vhd"
+vhdl work "ausgabe.vhd"
+vhdl work "vga.vhd"

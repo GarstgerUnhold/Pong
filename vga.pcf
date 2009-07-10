@@ -1,0 +1,17 @@
+//! **************************************************************************
+// Written by: Map J.40 on Fri Jul 10 21:00:42 2009
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clk50" LOCATE = SITE "T9" LEVEL 1;
+COMP "global_reset" LOCATE = SITE "L14" LEVEL 1;
+COMP "global_rgb<0>" LOCATE = SITE "R12" LEVEL 1;
+COMP "global_rgb<1>" LOCATE = SITE "T12" LEVEL 1;
+COMP "global_rgb<2>" LOCATE = SITE "R11" LEVEL 1;
+COMP "global_bg_switch" LOCATE = SITE "M14" LEVEL 1;
+COMP "global_vsync" LOCATE = SITE "T10" LEVEL 1;
+COMP "global_buttons<0>" LOCATE = SITE "L13" LEVEL 1;
+COMP "global_buttons<1>" LOCATE = SITE "M13" LEVEL 1;
+COMP "global_hsync" LOCATE = SITE "R9" LEVEL 1;
+NET "clk50_BUFGP/IBUFG" BEL "clk50_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
+SCHEMATIC END;

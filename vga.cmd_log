@@ -1,0 +1,310 @@
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+netgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ar Structure -tm vga -w -dir netgen/synthesis -ofmt vhdl -sim vga.ngc vga_synthesis.vhd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+netgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ar Structure -tm vga -w -dir netgen/synthesis -ofmt vhdl -sim vga.ngc vga_synthesis.vhd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd
+xst -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -ifn vga.xst -ofn vga.syr
+ngdbuild -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -dd _ngo -nt timestamp -uc "vga.ucf" -p xc3s200-ft256-4 "vga.ngc" vga.ngd
+map -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf
+par -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -w -intstyle ise -ol std -t 1 vga_map.ncd vga.ncd vga.pcf
+trce -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -e 3 -s 4 -xml vga vga.ncd -o vga.twr vga.pcf -ucf vga.ucf
+bitgen -ise "Y:/workspace/VHDL/VHDL_tim/pong/template.ise" -intstyle ise -f vga.ut vga.ncd

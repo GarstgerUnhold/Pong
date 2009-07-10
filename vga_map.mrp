@@ -1,0 +1,165 @@
+Release 9.2.04i Map J.40
+Xilinx Mapping Report File for Design 'vga'
+
+Design Information
+------------------
+Command Line   : C:\Xilinx92i\bin\nt\map.exe -ise
+Y:/workspace/VHDL/VHDL_tim/pong/template.ise -intstyle ise -p xc3s200-ft256-4
+-cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf 
+Target Device  : xc3s200
+Target Package : ft256
+Target Speed   : -4
+Mapper Version : spartan3 -- $Revision: 1.36 $
+Mapped Date    : Fri Jul 10 21:00:39 2009
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    0
+Logic Utilization:
+  Number of Slice Flip Flops:         167 out of   3,840    4%
+  Number of 4 input LUTs:             284 out of   3,840    7%
+Logic Distribution:
+  Number of occupied Slices:                          201 out of   1,920   10%
+    Number of Slices containing only related logic:     201 out of     201  100%
+    Number of Slices containing unrelated logic:          0 out of     201    0%
+      *See NOTES below for an explanation of the effects of unrelated logic
+Total Number of 4 input LUTs:            372 out of   3,840    9%
+  Number used as logic:                284
+  Number used as a route-thru:          88
+  Number of bonded IOBs:               10 out of     173    5%
+    IOB Flip Flops:                     2
+  Number of GCLKs:                     2 out of       8   25%
+
+Total equivalent gate count for design:  4,103
+Additional JTAG gate count for IOBs:  480
+Peak Memory Usage:  135 MB
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   3 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Modular Design Summary
+Section 11 - Timing Report
+Section 12 - Configuration String Information
+Section 13 - Control Set Information
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+
+Section 3 - Informational
+-------------------------
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:MapLib:863 - The following Virtex BUFG(s) is/are being retargeted to
+   Virtex2 BUFGMUX(s) with input tied to I0 and Select pin tied to constant 0:
+   BUFGP symbol "clk50_BUFGP" (output signal=clk50_BUFGP),
+   BUFG symbol "intermediate_clk25_BUFG" (output signal=intermediate_clk25)
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs in the
+   schematic.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) optimized away
+
+Section 5 - Removed Logic
+-------------------------
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type    | Direction | IO Standard | Drive    | Slew | Reg (s)  | Resistor | IOB   |
+|                                    |         |           |             | Strength | Rate |          |          | Delay |
++------------------------------------------------------------------------------------------------------------------------+
+| clk50                              | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| global_bg_switch                   | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| global_buttons<0>                  | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| global_buttons<1>                  | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| global_hsync                       | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
+| global_reset                       | IOB     | INPUT     | LVCMOS25    |          |      |          |          |       |
+| global_rgb<0>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW |          |          |       |
+| global_rgb<1>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW |          |          |       |
+| global_rgb<2>                      | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW |          |          |       |
+| global_vsync                       | IOB     | OUTPUT    | LVCMOS25    | 12       | SLOW | OFF1     |          |       |
++------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+
+----------------------
+
+Section 10 - Modular Design Summary
+-----------------------------------
+Modular Design not used for this design.
+
+Section 11 - Timing Report
+--------------------------
+This design was not run using timing mode.
+
+Section 12 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 13 - Control Set Information
+------------------------------------
+No control set information for this architecture.
