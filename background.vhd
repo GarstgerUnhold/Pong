@@ -49,8 +49,8 @@ architecture Behavioral of background is
 	signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
 	signal rgb_farbw, rgb_field : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
-	signal deltaX : in integer range 0 to 320;
-	signal deltaY : in integer range 0 to 240;
+	signal deltaX : integer range 0 to 320;
+	signal deltaY : integer range 0 to 240;
 	signal count_up : integer range 0 to 25000000;
 begin
 
@@ -89,9 +89,9 @@ begin
 			
 			if X = 320 or X = 321 -- mittellinie
 			or ((deltaY * deltaY) + (deltaX * deltaX)) = 1000 -- grosser mittelkreis
-			or ((deltaY * deltaY) + (deltaX * deltaX)) =< 81 -- kleiner mittelkreis
+			or ((deltaY * deltaY) + (deltaX * deltaX)) < 82 -- kleiner mittelkreis
 			or X < 3 or X > 637 or Y < 3 or Y > 477 -- aussenrahmen
-			or (((240 - deltaY) * (240 - deltaY)) + (deltaX * deltaX)) -- spielerkreise
+			or (((240 - deltaY) * (240 - deltaY)) + (deltaX * deltaX)) = 1000 -- spielerkreise
 			then
 			  rgb_field <= "111";
 			else
