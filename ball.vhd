@@ -43,7 +43,9 @@ end ball;
 architecture Behavioral of ball is
 
 	component score is
-		Port( X : in integer range 0 to 640;
+		Port( pointLeft : in bit;
+			pointRight : in bit;
+		   X : in integer range 0 to 640;
          Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
@@ -58,15 +60,18 @@ architecture Behavioral of ball is
 	signal y_pos : integer range 0 to 480 := 240;
 	signal countUp : integer range 0 to 208000 := 0;
 	signal gameOver : bit;
+	signal leftOut, rightOut : bit := '0';
 	signal intern_rgb : STD_LOGIC_VECTOR (2 downto 0);
 begin
 
 	count : score port map (
+		pointLeft : rightOut,
+		pointRight : leftOut,
 		X => X,
 		Y => Y,
 		rgb_in => rgb_in,
 		rgb_out => intern_rgb,
-		clk25 => clk25;
+		clk25 => clk25,
 		reset => reset);
 
 	process 
@@ -104,6 +109,7 @@ begin
 						lr <= '1';						
 					else
 						if x_pos < 9 then
+							leftOut <= '1';
 							gameOver <= '1';
 						end if;
 					end if;
@@ -115,6 +121,7 @@ begin
 						lr <= '0';
 					else
 						if x_pos > 631 then
+							rightOut <= '1';
 							gameOver <= '1';
 						end if;
 					end if;
@@ -144,6 +151,8 @@ begin
 		end if;
 		
 		if gameOver = '1' then
+			leftOut <= '0';
+			rightOut <= '0';
 			x_pos <= 320;
 			y_pos <= 240;
 			game_over <= '1';

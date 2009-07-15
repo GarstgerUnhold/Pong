@@ -96,24 +96,24 @@ begin
 			  
 			  -- kreise
 			  when "001" => 
-			    if deltaX > 10 and deltaY > 10 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 40) > 20
+			    if deltaX > 10 and deltaY > 10 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > 32)
 			    then
 			      if X < 320 then
 			        rgb_out <= "010";
 			      else
 			        rgb_out <= "100";
-			      end
+			      end if;
 			    else
 			      rgb_out <= "111";
 			    end if;
 			    
 			  -- karos
 			  when "010" =>
-			    if (X MOD 40) > 20 and (Y MOD 40) > 20 then
+			    if (X MOD 64) > 32 and (Y MOD 64) > 32 then
 			      rgb_out <= "110";
 			    else
 			      rgb_out <= "011";
-			    enf if;
+			    end if;
 			    
 			  -- farbwechsel
 			  when "011" => rgb_out <= rgb_farbw;
@@ -128,7 +128,7 @@ begin
 			  when "110" => rgb_out <= "110";
 			  
 			  -- pink
-			  when "111" => rgb_out <= "101"; 
+			  when others => rgb_out <= "101"; 			
 			  
 			end case; 		
 		end if;
