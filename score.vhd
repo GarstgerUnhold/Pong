@@ -63,29 +63,149 @@ begin
 			if pointLeft = '1' then
 				left_player <= left_player + 1;
 				if left_player > 9 then
-					left_player <= '0'
+					left_player <= 0;
 				end if;
 			end if;
 			if pointRight = '1' then
 				right_player <= right_player + 1;
 				if right_player > 9 then
-					right_player <= '0'
+					right_player <= 0;
 				end if;
 			end if;
-		
+			
 			if (X > 38) and (X < 58) and (Y > 18) and (Y < 38) then --Player 1 Score box
-				case Y is
-					when 23 => chosen_number_part <= a1;
-					when 24 => chosen_number_part <= a1;
-					when 25 => chosen_number_part <= b1;
-					when 26 => chosen_number_part <= b1;
-					when 27 => chosen_number_part <= c1;
-					when 28 => chosen_number_part <= c1;
-					when 29 => chosen_number_part <= d1;
-					when 30 => chosen_number_part <= d1;
-					when 31 => chosen_number_part <= e1;
-					when 32 => chosen_number_part <= e1;
-					when others => chosen_number_part <= "00000";
+				case left_player is
+				when 0 => case Y is
+								when 23 => chosen_number_part <= a0;
+								when 24 => chosen_number_part <= a0;
+								when 25 => chosen_number_part <= b0;
+								when 26 => chosen_number_part <= b0;
+								when 27 => chosen_number_part <= c0;
+								when 28 => chosen_number_part <= c0;
+								when 29 => chosen_number_part <= d0;
+								when 30 => chosen_number_part <= d0;
+								when 31 => chosen_number_part <= e0;
+								when 32 => chosen_number_part <= e0;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 1 => case Y is
+								when 23 => chosen_number_part <= a1;
+								when 24 => chosen_number_part <= a1;
+								when 25 => chosen_number_part <= b1;
+								when 26 => chosen_number_part <= b1;
+								when 27 => chosen_number_part <= c1;
+								when 28 => chosen_number_part <= c1;
+								when 29 => chosen_number_part <= d1;
+								when 30 => chosen_number_part <= d1;
+								when 31 => chosen_number_part <= e1;
+								when 32 => chosen_number_part <= e1;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 2 => case Y is
+								when 23 => chosen_number_part <= a2;
+								when 24 => chosen_number_part <= a2;
+								when 25 => chosen_number_part <= b2;
+								when 26 => chosen_number_part <= b2;
+								when 27 => chosen_number_part <= c2;
+								when 28 => chosen_number_part <= c2;
+								when 29 => chosen_number_part <= d2;
+								when 30 => chosen_number_part <= d2;
+								when 31 => chosen_number_part <= e2;
+								when 32 => chosen_number_part <= e2;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 3 => case Y is
+								when 23 => chosen_number_part <= a3;
+								when 24 => chosen_number_part <= a3;
+								when 25 => chosen_number_part <= b3;
+								when 26 => chosen_number_part <= b3;
+								when 27 => chosen_number_part <= c3;
+								when 28 => chosen_number_part <= c3;
+								when 29 => chosen_number_part <= d3;
+								when 30 => chosen_number_part <= d3;
+								when 31 => chosen_number_part <= e3;
+								when 32 => chosen_number_part <= e3;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 4 => case Y is
+								when 23 => chosen_number_part <= a4;
+								when 24 => chosen_number_part <= a4;
+								when 25 => chosen_number_part <= b4;
+								when 26 => chosen_number_part <= b4;
+								when 27 => chosen_number_part <= c4;
+								when 28 => chosen_number_part <= c4;
+								when 29 => chosen_number_part <= d4;
+								when 30 => chosen_number_part <= d4;
+								when 31 => chosen_number_part <= e4;
+								when 32 => chosen_number_part <= e4;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 5 => case Y is
+								when 23 => chosen_number_part <= a5;
+								when 24 => chosen_number_part <= a5;
+								when 25 => chosen_number_part <= b5;
+								when 26 => chosen_number_part <= b5;
+								when 27 => chosen_number_part <= c5;
+								when 28 => chosen_number_part <= c5;
+								when 29 => chosen_number_part <= d5;
+								when 30 => chosen_number_part <= d5;
+								when 31 => chosen_number_part <= e5;
+								when 32 => chosen_number_part <= e5;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 6 => case Y is
+								when 23 => chosen_number_part <= a6;
+								when 24 => chosen_number_part <= a6;
+								when 25 => chosen_number_part <= b6;
+								when 26 => chosen_number_part <= b6;
+								when 27 => chosen_number_part <= c6;
+								when 28 => chosen_number_part <= c6;
+								when 29 => chosen_number_part <= d6;
+								when 30 => chosen_number_part <= d6;
+								when 31 => chosen_number_part <= e6;
+								when 32 => chosen_number_part <= e6;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 7 => case Y is
+								when 23 => chosen_number_part <= a7;
+								when 24 => chosen_number_part <= a7;
+								when 25 => chosen_number_part <= b7;
+								when 26 => chosen_number_part <= b7;
+								when 27 => chosen_number_part <= c7;
+								when 28 => chosen_number_part <= c7;
+								when 29 => chosen_number_part <= d7;
+								when 30 => chosen_number_part <= d7;
+								when 31 => chosen_number_part <= e7;
+								when 32 => chosen_number_part <= e7;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 8 => case Y is
+								when 23 => chosen_number_part <= a8;
+								when 24 => chosen_number_part <= a8;
+								when 25 => chosen_number_part <= b8;
+								when 26 => chosen_number_part <= b8;
+								when 27 => chosen_number_part <= c8;
+								when 28 => chosen_number_part <= c8;
+								when 29 => chosen_number_part <= d8;
+								when 30 => chosen_number_part <= d8;
+								when 31 => chosen_number_part <= e8;
+								when 32 => chosen_number_part <= e8;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 9 => case Y is
+								when 23 => chosen_number_part <= a9;
+								when 24 => chosen_number_part <= a9;
+								when 25 => chosen_number_part <= b9;
+								when 26 => chosen_number_part <= b9;
+								when 27 => chosen_number_part <= c9;
+								when 28 => chosen_number_part <= c9;
+								when 29 => chosen_number_part <= d9;
+								when 30 => chosen_number_part <= d9;
+								when 31 => chosen_number_part <= e9;
+								when 32 => chosen_number_part <= e9;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when others => chosen_number_part <= "00000";
 				end case;
 				
 				case X is
@@ -102,18 +222,138 @@ begin
 					when others => rgb_out <= "000";
 				end case;
 			elsif (X > 592) and (X < 612) and (Y > 18) and (Y < 38) then --Player 2 Score box
-				case Y is
-					when 23 => chosen_number_part <= a1;
-					when 24 => chosen_number_part <= a1;
-					when 25 => chosen_number_part <= b1;
-					when 26 => chosen_number_part <= b1;
-					when 27 => chosen_number_part <= c1;
-					when 28 => chosen_number_part <= c1;
-					when 29 => chosen_number_part <= d1;
-					when 30 => chosen_number_part <= d1;
-					when 31 => chosen_number_part <= e1;
-					when 32 => chosen_number_part <= e1;
-					when others => chosen_number_part <= "00000";
+				case right_player is
+				when 0 => case Y is
+								when 23 => chosen_number_part <= a0;
+								when 24 => chosen_number_part <= a0;
+								when 25 => chosen_number_part <= b0;
+								when 26 => chosen_number_part <= b0;
+								when 27 => chosen_number_part <= c0;
+								when 28 => chosen_number_part <= c0;
+								when 29 => chosen_number_part <= d0;
+								when 30 => chosen_number_part <= d0;
+								when 31 => chosen_number_part <= e0;
+								when 32 => chosen_number_part <= e0;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 1 => case Y is
+								when 23 => chosen_number_part <= a1;
+								when 24 => chosen_number_part <= a1;
+								when 25 => chosen_number_part <= b1;
+								when 26 => chosen_number_part <= b1;
+								when 27 => chosen_number_part <= c1;
+								when 28 => chosen_number_part <= c1;
+								when 29 => chosen_number_part <= d1;
+								when 30 => chosen_number_part <= d1;
+								when 31 => chosen_number_part <= e1;
+								when 32 => chosen_number_part <= e1;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 2 => case Y is
+								when 23 => chosen_number_part <= a2;
+								when 24 => chosen_number_part <= a2;
+								when 25 => chosen_number_part <= b2;
+								when 26 => chosen_number_part <= b2;
+								when 27 => chosen_number_part <= c2;
+								when 28 => chosen_number_part <= c2;
+								when 29 => chosen_number_part <= d2;
+								when 30 => chosen_number_part <= d2;
+								when 31 => chosen_number_part <= e2;
+								when 32 => chosen_number_part <= e2;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 3 => case Y is
+								when 23 => chosen_number_part <= a3;
+								when 24 => chosen_number_part <= a3;
+								when 25 => chosen_number_part <= b3;
+								when 26 => chosen_number_part <= b3;
+								when 27 => chosen_number_part <= c3;
+								when 28 => chosen_number_part <= c3;
+								when 29 => chosen_number_part <= d3;
+								when 30 => chosen_number_part <= d3;
+								when 31 => chosen_number_part <= e3;
+								when 32 => chosen_number_part <= e3;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 4 => case Y is
+								when 23 => chosen_number_part <= a4;
+								when 24 => chosen_number_part <= a4;
+								when 25 => chosen_number_part <= b4;
+								when 26 => chosen_number_part <= b4;
+								when 27 => chosen_number_part <= c4;
+								when 28 => chosen_number_part <= c4;
+								when 29 => chosen_number_part <= d4;
+								when 30 => chosen_number_part <= d4;
+								when 31 => chosen_number_part <= e4;
+								when 32 => chosen_number_part <= e4;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 5 => case Y is
+								when 23 => chosen_number_part <= a5;
+								when 24 => chosen_number_part <= a5;
+								when 25 => chosen_number_part <= b5;
+								when 26 => chosen_number_part <= b5;
+								when 27 => chosen_number_part <= c5;
+								when 28 => chosen_number_part <= c5;
+								when 29 => chosen_number_part <= d5;
+								when 30 => chosen_number_part <= d5;
+								when 31 => chosen_number_part <= e5;
+								when 32 => chosen_number_part <= e5;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 6 => case Y is
+								when 23 => chosen_number_part <= a6;
+								when 24 => chosen_number_part <= a6;
+								when 25 => chosen_number_part <= b6;
+								when 26 => chosen_number_part <= b6;
+								when 27 => chosen_number_part <= c6;
+								when 28 => chosen_number_part <= c6;
+								when 29 => chosen_number_part <= d6;
+								when 30 => chosen_number_part <= d6;
+								when 31 => chosen_number_part <= e6;
+								when 32 => chosen_number_part <= e6;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 7 => case Y is
+								when 23 => chosen_number_part <= a7;
+								when 24 => chosen_number_part <= a7;
+								when 25 => chosen_number_part <= b7;
+								when 26 => chosen_number_part <= b7;
+								when 27 => chosen_number_part <= c7;
+								when 28 => chosen_number_part <= c7;
+								when 29 => chosen_number_part <= d7;
+								when 30 => chosen_number_part <= d7;
+								when 31 => chosen_number_part <= e7;
+								when 32 => chosen_number_part <= e7;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 8 => case Y is
+								when 23 => chosen_number_part <= a8;
+								when 24 => chosen_number_part <= a8;
+								when 25 => chosen_number_part <= b8;
+								when 26 => chosen_number_part <= b8;
+								when 27 => chosen_number_part <= c8;
+								when 28 => chosen_number_part <= c8;
+								when 29 => chosen_number_part <= d8;
+								when 30 => chosen_number_part <= d8;
+								when 31 => chosen_number_part <= e8;
+								when 32 => chosen_number_part <= e8;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when 9 => case Y is
+								when 23 => chosen_number_part <= a9;
+								when 24 => chosen_number_part <= a9;
+								when 25 => chosen_number_part <= b9;
+								when 26 => chosen_number_part <= b9;
+								when 27 => chosen_number_part <= c9;
+								when 28 => chosen_number_part <= c9;
+								when 29 => chosen_number_part <= d9;
+								when 30 => chosen_number_part <= d9;
+								when 31 => chosen_number_part <= e9;
+								when 32 => chosen_number_part <= e9;
+								when others => chosen_number_part <= "00000";
+							end case;
+				when others => chosen_number_part <= "00000";
 				end case;
 				
 				case X is

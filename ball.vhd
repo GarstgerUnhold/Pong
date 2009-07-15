@@ -65,8 +65,8 @@ architecture Behavioral of ball is
 begin
 
 	count : score port map (
-		pointLeft : rightOut,
-		pointRight : leftOut,
+		pointLeft => rightOut,
+		pointRight => leftOut,
 		X => X,
 		Y => Y,
 		rgb_in => rgb_in,
