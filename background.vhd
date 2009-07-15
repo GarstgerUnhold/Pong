@@ -46,8 +46,7 @@ architecture Behavioral of background is
 			clk25 : in bit);
 	end component;
 
-	signal chosen_background : STD_LOGIC_VECTOR (2 downto 0);
-	signal rgb_farbw, rgb_field : STD_LOGIC_VECTOR (2 downto 0);
+	signal rgb_farbw, chosen_background : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
 	signal deltaX : integer range 0 to 320;
 	signal deltaY : integer range 0 to 240;
