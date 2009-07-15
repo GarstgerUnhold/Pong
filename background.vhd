@@ -46,7 +46,7 @@ architecture Behavioral of background is
 			clk25 : in bit);
 	end component;
 
-	signal chosen_background : STD_LOGIC_VECTOR (2 downto 0);
+	signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
 	signal rgb_farbw, rgb_field : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
 	signal count_up : integer range 0 to 25000000;
@@ -86,8 +86,9 @@ begin
 		end if;
 		
 		case chosen_background is
-			when "000" => rgb_out <= rgb_farbw; --farbwechsel
-			when "001" => rgb_out <= "111"; --weiss
+			when "00" => rgb_out <= rgb_farbw; --farbwechsel
+			when "01" => rgb_out <= "111"; --weiss
+			when "10" => rgb_out <= rgb_field; -- spielfeld
 			when others => rgb_out <= "000"; --schwarz
 		end case;
 	end process;
