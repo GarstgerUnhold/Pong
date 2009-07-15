@@ -46,7 +46,7 @@ architecture Behavioral of background is
 			clk25 : in bit);
 	end component;
 
-	signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
+	signal chosen_background : STD_LOGIC_VECTOR (2 downto 0);
 	signal rgb_farbw, rgb_field : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
 	signal deltaX : integer range 0 to 320;
@@ -59,10 +59,15 @@ begin
 		Y => Y,
 		rgb_out => rgb_farbw,
 		clk25 => clk25);
+	
+	deltaX <= X - 320 when X > 320 else 320 - X; 	
+	deltaY <= Y - 240 when Y > 240 else 240 - Y;
 
 	process
 	begin
+	
 		if clk25'event and clk25 = '1' then
+		
 			if switch = '1' then
 				will_switch <= '1';
 			end if;
@@ -75,36 +80,59 @@ begin
 				count_up <= 0;
 			end if;
 			
-			if X > 320 then
-			  deltaX <= X - 320;
-			else
-			  deltaX <= 320 - X;
-			end if;
-			
-			if Y > 240 then
-			  deltaY <= Y - 240;
-			else
-			  deltaY <= 240 - Y;
-			end if;
-			
-			if X = 320 or X = 321 -- mittellinie
-			or (((deltaY * deltaY) + (deltaX * deltaX)) / 2) = 500 -- grosser mittelkreis
-			or ((deltaY * deltaY) + (deltaX * deltaX)) < 82 -- kleiner mittelkreis
-			or X < 3 or X > 637 or Y < 3 or Y > 477 -- aussenrahmen
-			or ((((320 - deltaX) * (320 - deltaX)) + (deltaY * deltaY)) / 2) = 500 -- spielerkreise
-			then
-			  rgb_field <= "111";
-			else
-			  rgb_field <= "000";
-			end if;
+			case chosen_background is
+			  
+			  -- fussball feld
+			  when "000" =>
+			    if X = 320 or X = 321 -- mittellinie
+			    or ((deltaY * deltaY) + (deltaX * deltaX)) = 10000 -- grosser mittelkreis
+			    or ((deltaY * deltaY) + (deltaX * deltaX)) < 82 -- kleiner mittelkreis
+			    or X < 3 or X > 637 or Y < 3 or Y > 477 -- aussenrahmen
+			    or (((320 - deltaX) * (320 - deltaX)) + (deltaY * deltaY)) = 10000 -- spielerkreise
+			    then
+			      rgb_out <= "111";
+			    else
+			      rgb_out <= "000";
+			    end if;
+			  
+			  -- kreise
+			  when "001" => 
+			    if deltaX > 10 and deltaY > 10 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 40) > 20
+			    then
+			      if X < 320 then
+			        rgb_out <= "010";
+			      else
+			        rgb_out <= "100";
+			      end
+			    else
+			      rgb_out <= "111";
+			    end if;
+			    
+			  -- karos
+			  when "010" =>
+			    if (X MOD 40) > 20 and (Y MOD 40) > 20 then
+			      rgb_out <= "110";
+			    else
+			      rgb_out <= "011";
+			    enf if;
+			    
+			  -- farbwechsel
+			  when "011" => rgb_out <= rgb_farbw;
+			  
+			  -- schwarz
+			  when "100" => rgb_out <= "000";
+			  
+			  -- weiss
+			  when "101" => rgb_out <= "111";
+			  
+			  -- gelb
+			  when "110" => rgb_out <= "110";
+			  
+			  -- pink
+			  when "111" => rgb_out <= "101"; 
+			  
+			end case; 		
 		end if;
-		
-	   case chosen_background is    
-			when "00" => rgb_out <= rgb_field; -- spielfeld
-			when "01" => rgb_out <= rgb_farbw; --farbwechsel
-			when "10" => rgb_out <= "111"; --weiss
-			when others => rgb_out <= "000"; --schwarz
-		end case;
 	end process;
 
 end Behavioral;
