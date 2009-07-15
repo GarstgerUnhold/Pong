@@ -47,7 +47,7 @@ architecture Behavioral of background is
 	end component;
 
 	signal chosen_background : STD_LOGIC_VECTOR (2 downto 0);
-	signal rgbs : STD_LOGIC_VECTOR (23 downto 0);
+	signal rgb_farbw : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
 	signal count_up : integer range 0 to 25000000;
 begin
@@ -55,7 +55,7 @@ begin
 	farbw : farbwechsel port map (
 		X => X,
 		Y => Y,
-		rgb_out => rgbs(23 downto 21),
+		rgb_out => rgb_farbw,
 		clk25 => clk25);
 	
 	rgbs(20 downto 18) <= "111";
@@ -77,8 +77,8 @@ begin
 		end if;
 		
 		case chosen_background is
-			when "000" => rgb_out <= rgbs(23 downto 21); --farbwechsel
-			when "001" => rgb_out <= rgbs(20 downto 18); --weiss
+			when "000" => rgb_out <= rgb_farbw; --farbwechsel
+			when "001" => rgb_out <= "111"; --weiss
 			when others => rgb_out <= "000"; --schwarz
 		end case;
 	end process;
