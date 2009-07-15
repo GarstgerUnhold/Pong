@@ -58,17 +58,16 @@ begin
 		X => X,
 		Y => Y,
 		rgb_out => rgb_farbw,
-		clk25 => clk25); 
+		clk25 => clk25);
 
 	process
 	begin
 		if clk25'event and clk25 = '1' then
-		
 			if switch = '1' then
 				will_switch <= '1';
 			end if;
 			count_up <= count_up + 1;
-			if count_up = 25000000 then
+			if count_up = 6250000 then
 				if will_switch = '1' then
 					chosen_background <= chosen_background + "001";
 					will_switch <= '0';
@@ -89,19 +88,21 @@ begin
 			end if;
 			
 			if X = 320 or X = 321 -- mittellinie
-			or (deltaY * deltaY)
+			or ((deltaY * deltaY) + (deltaX * deltaX)) = 1000 -- grosser mittelkreis
+			or ((deltaY * deltaY) + (deltaX * deltaX)) =< 81 -- kleiner mittelkreis
+			or X < 3 or X > 637 or Y < 3 or Y > 477 -- aussenrahmen
+			or (((240 - deltaY) * (240 - deltaY)) + (deltaX * deltaX)) -- spielerkreise
 			then
 			  rgb_field <= "111";
 			else
 			  rgb_field <= "000";
 			end if;
-			
 		end if;
 		
-		case chosen_background is
-			when "00" => rgb_out <= rgb_farbw; --farbwechsel
-			when "01" => rgb_out <= "111"; --weiss
-			when "10" => rgb_out <= rgb_field; -- spielfeld
+	   case chosen_background is    
+			when "00" => rgb_out <= rgb_field; -- spielfeld
+			when "01" => rgb_out <= rgb_farbw; --farbwechsel
+			when "10" => rgb_out <= "111"; --weiss
 			when others => rgb_out <= "000"; --schwarz
 		end case;
 	end process;

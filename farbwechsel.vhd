@@ -36,7 +36,7 @@ entity farbwechsel is
 end farbwechsel;
 
 architecture Behavioral of farbwechsel is
-	signal countUp : integer range 0 to 2500;
+	signal countUp : integer range 0 to 5500;
 	signal my_rgb : STD_LOGIC_VECTOR (2 downto 0);
 begin
 

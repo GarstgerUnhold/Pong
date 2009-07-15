@@ -28,20 +28,22 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity balken is
-    Port ( buttons : in bit_vector (1 downto 0);
+    Port ( hold : in bit;
+			  buttons : in bit_vector (1 downto 0);
 			  bar_left : out integer range 0 to 430;
 			  bar_right : out integer range 0 to 430;
 			  X : in  integer range 0 to 640;
            Y : in  integer range 0 to 480;
 			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
-           clk25 : in  bit);
+           clk25 : in  bit;
+			  reset : in bit);
 end balken;
 
 architecture Behavioral of balken is
-	signal ldir,rdir : bit;
-	signal ltop,rtop : integer range 0 to 480 := 200;
-	signal countUp : integer range 0 to 208000 := 0;
+	signal ltop,rtop : integer range 0 to 480 := 215;
+	signal countUp : integer range 0 to 156000 := 0;
+	signal hold_intern : bit_vector (1 downto 0);
 begin
 
 	bar_left <= ltop;
@@ -52,54 +54,55 @@ begin
 		rgb_out <= rgb_in;
 	
 		if X < 20
+		and X > 4
 		and Y > ltop
 		and Y < (ltop + 50) then
 				rgb_out <= "100";
 		end if;
 		
 		if X > 619 
+		and X < 635
 		and Y > rtop
 		and Y < (rtop + 50) then
 				rgb_out <= "010";
 		end if;
-	
+
 		if clk25'event and clk25='1' then --for movement
 			countUp <= countUp + 1;
-			if countUp = 208000 then
-			
-				if buttons(0) = '1' then
-					rdir <= not rdir;
+			if countUp = 156000 then
+				hold_intern <= hold & hold;
+				
+				-- move left
+				if (ltop < 2 and buttons(0) = '1')
+				or (ltop > 429 and buttons(0) = '0') then
+					hold_intern(0) <= '1';
 				end if;
-				if buttons(1) = '1' then
-					ldir <= not ldir;
+				if hold_intern(0) = '0' then
+					case buttons(0) is
+							when '0' => ltop <= ltop + 1;
+							when '1' => ltop <= ltop - 1;
+					end case;
 				end if;
-
-				if rtop = 1 then
-					rdir <= '1';
+	
+				-- move right
+				if (rtop < 2 and buttons(1) = '1')
+				or (rtop > 429 and buttons(1) = '0') then
+					hold_intern(1) <= '1';
 				end if;
-				if rtop = 430 then
-					rdir <= '0';
+				if hold_intern(1) = '0' then
+					case buttons(1) is
+						when '0' => rtop <= rtop + 1;
+						when '1' => rtop <= rtop - 1;
+					end case;
 				end if;
 				
-				if ltop = 1 then
-					ldir <= '1';
-				end if;
-				if ltop = 430 then
-					ldir <= '0';
-				end if;
-				
-				case ldir is
-					when '0' => ltop <= ltop - 1;
-					when '1' => ltop <= ltop + 1;
-				end case;
-				
-				case rdir is
-					when '0' => rtop <= rtop - 1;
-					when '1' => rtop <= rtop + 1;
-				end case;
-				
-				countUp <= 0;
+				countUp <= 0;			
 			end if;
+		end if;
+		
+		if reset = '1' then
+			rtop <= 215;
+			ltop <= 215;
 		end if;
 	end process;
 
