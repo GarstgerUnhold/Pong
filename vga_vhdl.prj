@@ -1,7 +1,0 @@
-vhdl work "\\fs2\tim.felgentreff$\VHDL\Pong\farbwechsel.vhd"
-vhdl work "\\fs2\tim.felgentreff$\VHDL\Pong\vgadriver.vhd"
-vhdl work "\\fs2\tim.felgentreff$\VHDL\Pong\ball.vhd"
-vhdl work "\\fs2\tim.felgentreff$\VHDL\Pong\balken.vhd"
-vhdl work "\\fs2\tim.felgentreff$\VHDL\Pong\background.vhd"
-vhdl work "\\fs2\tim.felgentreff$\VHDL\Pong\ausgabe.vhd"
-vhdl work "\\fs2\tim.felgentreff$\VHDL\Pong\vga.vhd"

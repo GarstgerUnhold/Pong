@@ -1,5 +1,0 @@
-# begin LFP file Y:\workspace\VHDL\VHDL_tim\pong\vga.lfp
-designfile vga.vhd
-parttype xc3s200-4-ft256
-bus_delimiter 0;
-set_busdelim_onsave 1;
