@@ -45,6 +45,7 @@ architecture Behavioral of score is
 	signal d1,d2,d3,d4,d5,d6,d7,d8,d9,d0 : STD_LOGIC_VECTOR(1 to 5);
 	signal e1,e2,e3,e4,e5,e6,e7,e8,e9,e0 : STD_LOGIC_VECTOR(1 to 5);
 	signal left_player,right_player : integer range 0 to 9 := 0;
+	signal lp,rp : bit;
 	signal chosen_number_part : STD_LOGIC_VECTOR(1 to 5);
 begin
 		a1 <= "00011";a2 <= "00110";a3 <= "01111";a4 <= "11000";a5 <= "11111";
@@ -60,20 +61,28 @@ begin
 		e6 <= "01110";e7 <= "01100";e8 <= "01110";e9 <= "01100";e0 <= "01110";
 		
 		process begin
+			if pointLeft = '1' then
+					lp <= '1';
+			end if;
+			if pointRight = '1' then
+					rp <= '1';
+			end if;
 			if clk25'event and clk25 = '1' then
-				if pointLeft = '1' then
+				if lp = '1' then
 					left_player <= left_player + 1;
 					if left_player > 9 then
 						left_player <= 0;
 					end if;
 				end if;
-				if pointRight = '1' then
+				if rp = '1' then
 					right_player <= right_player + 1;
 					if right_player > 9 then
 						right_player <= 0;
 					end if;
 				end if;
 			end if;
+			lp <= '0';
+			rp <= '0';
 			
 			if (X > 38) and (X < 58) and (Y > 18) and (Y < 38) then --Player 1 Score box
 				case left_player is
