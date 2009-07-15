@@ -28,8 +28,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity SignalTiming is
-    Port ( reset : in bit;
-			  hsync, vsync : out bit;
+    Port ( hsync, vsync : out bit;
 			  X : out integer range 0 to 640;
            Y : out integer range 0 to 480;
 			  clk25 : in  STD_LOGIC);
@@ -51,12 +50,7 @@ begin
 			if (vcounter >= 521) then
 				vcounter <= 0;
 			end if;
-			
-			if reset='1' then
-				hcounter <= 0;
-				vcounter <= 0;
-			end if;
-			
+
 			if (0 < hcounter) and (hcounter < 97) then
 				hsync <= '1';
 			else

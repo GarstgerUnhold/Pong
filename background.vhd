@@ -49,7 +49,7 @@ architecture Behavioral of background is
 	signal chosen_background : STD_LOGIC_VECTOR (2 downto 0);
 	signal rgbs : STD_LOGIC_VECTOR (23 downto 0);
 	signal will_switch : bit;
-	signal count_up : integer range 0 to 25000000;
+	signal count_up : integer range 0 to 6250000;
 begin
 
 	farbw : farbwechsel port map (
@@ -67,7 +67,7 @@ begin
 				will_switch <= '1';
 			end if;
 			count_up <= count_up + 1;
-			if count_up = 25000000 then
+			if count_up = 6250000 then
 				if will_switch = '1' then
 					chosen_background <= chosen_background + "001";
 					will_switch <= '0';
