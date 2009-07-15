@@ -48,7 +48,7 @@ begin
 			got_game_over <= '1';
 		end if;
 		
-		if flashtime > 5000000 then
+		if flashtime > 12500000 then
 			got_game_over <= '0';
 		end if;
 	
@@ -56,7 +56,7 @@ begin
 			flashtime <= flashtime + 1;
 			rgb <= "111";
 				
-			if flashtime > 5000000 then
+			if flashtime > 12500000 then
 				flashtime <= 0;
 				got_game_over <= '0';
 			end if;
