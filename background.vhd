@@ -91,7 +91,7 @@ begin
 			or ((deltaY * deltaY) + (deltaX * deltaX)) = 1000 -- grosser mittelkreis
 			or ((deltaY * deltaY) + (deltaX * deltaX)) < 82 -- kleiner mittelkreis
 			or X < 3 or X > 637 or Y < 3 or Y > 477 -- aussenrahmen
-			or (((240 - deltaY) * (240 - deltaY)) + (deltaX * deltaX)) = 1000 -- spielerkreise
+			or (((420 - deltaX) * (420 - deltaX)) + (deltaY * deltaY)) = 1000 -- spielerkreise
 			then
 			  rgb_field <= "111";
 			else
