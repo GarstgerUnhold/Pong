@@ -49,6 +49,8 @@ architecture Behavioral of background is
 	signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
 	signal rgb_farbw, rgb_field : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
+	signal deltaX : in integer range 0 to 320;
+	signal deltaY : in integer range 0 to 240;
 	signal count_up : integer range 0 to 25000000;
 begin
 
@@ -56,9 +58,7 @@ begin
 		X => X,
 		Y => Y,
 		rgb_out => rgb_farbw,
-		clk25 => clk25);
-	
-	rgb_farbw(20 downto 18) <= "111";
+		clk25 => clk25); 
 
 	process
 	begin
@@ -76,7 +76,20 @@ begin
 				count_up <= 0;
 			end if;
 			
-			if (X = 320 or X = 321) -- mittellinie
+			if X > 320 then
+			  deltaX <= X - 320;
+			else
+			  deltaX <= 320 - X;
+			end if;
+			
+			if Y > 240 then
+			  deltaY <= Y - 240;
+			else
+			  deltaY <= 240 - Y;
+			end if;
+			
+			if X = 320 or X = 321 -- mittellinie
+			or (deltaY * deltaY)
 			then
 			  rgb_field <= "111";
 			else
