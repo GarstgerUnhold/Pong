@@ -37,37 +37,35 @@ entity game_over_handler is
 end game_over_handler;
 
 architecture Behavioral of game_over_handler is
-	signal flashtime : integer range 0 to 5000000 := 0;
-	signal flashcount : integer range 0 to 15 := 0;
-	signal save_game_over : bit;
+	signal flashtime : integer range 0 to 12500000 := 0;
+	signal flashcount : bit := '0';
 	signal rgb : STD_LOGIC_VECTOR (2 downto 0);
 begin
 	
 	process
 	begin
 		if game_over = '1' then
-			save_game_over <= '1';
+			flashcount <= '1';
 		end if;
 	
-		if save_game_over = '1' then
+		if flashcount = '0' then
 			if clk25'event and clk25 = '1' then
-				rgb <= rgb_in;
 				flashtime <= flashtime + 1;
-				
-				if flashtime = 500000 then
-					flashcount <= flashcount + 1;
-					rgb <= "111";
+					
+				if flashtime > 0 and flashtime < 12500000 then
+					rgb <= (not rgb(0) & not rgb(1) & not rgb(2));
+				else
 					flashtime <= 0;
 				end if;
 			end if;
-			rgb <= "111";
+			rgb_out <= rgb;
+		else
+			rgb_out <= rgb_in;
 		end if;
 		
-		if flashcount = 15 then
-			save_game_over <= '0';
+		if flashtime = 12500000 then
+			flashcount <= '0';
 		end if;
-		
-		rgb_out <= rgb;
 	end process;
 
 end Behavioral;

@@ -68,6 +68,7 @@ architecture Behavioral of vga is
 	
 	component balken 
 		Port (
+			hold : in bit;
 			buttons : in bit_vector (1 downto 0);
 			bar_left : out integer range 0 to 430;
 			bar_right : out integer range 0 to 430;
@@ -143,6 +144,7 @@ begin
 		clk25 => intermediate_clk25);
 
 	male_balken : balken port map (
+		hold => global_hold,
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
 		buttons => global_buttons,

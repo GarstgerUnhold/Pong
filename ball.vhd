@@ -43,9 +43,9 @@ end ball;
 architecture Behavioral of ball is
 	signal lr : bit := '0'; --left/right
 	signal ud : bit := '1'; --up/down
+	signal deltaX, deltaY : integer range 0 to 640;
 	signal x_pos : integer range 0 to 640 := 320;
 	signal y_pos : integer range 0 to 480 := 240;
-	signal deltaX, deltaY : integer range 0 to 640;
 	signal countUp : integer range 0 to 208000 := 0;
 	signal gameOver : bit;
 begin
@@ -54,19 +54,24 @@ begin
 	begin
 		rgb_out <= rgb_in;
 		
-		if (x_pos > X) then
-			deltaX <= x_pos - X;
-		else
-			deltaX <= X - x_pos;
-		end if;
-		if (y_pos > Y) then
-			deltaY <= y_pos - Y;
-		else
-			deltaY <= Y - y_pos;
-		end if;
+		if (x_pos > X - 8) 
+		and (x_pos < X + 8)
+		and (y_pos > Y - 8)
+		and (y_pos < Y + 8) then
+			if (x_pos > X) then
+				deltaX <= x_pos - X + 1;
+			else
+				deltaX <= X - x_pos;
+			end if;
+			if (y_pos > Y) then
+				deltaY <= y_pos - Y + 1;
+			else
+				deltaY <= Y - y_pos;
+			end if;
 	
-		if ((deltaY * deltaY) + (deltaX * deltaX)) < 16 then
-			rgb_out <= "001";
+			if ((deltaY * deltaY) + (deltaX * deltaX)) < 64 then
+				rgb_out <= "001";
+			end if;
 		end if;
 		
 		if clk25'event and clk25='1' then --for movement
@@ -74,32 +79,32 @@ begin
 			gameOver <= reset;
 			if countUp = 208000 then
 
-				if x_pos < 23 then
+				if x_pos < 27 then
 					if (bar_left < y_pos 
 					and bar_left + 50 > y_pos) then
 						lr <= '1';						
 					else
-						if x_pos < 5 then
+						if x_pos < 9 then
 							gameOver <= '1';
 						end if;
 					end if;
 				end if;
 				
-				if x_pos > 615 then
+				if x_pos > 611 then
 					if (bar_right < y_pos 
 					and bar_right + 50 > y_pos) then
 						lr <= '0';
 					else
-						if x_pos > 635 then
+						if x_pos > 631 then
 							gameOver <= '1';
 						end if;
 					end if;
 				end if;
 				
-				if y_pos <= 5 then
+				if y_pos = 9 then
 					ud <= '1';
 				end if;
-				if y_pos = 475 then
+				if y_pos = 471 then
 					ud <= '0';
 				end if;
 				
