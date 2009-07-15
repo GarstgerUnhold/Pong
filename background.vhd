@@ -103,13 +103,13 @@ begin
 			      else
 			        rgb_out <= "101";
 			      end if;
-			    elsif ((deltaY * deltaY) + (deltaX * deltaX)) = 10000
+			    elsif ((deltaY * deltaY) + (deltaX * deltaX)) < 10000 then
 			      if (X < 320 and Y > 240) or (X > 320 and Y < 240) then
-  			      rgb_out <= "101";
+  			        rgb_out <= "101";
+  			      else
+  			        rgb_out <= "011";
+  			      end if;
   			    else
-  			      rgb_out <= "011";
-  			    end if;
-  			  else
 			      rgb_out <= "111";
 			    end if;
 			    
