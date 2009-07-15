@@ -47,7 +47,7 @@ architecture Behavioral of background is
 	end component;
 
 	signal chosen_background : STD_LOGIC_VECTOR (2 downto 0);
-	signal rgb_farbw : STD_LOGIC_VECTOR (2 downto 0);
+	signal rgb_farbw, rgb_field : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
 	signal count_up : integer range 0 to 25000000;
 begin
@@ -58,11 +58,12 @@ begin
 		rgb_out => rgb_farbw,
 		clk25 => clk25);
 	
-	rgbs(20 downto 18) <= "111";
+	rgb_farbw(20 downto 18) <= "111";
 
 	process
 	begin
 		if clk25'event and clk25 = '1' then
+		
 			if switch = '1' then
 				will_switch <= '1';
 			end if;
@@ -74,6 +75,14 @@ begin
 				end if;
 				count_up <= 0;
 			end if;
+			
+			if (X = 320 or X = 321) -- mittellinie
+			then
+			  rgb_field <= "111";
+			else
+			  rgb_field <= "000";
+			end if;
+			
 		end if;
 		
 		case chosen_background is
