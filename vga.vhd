@@ -168,7 +168,7 @@ begin
 		reset => global_reset);
 		
 	male_gameover : game_over_handler port map (
-	   game_over => intermediate_game_over,
+	   game_over => global_reset,
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_in => intermediate_rgb3,

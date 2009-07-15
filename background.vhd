@@ -46,19 +46,17 @@ architecture Behavioral of background is
 			clk25 : in bit);
 	end component;
 
-	signal chosen_background : STD_LOGIC_VECTOR (2 downto 0);
-	signal rgbs : STD_LOGIC_VECTOR (23 downto 0);
+	signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
+	signal rgb_farbw, rgb_field : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
-	signal count_up : integer range 0 to 6250000;
+	signal count_up : integer range 0 to 25000000;
 begin
 
 	farbw : farbwechsel port map (
 		X => X,
 		Y => Y,
-		rgb_out => rgbs(23 downto 21),
+		rgb_out => rgb_farbw,
 		clk25 => clk25);
-	
-	rgbs(20 downto 18) <= "111";
 
 	process
 	begin
@@ -74,11 +72,19 @@ begin
 				end if;
 				count_up <= 0;
 			end if;
+		
+			if (X = 320 or X = 321) -- mittellinie
+			then
+			  rgb_field <= "111";
+			else
+			  rgb_field <= "000";
+			end if;
 		end if;
 		
-		case chosen_background is
-			when "000" => rgb_out <= rgbs(23 downto 21); --farbwechsel
-			when "001" => rgb_out <= rgbs(20 downto 18); --weiss
+	   case chosen_background is
+			when "00" => rgb_out <= rgb_farbw; --farbwechsel
+			when "01" => rgb_out <= "111"; --weiss
+			when "10" => rgb_out <= rgb_field; -- spielfeld
 			when others => rgb_out <= "000"; --schwarz
 		end case;
 	end process;

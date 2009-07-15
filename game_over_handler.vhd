@@ -44,28 +44,28 @@ begin
 	
 	process
 	begin
-		if game_over = '1' then
+		if game_over = '1' and flashtime = 0 then
 			flashcount <= '1';
 		end if;
 	
-		if flashcount = '0' then
-			if clk25'event and clk25 = '1' then
+		if flashcount = '1' and clk25'event and clk25 = '1' then
 				flashtime <= flashtime + 1;
 					
 				if flashtime > 0 and flashtime < 12500000 then
-					rgb <= (not rgb(0) & not rgb(1) & not rgb(2));
+					rgb <= "111";
 				else
 					flashtime <= 0;
 				end if;
-			end if;
-			rgb_out <= rgb;
 		else
-			rgb_out <= rgb_in;
+			rgb <= rgb_in;
 		end if;
 		
-		if flashtime = 12500000 then
+		if flashtime >= 12500000 then
 			flashcount <= '0';
 		end if;
+		
+		rgb_out <= rgb;
+		
 	end process;
 
 end Behavioral;
