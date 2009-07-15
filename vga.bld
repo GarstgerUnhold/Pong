@@ -1,11 +1,11 @@
 Release 9.2.04i ngdbuild J.40
 Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
 
-Command Line: C:\Xilinx92i\bin\nt\ngdbuild.exe -ise
-Y:/workspace/VHDL/VHDL_tim/pong/template.ise -intstyle ise -dd _ngo -nt
-timestamp -uc vga.ucf -p xc3s200-ft256-4 vga.ngc vga.ngd
+Command Line: C:\Xilinx92i\bin\nt\ngdbuild.exe -ise Y:/VHDL/Pong/template.ise
+-intstyle ise -dd _ngo -nt timestamp -uc vga.ucf -p xc3s200-ft256-4 vga.ngc
+vga.ngd
 
-Reading NGO file "Y:/workspace/VHDL/VHDL_tim/pong/vga.ngc" ...
+Reading NGO file "Y:/VHDL/Pong/vga.ngc" ...
 
 Applying constraints in "vga.ucf" to the design...
 

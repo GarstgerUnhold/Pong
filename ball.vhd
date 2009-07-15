@@ -28,7 +28,9 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity ball is
-    Port ( X : in  integer range 0 to 640;
+    Port ( bar_left : in integer range 0 to 430;
+			  bar_right : in integer range 0 to 430;
+			  X : in  integer range 0 to 640;
            Y : in  integer range 0 to 480;
 			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
@@ -56,11 +58,24 @@ begin
 			countUp <= countUp + 1;
 			if countUp = 312500 then
 
-				if x_pos <= 5 then
-					lr <= '1';
+				if x_pos < 23 then
+					if (bar_left < y_pos 
+					and bar_left + 50 > y_pos) then
+						lr <= '1';
+					else
+						x_pos <= 200;
+						y_pos <= 200;
+					end if;
 				end if;
-				if x_pos = 635 then
-					lr <= '0';
+				
+				if x_pos > 615 then
+					if (bar_right < y_pos 
+					and bar_right + 50 > y_pos) then
+						lr <= '0';
+					else
+						x_pos <= 200;
+						y_pos <= 200;
+					end if;
 				end if;
 				
 				if y_pos <= 5 then

@@ -29,6 +29,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity balken is
     Port ( buttons : in bit_vector (1 downto 0);
+			  bar_left : out integer range 0 to 430;
+			  bar_right : out integer range 0 to 430;
 			  X : in  integer range 0 to 640;
            Y : in  integer range 0 to 480;
 			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
@@ -41,6 +43,9 @@ architecture Behavioral of balken is
 	signal ltop,rtop : integer range 0 to 480 := 200;
 	signal countUp : integer range 0 to 208000 := 0;
 begin
+
+	bar_left <= ltop;
+	bar_right <= rtop;
 
 	process 
 	begin

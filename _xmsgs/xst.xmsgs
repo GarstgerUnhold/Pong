@@ -5,51 +5,54 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd</arg>&quot; Line <arg fmt="%d" index="2">42</arg>. No sensitivity list and no wait in the process
+<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/vgadriver.vhd</arg>&quot; Line <arg fmt="%d" index="2">42</arg>. No sensitivity list and no wait in the process
 </msg>
 
-<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd</arg>&quot; Line <arg fmt="%d" index="2">63</arg>. No sensitivity list and no wait in the process
+<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/background.vhd</arg>&quot; Line <arg fmt="%d" index="2">63</arg>. No sensitivity list and no wait in the process
 </msg>
 
-<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd</arg>&quot; Line <arg fmt="%d" index="2">45</arg>. No sensitivity list and no wait in the process
+<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd</arg>&quot; Line <arg fmt="%d" index="2">50</arg>. No sensitivity list and no wait in the process
 </msg>
 
-<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd</arg>&quot; Line <arg fmt="%d" index="2">46</arg>. No sensitivity list and no wait in the process
+<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd</arg>&quot; Line <arg fmt="%d" index="2">48</arg>. No sensitivity list and no wait in the process
 </msg>
 
-<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ausgabe.vhd</arg>&quot; Line <arg fmt="%d" index="2">42</arg>. No sensitivity list and no wait in the process
+<msg type="warning" file="HDLParsers" num="1406" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/ausgabe.vhd</arg>&quot; Line <arg fmt="%d" index="2">42</arg>. No sensitivity list and no wait in the process
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd</arg>&quot; line <arg fmt="%d" index="2">44</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/vgadriver.vhd</arg>&quot; line <arg fmt="%d" index="2">44</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">clk25</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd</arg>&quot; line <arg fmt="%d" index="2">65</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/background.vhd</arg>&quot; line <arg fmt="%d" index="2">65</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">clk25</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd</arg>&quot; line <arg fmt="%d" index="2">63</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/background.vhd</arg>&quot; line <arg fmt="%d" index="2">63</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">chosen_background, rgbs</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd</arg>&quot; line <arg fmt="%d" index="2">61</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd</arg>&quot; line <arg fmt="%d" index="2">66</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">clk25</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd</arg>&quot; line <arg fmt="%d" index="2">45</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd</arg>&quot; line <arg fmt="%d" index="2">50</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">rgb_in, X, Y, ltop, rtop</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd</arg>&quot; line <arg fmt="%d" index="2">55</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd</arg>&quot; line <arg fmt="%d" index="2">57</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">clk25</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd</arg>&quot; line <arg fmt="%d" index="2">46</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd</arg>&quot; line <arg fmt="%d" index="2">48</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">rgb_in, X, x_pos, Y, y_pos</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ausgabe.vhd</arg>&quot; line <arg fmt="%d" index="2">42</arg>: The following signals are missing in the process sensitivity list:
+<msg type="warning" file="Xst" num="819" delta="unknown" >&quot;<arg fmt="%s" index="1">//fs2/tim.felgentreff$/VHDL/Pong/ausgabe.vhd</arg>&quot; line <arg fmt="%d" index="2">42</arg>: The following signals are missing in the process sensitivity list:
 <arg fmt="%s" index="3">X, Y, rgb_in</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="2734" delta="unknown" >Property &quot;<arg fmt="%s" index="1">use_dsp48</arg>&quot; is not applicable for this technology.
 </msg>
 
 <msg type="warning" file="Xst" num="2734" delta="unknown" >Property &quot;<arg fmt="%s" index="1">use_dsp48</arg>&quot; is not applicable for this technology.

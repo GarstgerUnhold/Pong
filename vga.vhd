@@ -69,6 +69,8 @@ architecture Behavioral of vga is
 	component balken 
 		Port (
 			buttons : in bit_vector (1 downto 0);
+			bar_left : out integer range 0 to 430;
+			bar_right : out integer range 0 to 430;
 			X : in integer range 0 to 640;
          Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
@@ -77,7 +79,9 @@ architecture Behavioral of vga is
 	end component;
 	
 	component ball is
-		Port ( 
+		Port (
+			bar_left : in integer range 0 to 430;
+			bar_right : in integer range 0 to 430;
 			X : in integer range 0 to 640;
          Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
@@ -85,6 +89,8 @@ architecture Behavioral of vga is
          clk25 : in  bit);
 	end component;
 	
+	signal intermediate_bar_left : integer range 0 to 430;
+	signal intermediate_bar_right : integer range 0 to 430;
 	signal intermediate_X : integer range 0 to 640;
    signal intermediate_Y : integer range 0 to 480;
 	signal intermediate_hsync, intermediat_vsync : bit;
@@ -122,6 +128,8 @@ begin
 		clk25 => intermediate_clk25);
 
 	male_balken : balken port map (
+		bar_left => intermediate_bar_left,
+		bar_right => intermediate_bar_right,
 		buttons => global_buttons,
 		X => intermediate_X,
 		Y => intermediate_Y,
@@ -130,6 +138,8 @@ begin
 		clk25 => intermediate_clk25);
 		
 	male_ball : ball port map (
+		bar_left => intermediate_bar_left,
+		bar_right => intermediate_bar_right,
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_in => intermediate_rgb2,

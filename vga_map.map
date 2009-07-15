@@ -3,14 +3,14 @@ Xilinx Map Application Log File for Design 'vga'
 
 Design Information
 ------------------
-Command Line   : C:\Xilinx92i\bin\nt\map.exe -ise
-Y:/workspace/VHDL/VHDL_tim/pong/template.ise -intstyle ise -p xc3s200-ft256-4
--cm area -pr b -k 4 -c 100 -o vga_map.ncd vga.ngd vga.pcf 
+Command Line   : C:\Xilinx92i\bin\nt\map.exe -ise Y:/VHDL/Pong/template.ise
+-intstyle ise -p xc3s200-ft256-4 -cm area -pr b -k 4 -c 100 -o vga_map.ncd
+vga.ngd vga.pcf 
 Target Device  : xc3s200
 Target Package : ft256
 Target Speed   : -4
 Mapper Version : spartan3 -- $Revision: 1.36 $
-Mapped Date    : Fri Jul 10 21:00:39 2009
+Mapped Date    : Wed Jul 15 09:25:05 2009
 
 Mapping design into LUTs...
 Running directed packing...
@@ -25,23 +25,23 @@ Number of errors:      0
 Number of warnings:    0
 Logic Utilization:
   Number of Slice Flip Flops:         167 out of   3,840    4%
-  Number of 4 input LUTs:             284 out of   3,840    7%
+  Number of 4 input LUTs:             331 out of   3,840    8%
 Logic Distribution:
-  Number of occupied Slices:                          201 out of   1,920   10%
-    Number of Slices containing only related logic:     201 out of     201  100%
-    Number of Slices containing unrelated logic:          0 out of     201    0%
+  Number of occupied Slices:                          224 out of   1,920   11%
+    Number of Slices containing only related logic:     224 out of     224  100%
+    Number of Slices containing unrelated logic:          0 out of     224    0%
       *See NOTES below for an explanation of the effects of unrelated logic
-Total Number of 4 input LUTs:            372 out of   3,840    9%
-  Number used as logic:                284
+Total Number of 4 input LUTs:            419 out of   3,840   10%
+  Number used as logic:                331
   Number used as a route-thru:          88
   Number of bonded IOBs:               10 out of     173    5%
     IOB Flip Flops:                     2
   Number of GCLKs:                     2 out of       8   25%
 
-Total equivalent gate count for design:  4,103
+Total equivalent gate count for design:  4,502
 Additional JTAG gate count for IOBs:  480
-Peak Memory Usage:  135 MB
-Total REAL time to MAP completion:  4 secs 
+Peak Memory Usage:  125 MB
+Total REAL time to MAP completion:  9 secs 
 Total CPU time to MAP completion:   3 secs 
 
 NOTES:

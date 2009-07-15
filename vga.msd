@@ -4,7 +4,7 @@ Design name: 	vga.ncd
 Architecture:	spartan3
 Part:        	3s200ft256
 Type:        	mask
-Date:        	Fri Jul 10 21:01:58 2009
+Date:        	Wed Jul 15 09:26:04 2009
 Bits:        	1044736
 11111111111111111111111111111111
 11111111111111111111111111111111

@@ -1,10 +1,10 @@
 Release 9.2.04i - xst J.40
 Copyright (c) 1995-2007 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to ./xst/projnav.tmp
-CPU : 0.02 / 1.55 s | Elapsed : 0.00 / 1.00 s
+CPU : 0.00 / 0.72 s | Elapsed : 0.00 / 0.00 s
  
 --> Parameter xsthdpdir set to ./xst
-CPU : 0.02 / 1.56 s | Elapsed : 0.00 / 1.00 s
+CPU : 0.00 / 0.72 s | Elapsed : 0.00 / 0.00 s
  
 --> Reading design: vga.prj
 
@@ -98,25 +98,26 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/farbwechsel.vhd" in Library work.
+Compiling vhdl file "//fs2/tim.felgentreff$/VHDL/Pong/farbwechsel.vhd" in Library work.
 Architecture behavioral of Entity farbwechsel is up to date.
-Compiling vhdl file "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd" in Library work.
-WARNING:HDLParsers:1406 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd" Line 42. No sensitivity list and no wait in the process
+Compiling vhdl file "//fs2/tim.felgentreff$/VHDL/Pong/vgadriver.vhd" in Library work.
+WARNING:HDLParsers:1406 - "//fs2/tim.felgentreff$/VHDL/Pong/vgadriver.vhd" Line 42. No sensitivity list and no wait in the process
 Architecture behavioral of Entity signaltiming is up to date.
-Compiling vhdl file "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd" in Library work.
-WARNING:HDLParsers:1406 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd" Line 63. No sensitivity list and no wait in the process
+Compiling vhdl file "//fs2/tim.felgentreff$/VHDL/Pong/background.vhd" in Library work.
+WARNING:HDLParsers:1406 - "//fs2/tim.felgentreff$/VHDL/Pong/background.vhd" Line 63. No sensitivity list and no wait in the process
 Architecture behavioral of Entity background is up to date.
-Compiling vhdl file "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd" in Library work.
-WARNING:HDLParsers:1406 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd" Line 45. No sensitivity list and no wait in the process
-Architecture behavioral of Entity balken is up to date.
-Compiling vhdl file "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd" in Library work.
-WARNING:HDLParsers:1406 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd" Line 46. No sensitivity list and no wait in the process
-Architecture behavioral of Entity ball is up to date.
-Compiling vhdl file "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ausgabe.vhd" in Library work.
-Entity <ausgabe> compiled.
-WARNING:HDLParsers:1406 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ausgabe.vhd" Line 42. No sensitivity list and no wait in the process
-Entity <ausgabe> (Architecture <behavioral>) compiled.
-Compiling vhdl file "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vga.vhd" in Library work.
+Compiling vhdl file "//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd" in Library work.
+Entity <balken> compiled.
+WARNING:HDLParsers:1406 - "//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd" Line 50. No sensitivity list and no wait in the process
+Entity <balken> (Architecture <behavioral>) compiled.
+Compiling vhdl file "//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd" in Library work.
+Entity <ball> compiled.
+WARNING:HDLParsers:1406 - "//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd" Line 48. No sensitivity list and no wait in the process
+Entity <ball> (Architecture <behavioral>) compiled.
+Compiling vhdl file "//fs2/tim.felgentreff$/VHDL/Pong/ausgabe.vhd" in Library work.
+WARNING:HDLParsers:1406 - "//fs2/tim.felgentreff$/VHDL/Pong/ausgabe.vhd" Line 42. No sensitivity list and no wait in the process
+Architecture behavioral of Entity ausgabe is up to date.
+Compiling vhdl file "//fs2/tim.felgentreff$/VHDL/Pong/vga.vhd" in Library work.
 Architecture behavioral of Entity vga is up to date.
 
 =========================================================================
@@ -144,14 +145,14 @@ Analyzing Entity <vga> in library <work> (Architecture <behavioral>).
 Entity <vga> analyzed. Unit <vga> generated.
 
 Analyzing Entity <SignalTiming> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd" line 44: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/vgadriver.vhd" line 44: The following signals are missing in the process sensitivity list:
    clk25.
 Entity <SignalTiming> analyzed. Unit <SignalTiming> generated.
 
 Analyzing Entity <background> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd" line 65: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/background.vhd" line 65: The following signals are missing in the process sensitivity list:
    clk25.
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd" line 63: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/background.vhd" line 63: The following signals are missing in the process sensitivity list:
    chosen_background, rgbs.
 Entity <background> analyzed. Unit <background> generated.
 
@@ -159,21 +160,21 @@ Analyzing Entity <farbwechsel> in library <work> (Architecture <behavioral>).
 Entity <farbwechsel> analyzed. Unit <farbwechsel> generated.
 
 Analyzing Entity <balken> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd" line 61: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd" line 66: The following signals are missing in the process sensitivity list:
    clk25.
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd" line 45: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd" line 50: The following signals are missing in the process sensitivity list:
    rgb_in, X, Y, ltop, rtop.
 Entity <balken> analyzed. Unit <balken> generated.
 
 Analyzing Entity <ball> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd" line 55: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd" line 57: The following signals are missing in the process sensitivity list:
    clk25.
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd" line 46: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd" line 48: The following signals are missing in the process sensitivity list:
    rgb_in, X, x_pos, Y, y_pos.
 Entity <ball> analyzed. Unit <ball> generated.
 
 Analyzing Entity <ausgabe> in library <work> (Architecture <behavioral>).
-WARNING:Xst:819 - "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ausgabe.vhd" line 42: The following signals are missing in the process sensitivity list:
+WARNING:Xst:819 - "//fs2/tim.felgentreff$/VHDL/Pong/ausgabe.vhd" line 42: The following signals are missing in the process sensitivity list:
    X, Y, rgb_in.
 Entity <ausgabe> analyzed. Unit <ausgabe> generated.
 
@@ -185,7 +186,7 @@ Entity <ausgabe> analyzed. Unit <ausgabe> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <SignalTiming>.
-    Related source file is "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vgadriver.vhd".
+    Related source file is "//fs2/tim.felgentreff$/VHDL/Pong/vgadriver.vhd".
 WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
 WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
     Found 1-bit register for signal <vsync>.
@@ -214,20 +215,20 @@ Unit <SignalTiming> synthesized.
 
 
 Synthesizing Unit <balken>.
-    Related source file is "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/balken.vhd".
+    Related source file is "//fs2/tim.felgentreff$/VHDL/Pong/balken.vhd".
 WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
     Found 18-bit up counter for signal <countUp>.
     Found 1-bit register for signal <ldir>.
     Found 9-bit updown counter for signal <ltop>.
     Found 1-bit register for signal <rdir>.
-    Found 9-bit adder carry out for signal <rgb_out$addsub0002> created at line 55.
-    Found 9-bit adder carry out for signal <rgb_out$addsub0003> created at line 49.
-    Found 10-bit comparator greater for signal <rgb_out$cmp_gt0000> created at line 55.
-    Found 9-bit comparator greater for signal <rgb_out$cmp_gt0001> created at line 55.
-    Found 9-bit comparator greater for signal <rgb_out$cmp_gt0002> created at line 49.
-    Found 10-bit comparator less for signal <rgb_out$cmp_lt0000> created at line 55.
-    Found 10-bit comparator less for signal <rgb_out$cmp_lt0001> created at line 49.
-    Found 10-bit comparator less for signal <rgb_out$cmp_lt0002> created at line 49.
+    Found 9-bit adder carry out for signal <rgb_out$addsub0002> created at line 60.
+    Found 9-bit adder carry out for signal <rgb_out$addsub0003> created at line 54.
+    Found 10-bit comparator greater for signal <rgb_out$cmp_gt0000> created at line 60.
+    Found 9-bit comparator greater for signal <rgb_out$cmp_gt0001> created at line 60.
+    Found 9-bit comparator greater for signal <rgb_out$cmp_gt0002> created at line 54.
+    Found 10-bit comparator less for signal <rgb_out$cmp_lt0000> created at line 60.
+    Found 10-bit comparator less for signal <rgb_out$cmp_lt0001> created at line 54.
+    Found 10-bit comparator less for signal <rgb_out$cmp_lt0002> created at line 54.
     Found 9-bit updown counter for signal <rtop>.
     Summary:
 	inferred   3 Counter(s).
@@ -238,36 +239,45 @@ Unit <balken> synthesized.
 
 
 Synthesizing Unit <ball>.
-    Related source file is "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ball.vhd".
+    Related source file is "//fs2/tim.felgentreff$/VHDL/Pong/ball.vhd".
+WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
 WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
 WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
 WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
 WARNING:Xst:2734 - Property "use_dsp48" is not applicable for this technology.
     Found 19-bit up counter for signal <countUp>.
     Found 1-bit register for signal <lr>.
-    Found 10-bit comparator greater for signal <lr$cmp_gt0000> created at line 59.
-    Found 11-bit subtractor for signal <rgb_out$addsub0000> created at line 50.
-    Found 10-bit adder for signal <rgb_out$addsub0001> created at line 50.
-    Found 10-bit subtractor for signal <rgb_out$addsub0002> created at line 50.
-    Found 9-bit adder for signal <rgb_out$addsub0003> created at line 50.
-    Found 11-bit comparator greater for signal <rgb_out$cmp_gt0000> created at line 50.
-    Found 10-bit comparator greater for signal <rgb_out$cmp_gt0001> created at line 50.
-    Found 10-bit comparator less for signal <rgb_out$cmp_lt0000> created at line 50.
-    Found 9-bit comparator less for signal <rgb_out$cmp_lt0001> created at line 50.
+    Found 9-bit adder for signal <lr$addsub0000> created at line 72.
+    Found 9-bit adder for signal <lr$addsub0001> created at line 62.
+    Found 9-bit comparator greatequal for signal <lr$cmp_ge0000> created at line 72.
+    Found 9-bit comparator greatequal for signal <lr$cmp_ge0001> created at line 62.
+    Found 10-bit comparator greatequal for signal <lr$cmp_ge0002> created at line 61.
+    Found 10-bit comparator greater for signal <lr$cmp_gt0000> created at line 71.
+    Found 9-bit comparator lessequal for signal <lr$cmp_le0000> created at line 72.
+    Found 9-bit comparator lessequal for signal <lr$cmp_le0001> created at line 62.
+    Found 10-bit comparator lessequal for signal <lr$cmp_le0002> created at line 71.
+    Found 11-bit subtractor for signal <rgb_out$addsub0000> created at line 52.
+    Found 10-bit adder for signal <rgb_out$addsub0001> created at line 52.
+    Found 10-bit subtractor for signal <rgb_out$addsub0002> created at line 52.
+    Found 9-bit adder for signal <rgb_out$addsub0003> created at line 52.
+    Found 11-bit comparator greater for signal <rgb_out$cmp_gt0000> created at line 52.
+    Found 10-bit comparator greater for signal <rgb_out$cmp_gt0001> created at line 52.
+    Found 10-bit comparator less for signal <rgb_out$cmp_lt0000> created at line 52.
+    Found 9-bit comparator less for signal <rgb_out$cmp_lt0001> created at line 52.
     Found 1-bit register for signal <ud>.
-    Found 9-bit comparator greater for signal <ud$cmp_gt0000> created at line 66.
+    Found 9-bit comparator greater for signal <ud$cmp_gt0000> created at line 81.
     Found 10-bit updown counter for signal <x_pos>.
     Found 9-bit updown counter for signal <y_pos>.
     Summary:
 	inferred   3 Counter(s).
 	inferred   2 D-type flip-flop(s).
-	inferred   4 Adder/Subtractor(s).
-	inferred   6 Comparator(s).
+	inferred   6 Adder/Subtractor(s).
+	inferred  12 Comparator(s).
 Unit <ball> synthesized.
 
 
 Synthesizing Unit <ausgabe>.
-    Related source file is "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/ausgabe.vhd".
+    Related source file is "//fs2/tim.felgentreff$/VHDL/Pong/ausgabe.vhd".
 WARNING:Xst:647 - Input <clk25> is never used.
     Found 10-bit comparator greater for signal <rgb_out$cmp_gt0000> created at line 44.
     Found 10-bit comparator less for signal <rgb_out$cmp_lt0000> created at line 44.
@@ -278,7 +288,7 @@ Unit <ausgabe> synthesized.
 
 
 Synthesizing Unit <farbwechsel>.
-    Related source file is "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/farbwechsel.vhd".
+    Related source file is "//fs2/tim.felgentreff$/VHDL/Pong/farbwechsel.vhd".
 WARNING:Xst:647 - Input <X> is never used.
 WARNING:Xst:647 - Input <Y> is never used.
     Found 3-bit register for signal <rgb_out>.
@@ -291,7 +301,7 @@ Unit <farbwechsel> synthesized.
 
 
 Synthesizing Unit <background>.
-    Related source file is "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/background.vhd".
+    Related source file is "//fs2/tim.felgentreff$/VHDL/Pong/background.vhd".
 WARNING:Xst:1780 - Signal <rgbs<17:0>> is never used or assigned.
     Found 3-bit up counter for signal <chosen_background>.
     Found 25-bit up counter for signal <count_up>.
@@ -303,7 +313,7 @@ Unit <background> synthesized.
 
 
 Synthesizing Unit <vga>.
-    Related source file is "//fs2/johannes.wollert$/workspace/VHDL/VHDL_tim/pong/vga.vhd".
+    Related source file is "//fs2/tim.felgentreff$/VHDL/Pong/vga.vhd".
     Found 1-bit register for signal <global_hsync>.
     Found 1-bit register for signal <global_vsync>.
     Found 1-bit register for signal <intermediate_clk25>.
@@ -316,11 +326,11 @@ Unit <vga> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 8
+# Adders/Subtractors                                   : 10
  10-bit adder                                          : 1
  10-bit subtractor                                     : 2
  11-bit subtractor                                     : 1
- 9-bit adder                                           : 1
+ 9-bit adder                                           : 3
  9-bit adder carry out                                 : 2
  9-bit subtractor                                      : 1
 # Counters                                             : 12
@@ -337,13 +347,16 @@ Macro Statistics
  10-bit register                                       : 1
  3-bit register                                        : 1
  9-bit register                                        : 1
-# Comparators                                          : 24
- 10-bit comparator greatequal                          : 1
+# Comparators                                          : 30
+ 10-bit comparator greatequal                          : 2
  10-bit comparator greater                             : 8
  10-bit comparator less                                : 9
+ 10-bit comparator lessequal                           : 1
  11-bit comparator greater                             : 1
+ 9-bit comparator greatequal                           : 2
  9-bit comparator greater                              : 3
  9-bit comparator less                                 : 2
+ 9-bit comparator lessequal                            : 2
 
 =========================================================================
 
@@ -357,11 +370,11 @@ Loading device for application Rf_Device from file '3s200.nph' in environment C:
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 8
+# Adders/Subtractors                                   : 10
  10-bit adder                                          : 1
  10-bit subtractor                                     : 2
  11-bit subtractor                                     : 1
- 9-bit adder                                           : 1
+ 9-bit adder                                           : 3
  9-bit adder carry out                                 : 2
  9-bit subtractor                                      : 1
 # Counters                                             : 12
@@ -375,13 +388,16 @@ Macro Statistics
  9-bit updown counter                                  : 3
 # Registers                                            : 32
  Flip-Flops                                            : 32
-# Comparators                                          : 24
- 10-bit comparator greatequal                          : 1
+# Comparators                                          : 30
+ 10-bit comparator greatequal                          : 2
  10-bit comparator greater                             : 8
  10-bit comparator less                                : 9
+ 10-bit comparator lessequal                           : 1
  11-bit comparator greater                             : 1
+ 9-bit comparator greatequal                           : 2
  9-bit comparator greater                              : 3
  9-bit comparator less                                 : 2
+ 9-bit comparator lessequal                            : 2
 
 =========================================================================
 
@@ -399,7 +415,7 @@ Optimizing unit <ball> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block vga, actual ratio is 11.
+Found area constraint ratio of 100 (+ 5) on block vga, actual ratio is 13.
 
 Final Macro Processing ...
 
@@ -437,21 +453,19 @@ Design Statistics
 # IOs                              : 10
 
 Cell Usage :
-# BELS                             : 727
+# BELS                             : 813
 #      GND                         : 1
 #      INV                         : 15
 #      LUT1                        : 88
-#      LUT2                        : 100
-#      LUT2_D                      : 1
-#      LUT2_L                      : 1
+#      LUT2                        : 133
+#      LUT2_L                      : 4
 #      LUT3                        : 45
-#      LUT3_D                      : 1
-#      LUT3_L                      : 3
-#      LUT4                        : 115
-#      LUT4_D                      : 3
+#      LUT3_L                      : 1
+#      LUT4                        : 129
+#      LUT4_D                      : 4
 #      LUT4_L                      : 6
-#      MUXCY                       : 216
-#      MUXF5                       : 6
+#      MUXCY                       : 252
+#      MUXF5                       : 9
 #      VCC                         : 1
 #      XORCY                       : 125
 # FlipFlops/Latches                : 169
@@ -473,9 +487,9 @@ Device utilization summary:
 
 Selected Device : 3s200ft256-4 
 
- Number of Slices:                     199  out of   1920    10%  
+ Number of Slices:                     225  out of   1920    11%  
  Number of Slice Flip Flops:           169  out of   3840     4%  
- Number of 4 input LUTs:               378  out of   3840     9%  
+ Number of 4 input LUTs:               425  out of   3840    11%  
  Number of IOs:                         10
  Number of bonded IOBs:                 10  out of    173     5%  
  Number of GCLKs:                        2  out of      8    25%  
@@ -513,9 +527,9 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 8.121ns (Maximum Frequency: 123.138MHz)
+   Minimum period: 9.485ns (Maximum Frequency: 105.430MHz)
    Minimum input arrival time before clock: 4.748ns
-   Maximum output required time after clock: 19.133ns
+   Maximum output required time after clock: 20.453ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -545,27 +559,33 @@ Delay:               2.623ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'intermediate_clk251'
-  Clock period: 8.121ns (frequency: 123.138MHz)
-  Total number of paths / destination ports: 4583 / 350
+  Clock period: 9.485ns (frequency: 105.430MHz)
+  Total number of paths / destination ports: 4756 / 350
 -------------------------------------------------------------------------
-Delay:               8.121ns (Levels of Logic = 3)
-  Source:            sigTime/hcounter_6 (FF)
-  Destination:       sigTime/hcounter_9 (FF)
+Delay:               9.485ns (Levels of Logic = 9)
+  Source:            male_balken/ltop_5 (FF)
+  Destination:       male_ball/lr (FF)
   Source Clock:      intermediate_clk251 rising
   Destination Clock: intermediate_clk251 rising
 
-  Data Path: sigTime/hcounter_6 to sigTime/hcounter_9
+  Data Path: male_balken/ltop_5 to male_ball/lr
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              8   0.720   1.422  sigTime/hcounter_6 (sigTime/hcounter_6)
-     LUT4:I0->O            1   0.551   0.827  sigTime/hcounter_or000017 (sigTime/hcounter_or00001_map3)
-     LUT4:I3->O           11   0.551   1.339  sigTime/hcounter_or0000133 (sigTime/vcounter_cmp_eq0000)
-     LUT2:I1->O           10   0.551   1.134  sigTime/hcounter_or00002 (sigTime/hcounter_or0000)
-     FDR:R                     1.026          sigTime/hcounter_0
+     FDE:C->Q              9   0.720   1.463  male_balken/ltop_5 (male_balken/ltop_5)
+     LUT2_L:I0->LO         1   0.551   0.126  male_balken/Madd_rgb_out_addsub0003_xor<8>13_SW0 (N711)
+     LUT4:I3->O            7   0.551   1.092  male_balken/Madd_rgb_out_addsub0003_xor<8>13 (male_balken/N101)
+     LUT4:I3->O            1   0.551   0.000  male_ball/Mcompar_lr_cmp_le0001_lut<5> (male_ball/N110)
+     MUXCY:S->O            1   0.500   0.000  male_ball/Mcompar_lr_cmp_le0001_cy<5> (male_ball/Mcompar_lr_cmp_le0001_cy<5>)
+     MUXCY:CI->O           1   0.064   0.000  male_ball/Mcompar_lr_cmp_le0001_cy<6> (male_ball/Mcompar_lr_cmp_le0001_cy<6>)
+     MUXCY:CI->O           1   0.064   0.000  male_ball/Mcompar_lr_cmp_le0001_cy<7> (male_ball/Mcompar_lr_cmp_le0001_cy<7>)
+     MUXCY:CI->O           1   0.303   0.869  male_ball/Mcompar_lr_cmp_le0001_cy<8> (male_ball/lr_cmp_le0001)
+     LUT3_L:I2->LO         1   0.551   0.126  male_ball/lr_not0001121 (male_ball/lr_not0001_map32)
+     LUT4:I3->O            1   0.551   0.801  male_ball/lr_not0001158 (male_ball/lr_not0001)
+     FDE:CE                    0.602          male_ball/lr
     ----------------------------------------
-    Total                      8.121ns (3.399ns logic, 4.722ns route)
-                                       (41.9% logic, 58.1% route)
+    Total                      9.485ns (5.008ns logic, 4.477ns route)
+                                       (52.8% logic, 47.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'intermediate_clk251'
@@ -589,40 +609,42 @@ Offset:              4.748ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'intermediate_clk251'
-  Total number of paths / destination ports: 1495 / 5
+  Total number of paths / destination ports: 1549 / 5
 -------------------------------------------------------------------------
-Offset:              19.133ns (Levels of Logic = 10)
-  Source:            male_balken/rtop_3 (FF)
-  Destination:       global_rgb<0> (PAD)
+Offset:              20.453ns (Levels of Logic = 12)
+  Source:            male_balken/ltop_5 (FF)
+  Destination:       global_rgb<1> (PAD)
   Source Clock:      intermediate_clk251 rising
 
-  Data Path: male_balken/rtop_3 to global_rgb<0>
+  Data Path: male_balken/ltop_5 to global_rgb<1>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              6   0.720   1.342  male_balken/rtop_3 (male_balken/rtop_3)
-     LUT3:I0->O            3   0.551   1.102  male_balken/Madd_rgb_out_addsub0002_xor<8>111 (male_balken/N3)
-     LUT3:I1->O            4   0.551   0.943  male_balken/Madd_rgb_out_addsub0002_xor<8>121 (male_balken/N81)
-     LUT4:I3->O            1   0.551   0.996  male_balken/Madd_rgb_out_addsub0002_xor<8>11 (male_balken/rgb_out_addsub0002<8>)
-     LUT2:I1->O            1   0.551   0.000  male_balken/Mcompar_rgb_out_cmp_lt0000_lut<8> (male_balken/N57)
-     MUXCY:S->O            1   0.500   0.000  male_balken/Mcompar_rgb_out_cmp_lt0000_cy<8> (male_balken/Mcompar_rgb_out_cmp_lt0000_cy<8>)
-     MUXCY:CI->O           3   0.303   1.102  male_balken/Mcompar_rgb_out_cmp_lt0000_cy<9> (male_balken/Mcompar_rgb_out_cmp_lt0000_cy<9>)
-     LUT4:I1->O            1   0.551   0.996  aus/rgb_out<0>59_SW0 (N782)
-     LUT4:I1->O            1   0.551   0.827  aus/rgb_out<0>59 (aus/rgb_out<0>_map17)
-     LUT4:I3->O            1   0.551   0.801  aus/rgb_out<0>75 (global_rgb_0_OBUF)
-     OBUF:I->O                 5.644          global_rgb_0_OBUF (global_rgb<0>)
+     FDE:C->Q              9   0.720   1.463  male_balken/ltop_5 (male_balken/ltop_5)
+     LUT2_L:I0->LO         1   0.551   0.126  male_balken/Madd_rgb_out_addsub0003_xor<8>13_SW0 (N711)
+     LUT4:I3->O            7   0.551   1.092  male_balken/Madd_rgb_out_addsub0003_xor<8>13 (male_balken/N101)
+     LUT4:I3->O            1   0.551   0.996  male_balken/Madd_rgb_out_addsub0003_xor<8>11 (male_balken/rgb_out_addsub0003<8>)
+     LUT2:I1->O            1   0.551   0.000  male_balken/Mcompar_rgb_out_cmp_lt0002_lut<8> (male_balken/N68)
+     MUXCY:S->O            1   0.500   0.000  male_balken/Mcompar_rgb_out_cmp_lt0002_cy<8> (male_balken/Mcompar_rgb_out_cmp_lt0002_cy<8>)
+     MUXCY:CI->O           1   0.303   1.140  male_balken/Mcompar_rgb_out_cmp_lt0002_cy<9> (male_balken/Mcompar_rgb_out_cmp_lt0002_cy<9>)
+     LUT4:I0->O            1   0.551   0.827  male_balken/rgb_out<0>516 (male_balken/rgb_out<0>5_map8)
+     LUT4:I3->O            3   0.551   1.246  male_balken/rgb_out<0>519 (male_balken/rgb_out<0>_bdd1)
+     LUT2:I0->O            1   0.551   0.000  aus/rgb_out<1>61_SW02 (N849)
+     MUXF5:I0->O           1   0.360   0.827  aus/rgb_out<1>61_SW0_f5 (N825)
+     LUT4:I3->O            1   0.551   0.801  aus/rgb_out<1>72 (global_rgb_1_OBUF)
+     OBUF:I->O                 5.644          global_rgb_1_OBUF (global_rgb<1>)
     ----------------------------------------
-    Total                     19.133ns (11.024ns logic, 8.109ns route)
-                                       (57.6% logic, 42.4% route)
+    Total                     20.453ns (11.935ns logic, 8.518ns route)
+                                       (58.4% logic, 41.6% route)
 
 =========================================================================
-CPU : 21.94 / 23.72 s | Elapsed : 22.00 / 23.00 s
+CPU : 20.26 / 21.06 s | Elapsed : 21.00 / 21.00 s
  
 --> 
 
 Total memory usage is 143788 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   24 (   0 filtered)
+Number of warnings :   25 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
