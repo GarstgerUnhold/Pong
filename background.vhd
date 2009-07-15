@@ -96,23 +96,29 @@ begin
 			  
 			  -- kreise
 			  when "001" => 
-			    if deltaX > 10 and deltaY > 10 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > 32)
+			    if deltaX > 5 and deltaY > 5 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > 32)
 			    then
-			      if X < 320 then
-			        rgb_out <= "010";
+			      if (X < 320 and Y > 240) or (X > 320 and Y < 240) then
+			        rgb_out <= "011";
 			      else
-			        rgb_out <= "100";
+			        rgb_out <= "101";
 			      end if;
-			    else
+			    elsif ((deltaY * deltaY) + (deltaX * deltaX)) = 10000
+			      if (X < 320 and Y > 240) or (X > 320 and Y < 240) then
+  			      rgb_out <= "101";
+  			    else
+  			      rgb_out <= "011";
+  			    end if;
+  			  else
 			      rgb_out <= "111";
 			    end if;
 			    
 			  -- karos
 			  when "010" =>
-			    if (X MOD 64) > 32 and (Y MOD 64) > 32 then
-			      rgb_out <= "110";
+			    if (deltaX MOD 64) > 32 and (deltaY MOD 64) > 32 then
+			      rgb_out <= "001";
 			    else
-			      rgb_out <= "011";
+			      rgb_out <= "110";
 			    end if;
 			    
 			  -- farbwechsel
