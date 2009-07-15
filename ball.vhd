@@ -41,6 +41,16 @@ entity ball is
 end ball;
 
 architecture Behavioral of ball is
+
+	component score is
+		Port( X : in integer range 0 to 640;
+         Y : in integer range 0 to 480;
+			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
+			clk25 : in bit;
+			reset : in bit);
+	end component;
+
 	signal lr : bit := '0'; --left/right
 	signal ud : bit := '1'; --up/down
 	signal deltaX, deltaY : integer range 0 to 640;
@@ -48,11 +58,20 @@ architecture Behavioral of ball is
 	signal y_pos : integer range 0 to 480 := 240;
 	signal countUp : integer range 0 to 208000 := 0;
 	signal gameOver : bit;
+	signal intern_rgb : STD_LOGIC_VECTOR (2 downto 0);
 begin
+
+	count : score port map (
+		X => X,
+		Y => Y,
+		rgb_in => rgb_in,
+		rgb_out => intern_rgb,
+		clk25 => clk25;
+		reset => reset);
 
 	process 
 	begin
-		rgb_out <= rgb_in;
+		rgb_out <= intern_rgb;
 		
 		if (x_pos > X - 8) 
 		and (x_pos < X + 8)
