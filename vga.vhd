@@ -29,6 +29,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity vga is
     Port ( clk50 : in  STD_LOGIC;
+			  global_inverse : in bit;
 			  global_hold : in bit;
 			  global_buttons : in bit_vector (1 downto 0); -- steuerung
 			  global_bg_switch : in bit; -- background switching
@@ -50,6 +51,16 @@ architecture Behavioral of vga is
 	
 	component ausgabe
 		Port (
+			X : in integer range 0 to 640;
+         Y : in integer range 0 to 480;
+			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
+			clk25 : in bit);
+	end component;
+	
+	component inverter
+		Port (
+			inverse : in bit;
 			X : in integer range 0 to 640;
          Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
@@ -112,9 +123,10 @@ architecture Behavioral of vga is
 	signal intermediate_hsync, intermediat_vsync : bit;
 	signal intermediate_clk25 : bit;
 	signal intermediate_rgb1 : STD_LOGIC_VECTOR (2 downto 0); -- hintergrund
-	signal intermediate_rgb2 : STD_LOGIC_VECTOR (2 downto 0); -- balken
-	signal intermediate_rgb3 : STD_LOGIC_VECTOR (2 downto 0); -- ball
-	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- game over
+	signal intermediate_rgb2 : STD_LOGIC_VECTOR (2 downto 0); -- inverter
+	signal intermediate_rgb3 : STD_LOGIC_VECTOR (2 downto 0); -- balken
+	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- ball
+	signal intermediate_rgb5 : STD_LOGIC_VECTOR (2 downto 0); -- game over
 	
 begin
 
@@ -142,6 +154,14 @@ begin
 		Y => intermediate_Y,
 		rgb_out => intermediate_rgb1,
 		clk25 => intermediate_clk25);
+		
+	invers : inverter port map (
+		inverse => global_inverse,
+		X => intermediate_X,
+		Y => intermediate_Y,
+		rgb_in => intermediate_rgb1,
+		rgb_out => intermediate_rgb2,
+		clk25 => intermediate_clk25);
 
 	male_balken : balken port map (
 		hold => global_hold,
@@ -150,8 +170,8 @@ begin
 		buttons => global_buttons,
 		X => intermediate_X,
 		Y => intermediate_Y,
-		rgb_in => intermediate_rgb1,
-		rgb_out => intermediate_rgb2,
+		rgb_in => intermediate_rgb2,
+		rgb_out => intermediate_rgb3,
 		clk25 => intermediate_clk25,
 		reset => global_reset);
 		
@@ -162,8 +182,8 @@ begin
 		game_over => intermediate_game_over,
 		X => intermediate_X,
 		Y => intermediate_Y,
-		rgb_in => intermediate_rgb2,
-		rgb_out => intermediate_rgb3,
+		rgb_in => intermediate_rgb3,
+		rgb_out => intermediate_rgb4,
 		clk25 => intermediate_clk25,
 		reset => global_reset);
 		
@@ -171,14 +191,14 @@ begin
 	   game_over => intermediate_game_over,
 		X => intermediate_X,
 		Y => intermediate_Y,
-		rgb_in => intermediate_rgb3,
-		rgb_out => intermediate_rgb4,
+		rgb_in => intermediate_rgb4,
+		rgb_out => intermediate_rgb5,
 		clk25 => intermediate_clk25);
 
 	aus : ausgabe port map (
 		X => intermediate_X,
 		Y => intermediate_Y,
-		rgb_in => intermediate_rgb4,
+		rgb_in => intermediate_rgb5,
 		rgb_out => global_rgb,
 		clk25 => intermediate_clk25);
 

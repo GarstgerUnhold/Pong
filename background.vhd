@@ -52,7 +52,7 @@ architecture Behavioral of background is
 	signal deltaX : integer range 0 to 320;
 	signal deltaY : integer range 0 to 240;
 	signal count_up : integer range 0 to 25000000;
-	signal wobble_clock : integer range 0 to 208000 := 0;
+	signal wobble_clock : integer range 0 to 400000 := 0;
 	signal wobble : integer range 0 to 64 := 32; 
 	signal wobble_growing : bit := '1';
 begin
@@ -121,26 +121,32 @@ begin
 			      else
 			        rgb_out <= "101";
 			      end if;
-			    elsif ((deltaY * deltaY) + (deltaX * deltaX)) < 10000 then
+			    elsif ((deltaY * deltaY) + (deltaX * deltaX)) < ((61*512) - (wobble * 512))
+				 or ((Y * Y) + (deltaX * deltaX)) < (wobble * 512)
+				 or (((480 - Y) * (480 - Y)) + (deltaX * deltaX)) < (wobble * 512)
+				 or ((deltaY * deltaY) + (X * X)) < (wobble * 512)
+				 or ((deltaY * deltaY) + ((640 - X) * (640 - X))) < (wobble * 512)
+				 or (((240 - deltaY) * (240 - deltaY)) + ((320 - deltaX) * (320 - deltaX))) < ((61*512) - (wobble * 512))
+				 then
 			      if (X < 320 and Y > 240) or (X > 320 and Y < 240) then
   			        rgb_out <= "101";
   			      else
   			        rgb_out <= "011";
   			      end if;
   			    else
-			      rgb_out <= "111";
+			      rgb_out <= "000";
 			    end if;
 			    
 			  -- karos
 			  when "10" =>
-			    if (deltaX MOD 64) < 32 and (deltaY MOD 64) < 32 then
+			    if (deltaX MOD 64) < 32 and (deltaY MOD 64) > 32 then
 			      rgb_out <= "001";
 			    else
 			      rgb_out <= "110";
 			    end if;
 			    
 			  -- farbwechsel
-			  when "11" => rgb_out <= rgb_farbw;			
+			  when others => rgb_out <= rgb_farbw;			
 			  
 			end case; 		
 		end if;
