@@ -45,8 +45,9 @@ architecture Behavioral of background is
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit);
 	end component;
-
-	signal rgb_farbw, chosen_background : STD_LOGIC_VECTOR (2 downto 0);
+  
+  signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
+	signal rgb_farbw : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
 	signal deltaX : integer range 0 to 320;
 	signal deltaY : integer range 0 to 240;
@@ -82,7 +83,7 @@ begin
 			case chosen_background is
 			  
 			  -- fussball feld
-			  when "000" =>
+			  when "00" =>
 			    if X = 320 or X = 321 -- mittellinie
 			    or ((deltaY * deltaY) + (deltaX * deltaX)) = 10000 -- grosser mittelkreis
 			    or ((deltaY * deltaY) + (deltaX * deltaX)) < 82 -- kleiner mittelkreis
@@ -95,7 +96,7 @@ begin
 			    end if;
 			  
 			  -- kreise
-			  when "001" => 
+			  when "01" => 
 			    if deltaX > 5 and deltaY > 5 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > 32)
 			    then
 			      if (X < 320 and Y > 240) or (X > 320 and Y < 240) then
@@ -114,27 +115,15 @@ begin
 			    end if;
 			    
 			  -- karos
-			  when "010" =>
-			    if (deltaX MOD 64) > 32 and (deltaY MOD 64) > 32 then
+			  when "10" =>
+			    if (deltaX MOD 64) < 32 and (deltaY MOD 64) < 32 then
 			      rgb_out <= "001";
 			    else
 			      rgb_out <= "110";
 			    end if;
 			    
 			  -- farbwechsel
-			  when "011" => rgb_out <= rgb_farbw;
-			  
-			  -- schwarz
-			  when "100" => rgb_out <= "000";
-			  
-			  -- weiss
-			  when "101" => rgb_out <= "111";
-			  
-			  -- gelb
-			  when "110" => rgb_out <= "110";
-			  
-			  -- pink
-			  when others => rgb_out <= "101"; 			
+			  when "11" => rgb_out <= rgb_farbw;			
 			  
 			end case; 		
 		end if;
