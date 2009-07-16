@@ -148,16 +148,17 @@ begin
 				
 				countUp <= 0;			
 			end if;				
-		end if;
-		
-		if gameOver = '1' then
-			leftOut <= '0';
-			rightOut <= '0';
-			x_pos <= 320;
-			y_pos <= 240;
-			game_over <= '1';
-		else
-			game_over <= '0';
+			
+			if gameOver = '1' then -- this has to come synchronized for counting to work
+				leftOut <= '0';
+				rightOut <= '0';
+				x_pos <= 320;
+				y_pos <= 240;
+				game_over <= '1';
+			else
+				game_over <= '0';
+			end if;
+			
 		end if;
 	end process;
 

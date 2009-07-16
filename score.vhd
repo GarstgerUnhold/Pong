@@ -61,28 +61,24 @@ begin
 		e6 <= "01110";e7 <= "01100";e8 <= "01110";e9 <= "01100";e0 <= "01110";
 		
 		process begin
-			if pointLeft = '1' then
-					lp <= '1';
-			end if;
-			if pointRight = '1' then
-					rp <= '1';
-			end if;
 			if clk25'event and clk25 = '1' then
-				if lp = '1' then
+				if reset = '1' then
+					left_player <= 0;
+					right_player <= 0;
+				end if;
+				if pointLeft = '1' then
 					left_player <= left_player + 1;
-					if left_player > 9 then
-						left_player <= 0;
+					if left_player > 8 then
+						left_player <= 9;
 					end if;
 				end if;
-				if rp = '1' then
+				if pointRight = '1' then
 					right_player <= right_player + 1;
-					if right_player > 9 then
-						right_player <= 0;
+					if right_player > 8 then
+						right_player <= 9;
 					end if;
 				end if;
 			end if;
-			lp <= '0';
-			rp <= '0';
 			
 			if (X > 38) and (X < 58) and (Y > 18) and (Y < 38) then --Player 1 Score box
 				case left_player is
