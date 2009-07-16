@@ -29,9 +29,9 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity vga is
     Port ( clk50 : in  STD_LOGIC;
-	   global_hold : in bit;
-	   global_buttons : in bit_vector (1 downto 0); -- steuerung
-	   global_bg_switch : in bit; -- background switching
+			  global_hold : in bit;
+			  global_buttons : in bit_vector (1 downto 0); -- steuerung
+			  global_bg_switch : in bit; -- background switching
            global_reset : in  bit;
            global_hsync : out bit;
            global_vsync : out  bit;
@@ -41,7 +41,7 @@ end vga;
 architecture Behavioral of vga is
 
 	component SignalTiming  
-		Port (
+		Port (						
 			hsync, vsync : out bit;
 			X : out integer range 0 to 640;
          Y : out integer range 0 to 480;
@@ -51,7 +51,7 @@ architecture Behavioral of vga is
 	component ausgabe
 		Port (
 			X : in integer range 0 to 640;
-			Y : in integer range 0 to 480;
+         Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit);
@@ -73,7 +73,7 @@ architecture Behavioral of vga is
 			bar_left : out integer range 0 to 430;
 			bar_right : out integer range 0 to 430;
 			X : in integer range 0 to 640;
-			Y : in integer range 0 to 480;
+         Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in  bit;
@@ -81,23 +81,24 @@ architecture Behavioral of vga is
 	end component;
 	
 	component ball is
-		Port (  hold : in bit;
-			end_game : out bit;
+		Port (
+			hold : in bit;
 			bar_left : in integer range 0 to 430;
 			bar_right : in integer range 0 to 430;
 			game_over : out bit;
 			X : in integer range 0 to 640;
-			Y : in integer range 0 to 480;
+         Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in  bit;
+         clk25 : in  bit;
 			reset : in bit);
 	end component;
 	
 	component game_over_handler
-		Port (  game_over : in bit;
+		Port (
+			game_over : in bit;
 			X : in integer range 0 to 640;
-			Y : in integer range 0 to 480;
+         Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit);
@@ -106,10 +107,8 @@ architecture Behavioral of vga is
 	signal intermediate_bar_left : integer range 0 to 430;
 	signal intermediate_bar_right : integer range 0 to 430;
 	signal intermediate_game_over : bit;
-	signal intermediate_hold : bit := '1';
-	signal intermediate_hold2 : bit;
 	signal intermediate_X : integer range 0 to 640;
-	signal intermediate_Y : integer range 0 to 480;
+   signal intermediate_Y : integer range 0 to 480;
 	signal intermediate_hsync, intermediat_vsync : bit;
 	signal intermediate_clk25 : bit;
 	signal intermediate_rgb1 : STD_LOGIC_VECTOR (2 downto 0); -- hintergrund
@@ -118,8 +117,6 @@ architecture Behavioral of vga is
 	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- game over
 	
 begin
-
-	intermediate_hold <= global_hold or intermediate_hold2;
 
 	process (clk50)
 	begin
@@ -147,7 +144,7 @@ begin
 		clk25 => intermediate_clk25);
 
 	male_balken : balken port map (
-		hold => intermediate_hold,
+		hold => global_hold,
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
 		buttons => global_buttons,
@@ -159,8 +156,7 @@ begin
 		reset => global_reset);
 		
 	male_ball : ball port map (
-		hold => intermediate_hold,
-		end_game => intermediate_hold2,
+		hold => global_hold,		
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
 		game_over => intermediate_game_over,
@@ -172,7 +168,7 @@ begin
 		reset => global_reset);
 		
 	male_gameover : game_over_handler port map (
-		game_over => intermediate_game_over,
+	   game_over => intermediate_game_over,
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_in => intermediate_rgb3,
