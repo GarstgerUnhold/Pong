@@ -45,12 +45,16 @@ architecture Behavioral of background is
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit);
 	end component;
-
-	signal rgb_farbw, chosen_background : STD_LOGIC_VECTOR (2 downto 0);
+  
+  signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
+	signal rgb_farbw : STD_LOGIC_VECTOR (2 downto 0);
 	signal will_switch : bit;
 	signal deltaX : integer range 0 to 320;
 	signal deltaY : integer range 0 to 240;
 	signal count_up : integer range 0 to 25000000;
+	signal wobble_clock : integer range 0 to 208000 := 0;
+	signal wobble : integer range 0 to 64 := 32; 
+	signal wobble_growing : bit := '1';
 begin
 
 	farbw : farbwechsel port map (
@@ -82,7 +86,7 @@ begin
 			case chosen_background is
 			  
 			  -- fussball feld
-			  when "000" =>
+			  when "00" =>
 			    if X = 320 or X = 321 -- mittellinie
 			    or ((deltaY * deltaY) + (deltaX * deltaX)) = 10000 -- grosser mittelkreis
 			    or ((deltaY * deltaY) + (deltaX * deltaX)) < 82 -- kleiner mittelkreis
@@ -95,8 +99,22 @@ begin
 			    end if;
 			  
 			  -- kreise
-			  when "001" => 
-			    if deltaX > 5 and deltaY > 5 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > 32)
+			  when "01" =>
+			    wobble_clock <= wobble_clock + 1;
+			    if wobble_clock = 0 then
+			      if wobble_growing = '1' then
+			        wobble <= wobble + 1;
+			      else
+			        wobble <= wobble - 1;
+			      end if;
+			      if wobble > 60 then
+			        wobble_growing <= '0';
+			      end if;
+			      if wobble < 10 then
+			        wobble_growing <= '1';
+			      end if;
+			    end if;
+			    if deltaX > 5 and deltaY > 5 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > wobble)
 			    then
 			      if (X < 320 and Y > 240) or (X > 320 and Y < 240) then
 			        rgb_out <= "011";
@@ -114,27 +132,15 @@ begin
 			    end if;
 			    
 			  -- karos
-			  when "010" =>
-			    if (deltaX MOD 64) > 32 and (deltaY MOD 64) > 32 then
+			  when "10" =>
+			    if (deltaX MOD 64) < 32 and (deltaY MOD 64) < 32 then
 			      rgb_out <= "001";
 			    else
 			      rgb_out <= "110";
 			    end if;
 			    
 			  -- farbwechsel
-			  when "011" => rgb_out <= rgb_farbw;
-			  
-			  -- schwarz
-			  when "100" => rgb_out <= "000";
-			  
-			  -- weiss
-			  when "101" => rgb_out <= "111";
-			  
-			  -- gelb
-			  when "110" => rgb_out <= "110";
-			  
-			  -- pink
-			  when others => rgb_out <= "101"; 			
+			  when "11" => rgb_out <= rgb_farbw;			
 			  
 			end case; 		
 		end if;
