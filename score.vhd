@@ -28,14 +28,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity score is
-	Port( pointLeft : in bit;
-			pointRight : in bit;
-			X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
-			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in bit;
-			reset : in bit);
+	Port( end_game : out bit;
+	      pointLeft : in bit;
+	      pointRight : in bit;
+	      X : in integer range 0 to 640;
+	      Y : in integer range 0 to 480;
+	      rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+	      rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
+	      clk25 : in bit;
+	      reset : in bit);
 end score;
 
 architecture Behavioral of score is
@@ -45,14 +46,13 @@ architecture Behavioral of score is
 	signal d1,d2,d3,d4,d5,d6,d7,d8,d9,d0 : STD_LOGIC_VECTOR(1 to 5);
 	signal e1,e2,e3,e4,e5,e6,e7,e8,e9,e0 : STD_LOGIC_VECTOR(1 to 5);
 	signal left_player,right_player : integer range 0 to 9 := 0;
-	signal lp,rp : bit;
 	signal chosen_number_part : STD_LOGIC_VECTOR(1 to 5);
 begin
-		a1 <= "00011";a2 <= "00110";a3 <= "01111";a4 <= "11000";a5 <= "11111";
+		a1 <= "00011";a2 <= "01110";a3 <= "01110";a4 <= "11000";a5 <= "11111";
 		b1 <= "01111";b2 <= "11011";b3 <= "00011";b4 <= "11011";b5 <= "11000";
-		c1 <= "00011";c2 <= "00110";c3 <= "01111";c4 <= "11111";c5 <= "11111";
+		c1 <= "00011";c2 <= "00110";c3 <= "01110";c4 <= "11111";c5 <= "11110";
 		d1 <= "00011";d2 <= "01100";d3 <= "00011";d4 <= "00011";d5 <= "00011";
-		e1 <= "00011";e2 <= "11111";e3 <= "01111";e4 <= "00011";e5 <= "11111";
+		e1 <= "00011";e2 <= "11111";e3 <= "01110";e4 <= "00011";e5 <= "11110";
 		
 		a6 <= "00110";a7 <= "11111";a8 <= "01110";a9 <= "01110";a0 <= "01110";
 		b6 <= "01100";b7 <= "00011";b8 <= "11011";b9 <= "11011";b0 <= "11011";
@@ -61,28 +61,31 @@ begin
 		e6 <= "01110";e7 <= "01100";e8 <= "01110";e9 <= "01100";e0 <= "01110";
 		
 		process begin
-			if pointLeft = '1' then
-					lp <= '1';
-			end if;
-			if pointRight = '1' then
-					rp <= '1';
-			end if;
+
 			if clk25'event and clk25 = '1' then
-				if lp = '1' then
+				if reset = '1' then
+					left_player <= 0;
+					right_player <= 0;
+				end if;
+				if pointLeft = '1' then
 					left_player <= left_player + 1;
-					if left_player > 9 then
-						left_player <= 0;
+					if left_player > 8 then
+						end_game <= '1';
+						left_player <= 9;
+					else
+						end_game <= '0';
 					end if;
 				end if;
-				if rp = '1' then
+				if pointRight = '1' then
 					right_player <= right_player + 1;
-					if right_player > 9 then
-						right_player <= 0;
+					if right_player > 8 then
+						end_game <= '1';
+						right_player <= 9;
+					else
+						end_game <= '0';
 					end if;
 				end if;
 			end if;
-			lp <= '0';
-			rp <= '0';
 			
 			if (X > 38) and (X < 58) and (Y > 18) and (Y < 38) then --Player 1 Score box
 				case left_player is

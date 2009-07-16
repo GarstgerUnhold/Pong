@@ -28,29 +28,31 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity ball is
-    Port ( hold : in bit;
-			  bar_left : in integer range 0 to 430;
-			  bar_right : in integer range 0 to 430;
-			  X : in  integer range 0 to 640;
-           Y : in  integer range 0 to 480;
-			  game_over : out bit;
-			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
-           clk25 : in  bit;
-			  reset : in bit);
+    Port (hold : in bit;
+	  end_game : out bit;
+	  bar_left : in integer range 0 to 430;
+	  bar_right : in integer range 0 to 430;
+	  X : in  integer range 0 to 640;
+          Y : in  integer range 0 to 480;
+	  game_over : out bit;
+	  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+	  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
+          clk25 : in  bit;
+	  reset : in bit);
 end ball;
 
 architecture Behavioral of ball is
 
 	component score is
-		Port( pointLeft : in bit;
-			pointRight : in bit;
-		   X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
-			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in bit;
-			reset : in bit);
+		Port( end_game : out bit;
+		      pointLeft : in bit;
+		      pointRight : in bit;
+		      X : in integer range 0 to 640;
+		      Y : in integer range 0 to 480;
+		      rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+		      rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
+		      clk25 : in bit;
+		      reset : in bit);
 	end component;
 
 	signal lr : bit := '0'; --left/right
@@ -59,12 +61,13 @@ architecture Behavioral of ball is
 	signal x_pos : integer range 0 to 640 := 320;
 	signal y_pos : integer range 0 to 480 := 240;
 	signal countUp : integer range 0 to 208000 := 0;
-	signal gameOver : bit;
+	signal gameOver, endGame : bit;
 	signal leftOut, rightOut : bit := '0';
 	signal intern_rgb : STD_LOGIC_VECTOR (2 downto 0);
 begin
 
 	count : score port map (
+		end_game => endGame,
 		pointLeft => rightOut,
 		pointRight => leftOut,
 		X => X,
@@ -134,7 +137,7 @@ begin
 					ud <= '0';
 				end if;
 				
-				if hold = '0' then
+				if hold = '0' and endGame = '0' then
 					case lr is
 						when '0' => x_pos <= x_pos - 1;
 						when '1' => x_pos <= x_pos + 1;
@@ -147,19 +150,24 @@ begin
 				end if;
 				
 				countUp <= 0;			
-			end if;				
-		end if;
+			end if;		
 		
-		if gameOver = '1' then
-			leftOut <= '0';
-			rightOut <= '0';
-			x_pos <= 320;
-			y_pos <= 240;
-			game_over <= '1';
-		else
-			game_over <= '0';
+			-- this has to be synchronous -> the score count doesn't
+			-- work if not :(
+			if gameOver = '1' then
+				leftOut <= '0';
+				rightOut <= '0';
+				x_pos <= 320;
+				y_pos <= 240;
+				game_over <= '1';
+			else
+				game_over <= '0';
+			end if;
+
 		end if;
 	end process;
+
+	end_game <= endGame;
 
 end Behavioral;
 
