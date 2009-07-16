@@ -52,6 +52,9 @@ architecture Behavioral of background is
 	signal deltaX : integer range 0 to 320;
 	signal deltaY : integer range 0 to 240;
 	signal count_up : integer range 0 to 25000000;
+	signal wobble_clock : integer range 0 to 208000 := 0;
+	signal wobble : integer range 0 to 64 := 32; 
+	signal wobble_growing : bit := '1';
 begin
 
 	farbw : farbwechsel port map (
@@ -96,8 +99,22 @@ begin
 			    end if;
 			  
 			  -- kreise
-			  when "01" => 
-			    if deltaX > 5 and deltaY > 5 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > 32)
+			  when "01" =>
+			    wobble_clock <= wobble_clock + 1;
+			    if wobble_clock = 0 then
+			      if wobble_growing = '1' then
+			        wobble <= wobble + 1;
+			      else
+			        wobble <= wobble - 1;
+			      end if;
+			      if wobble > 60 then
+			        wobble_growing <= '0';
+			      end if;
+			      if wobble < 10 then
+			        wobble_growing <= '1';
+			      end if;
+			    end if;
+			    if deltaX > 5 and deltaY > 5 and ((((deltaY * deltaY) + (deltaX * deltaX)) MOD 64) > wobble)
 			    then
 			      if (X < 320 and Y > 240) or (X > 320 and Y < 240) then
 			        rgb_out <= "011";
