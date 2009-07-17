@@ -139,7 +139,7 @@ begin
 			    
 			  -- karos
 			  when "10" =>
-			    if (deltaX MOD 64) < 32 and (deltaY MOD 64) > 32 then
+			    if (deltaX MOD 64) < 32 and (deltaY MOD 64) < 32 then
 			      rgb_out <= "001";
 			    else
 			      rgb_out <= "110";
