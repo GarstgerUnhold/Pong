@@ -32,7 +32,7 @@ entity keyboard is
 	kbclk: in std_logic;
 	kbdata: in std_logic;
 	clk: in std_logic;
-	keysout : out std_logic_vector(7 downto 0)
+	keysout : out std_logic_vector(12 downto 0)
 	);
 	
 end keyboard;
@@ -43,7 +43,6 @@ signal scancode: std_logic_vector(7 downto 0);
 signal ready: std_logic;
 signal qclk: std_logic_vector (1 downto 0);
 signal X: std_logic;
-
 signal break_set,t: std_logic;
 begin
 
@@ -52,14 +51,19 @@ begin
 		if clk'event and clk = '1' and ready ='1' then
 			if (break_set='1')then
 				case scancode is
-					when x"1D" => keysout(0) <= '0'; break_set <='0'; --lup
-					when x"1B" => keysout(1) <= '0'; break_set <='0'; --ldown
-					when x"75" => keysout(2) <= '0'; break_set <='0'; --rup
-					when x"73" => keysout(3) <= '0'; break_set <='0'; --rdown
-					when x"76" => keysout(4) <= '0'; break_set <='0'; --esc
+					when x"1D" => keysout(0) <= '0'; break_set <='0'; -- lup
+					when x"1B" => keysout(1) <= '0'; break_set <='0'; -- ldown
+					when x"75" => keysout(2) <= '0'; break_set <='0'; -- rup
+					when x"73" => keysout(3) <= '0'; break_set <='0'; -- rdown
+					when x"76" => keysout(4) <= '0'; break_set <='0'; -- esc
 					when x"29" => keysout(5) <= '0'; break_set <='0'; -- space
 					when x"4D" => keysout(6) <= '0'; break_set <='0'; -- p
 					when x"43" => keysout(7) <= '0'; break_set <='0'; -- i
+					when x"5A" => keysout(8) <= '0'; break_set <='0'; -- enter
+					when x"16" => keysout(9) <= '0'; break_set <='0'; -- 1
+					when x"1E" => keysout(10) <= '0'; break_set <='0'; -- 2
+					when x"26" => keysout(11) <= '0'; break_set <='0'; -- 3
+					when x"25" => keysout(12) <= '0'; break_set <='0'; -- 4
 					when x"F0" => break_set <= '1'; break_set <='0';
 					when others => break_set <='0'; 
 				end case;		
@@ -74,6 +78,11 @@ begin
 					when x"29" => keysout(5) <= '1';
 					when x"4D" => keysout(6) <= '1';
 					when x"43" => keysout(7) <= '1';
+					when x"5A" => keysout(8) <= '1';
+					when x"16" => keysout(9) <= '1';
+					when x"1E" => keysout(10) <= '1';
+					when x"26" => keysout(11) <= '1';
+					when x"25" => keysout(12) <= '1';
 					when others => t <= t;
 				end case;
 			end if;

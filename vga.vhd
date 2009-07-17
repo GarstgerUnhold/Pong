@@ -44,7 +44,20 @@ architecture Behavioral of vga is
 			kbclk: in std_logic;
 			kbdata: in std_logic;
 			clk: in std_logic;
-			keysout : out std_logic_vector(7 downto 0)
+			keysout : out std_logic_vector(12 downto 0)
+	);
+	end component;
+	
+	component process_keys  					
+		port (
+		keys_in : in std_logic_vector(12 downto 5);
+		reset: in bit;
+		score_over: in std_logic;
+		clk25: in bit;
+		hold_out: buffer std_logic;
+		inverse_out: buffer bit;
+		ballspeed_out : out bit_vector(1 downto 0);
+		paddlespeed_out : buffer bit
 	);
 	end component;
 	
@@ -129,7 +142,7 @@ architecture Behavioral of vga is
 	signal intermediate_bar_right : integer range 0 to 430;
 	signal intermediate_game_over : bit;
 	signal intermediate_X : integer range 0 to 640;
-   signal intermediate_Y : integer range 0 to 480;
+	signal intermediate_Y : integer range 0 to 480;
 	signal intermediate_hsync, intermediat_vsync : bit;
 	signal intermediate_clk25 : bit;
 	signal intermediate_rgb1 : STD_LOGIC_VECTOR (2 downto 0); -- hintergrund
@@ -137,13 +150,13 @@ architecture Behavioral of vga is
 	signal intermediate_rgb3 : STD_LOGIC_VECTOR (2 downto 0); -- balken
 	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- ball
 	signal intermediate_rgb5 : STD_LOGIC_VECTOR (2 downto 0); -- game over
-	signal intermediate_keys : STD_LOGIC_VECTOR (7 downto 0);
+	signal intermediate_keys : STD_LOGIC_VECTOR (12 downto 0);
 	signal intermediate_reset : bit;
 	signal intermediate_hold: std_logic;
 	signal intermediate_inverse: bit;
 	signal intermediate_score_over: std_logic;
-	signal set_pause_key: std_logic;
-	signal set_invers_key: std_logic;
+	signal intermediate_ballspeed: bit_vector (1 downto 0);
+	signal intermediate_paddlespeed: bit;
 	
 begin
 
@@ -164,10 +177,20 @@ begin
 	end process;
 	
 	keys : keyboard	port map (
-			kbclk => global_kbclk,
-			kbdata => global_kbdata,
-			clk => clk50,
-			keysout  => intermediate_keys);
+		kbclk => global_kbclk,
+		kbdata => global_kbdata,
+		clk => clk50,
+		keysout  => intermediate_keys);
+			
+	verarbeite_keys : process_keys	port map (
+		keys_in => intermediate_keys(12 downto 5),
+		reset => intermediate_reset,
+		score_over => intermediate_score_over,
+		clk25 => intermediate_clk25,
+		hold_out => intermediate_hold,
+		inverse_out => intermediate_inverse,
+		ballspeed_out => intermediate_ballspeed,
+		paddlespeed_out => intermediate_paddlespeed);
 
 	sigTime : SignalTiming port map (
 		hsync => intermediate_hsync,
@@ -192,7 +215,7 @@ begin
 		clk25 => intermediate_clk25);
 
 	male_balken : balken port map (
-		speed => global_speed(2),
+		speed => intermediate_paddlespeed,
 		hold => intermediate_hold,
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
@@ -205,7 +228,7 @@ begin
 		reset => intermediate_reset);
 		
 	male_ball : ball port map (
-		speed => global_speed (1 downto 0),
+		speed => intermediate_ballspeed (1 downto 0),
 		hold => intermediate_hold,		
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
@@ -240,27 +263,6 @@ begin
 			global_vsync <= intermediat_vsync;
 		end if;
 	end process;
-	
-	pause_key: process
-	begin
-		if intermediate_clk25'event and intermediate_clk25='1' then
-			if intermediate_reset = '1' or intermediate_score_over = '1' then intermediate_hold <='1';
-			elsif intermediate_keys(6)='1' and set_pause_key ='0'then 
-				intermediate_hold<=not (intermediate_hold);
-				set_pause_key <= '1';
-			elsif set ='1' and intermediate_keys(6)='0' then set_pause_key <= '0'; end if;
-		end if;
-	end process pause_key;
-	
-	invers_key: process
-	begin
-		if intermediate_clk25'event and intermediate_clk25='1' then
-			if intermediate_keys(7)='1' and set_invers_key ='0'then 
-				intermediate_inverse<=not (intermediate_inverse);
-				set_invers_key <= '1';
-			elsif set ='1' and intermediate_keys(7)='0' then set_inverse_key <= '0'; end if;
-		end if;
-	end process inverse_key;
 	
 end Behavioral;
 
