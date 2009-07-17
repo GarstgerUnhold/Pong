@@ -32,8 +32,7 @@ entity keyboard is
 	kbclk: in std_logic;
 	kbdata: in std_logic;
 	clk: in std_logic;
-	tout : out std_logic_vector(5 downto 0);
-	rst: in bit
+	keysout : out std_logic_vector(5 downto 0)
 	);
 	
 end keyboard;
@@ -48,46 +47,38 @@ signal X: std_logic;
 signal rup, rdown, lup, ldown, break_set, esc, space: std_logic;
 begin
 
-	ausgabe: process (fullcode, ready, clk, rst)
+	ausgabe: process (fullcode, ready, clk)
 	begin	
 		if clk'event and clk = '1' and ready ='1' then
 			if (break_set='1')then
 				case scancode is
-					when x"1D" => rup <= '0'; break_set <='0';
-					when x"1B" => rdown <= '0'; break_set <='0';
-					when x"75" => lup <= '0'; break_set <='0';
-					when x"73" => ldown <= '0'; break_set <='0';
-					when x"76" => esc <= '0'; break_set <='0';
-					when x"29" => space <= '0'; break_set <='0';
+					when x"1D" => keysout(0) <= '0'; break_set <='0'; --lup
+					when x"1B" => keysout(1) <= '0'; break_set <='0'; --ldown
+					when x"75" => keysout(2) <= '0'; break_set <='0'; --rup
+					when x"73" => keysout(3) <= '0'; break_set <='0'; --rdown
+					when x"76" => keysout(4) <= '0'; break_set <='0'; --esc
+					when x"29" => keysout(5) <= '0'; break_set <='0'; -- space
 					when x"F0" => break_set <= '1'; break_set <='0';
 					when others => break_set <='0'; 
 				end case;		
 			else
 				case scancode  is
 					when x"F0" => break_set <= '1';
-					when x"1D" => rup <= '1';
-					when x"1B" => rdown <= '1';
-					when x"75" => lup <= '1';
-					when x"73" => ldown <= '1';
-					when x"76" => esc <= '1';
-					when x"29" => space <= '1';
+					when x"1D" => keysout(0) <= '1';
+					when x"1B" => keysout(1) <= '1';
+					when x"75" => keysout(2)<= '1';
+					when x"73" => keysout(3) <= '1';
+					when x"76" => keysout(4) <= '1';
+					when x"29" => keysout(5) <= '1';
 					when others => rup <=rup;
 				end case;
 			end if;
 		end if;
 	end process;
 
-tout(0) <= rup;
-tout(1) <= rdown;
-tout(2) <= lup;
-tout(3) <= ldown;
-tout(4) <= esc;
-tout(5) <= space;
-
-sreg10: process (clk,rst,X)
+sreg10: process (clk,X)
 begin
-	if rst='1' then fullcode <= (others => '1');
-	elsif clk'event and clk = '1' then
+	if clk'event and clk = '1' then
 	if ready='1' then fullcode <= (others => '1'); end if;
 		if X = '1' then 
 			fullcode <= kbdata & fullcode (10 downto 1);
@@ -95,10 +86,9 @@ begin
 	end if;
 end process sreg10;
 
-sreg2: process (clk, rst)
+sreg2: process (clk)
 begin
-	if rst='1' then qclk <= "00";
-	elsif clk'event and clk = '1' then 
+	if clk'event and clk = '1' then 
 		qclk <= kbclk & qclk(1);
 	end if;
 end process sreg2;
@@ -108,7 +98,5 @@ X <= not(qclk(1)) and qclk(0);
 scancode <= fullcode(8 downto 1);
 
 ready <= not (fullcode(0));
-
-
 	
 end Behavioral;

@@ -46,8 +46,7 @@ architecture Behavioral of vga is
 			kbclk: in std_logic;
 			kbdata: in std_logic;
 			clk: in std_logic;
-			tout : out std_logic_vector(5 downto 0);
-			rst: in bit
+			keysout : out std_logic_vector(5 downto 0)
 	);
 	end component;
 	
@@ -164,8 +163,7 @@ begin
 			kbclk => global_kbclk,
 			kbdata => global_kbdata,
 			clk => clk50,
-			tout  => intermediate_keys,
-			rst => '0');
+			keysout  => intermediate_keys);
 
 	sigTime : SignalTiming port map (
 		hsync => intermediate_hsync,
