@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity ball is
     Port ( speed : in std_logic_vector (1 downto 0);
-			  hold : in bit;
+			  hold : in std_logic;
 			  bar_left : in integer range 0 to 430;
 			  bar_right : in integer range 0 to 430;
 			  X : in  integer range 0 to 640;

@@ -46,7 +46,7 @@ architecture Behavioral of vga is
 			kbclk: in std_logic;
 			kbdata: in std_logic;
 			clk: in std_logic;
-			keysout : out std_logic_vector(5 downto 0)
+			keysout : out std_logic_vector(6 downto 0)
 	);
 	end component;
 	
@@ -89,7 +89,7 @@ architecture Behavioral of vga is
 	component balken 
 		Port (
 			speed : in bit;
-			hold : in bit;
+			hold : in std_logic;
 			buttons : in std_logic_vector (3 downto 0);
 			bar_left : out integer range 0 to 430;
 			bar_right : out integer range 0 to 430;
@@ -104,7 +104,7 @@ architecture Behavioral of vga is
 	component ball is
 		Port (
 			speed : in bit_vector (1 downto 0);
-			hold : in bit;
+			hold : in std_logic;
 			bar_left : in integer range 0 to 430;
 			bar_right : in integer range 0 to 430;
 			game_over : out bit;
@@ -138,8 +138,9 @@ architecture Behavioral of vga is
 	signal intermediate_rgb3 : STD_LOGIC_VECTOR (2 downto 0); -- balken
 	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- ball
 	signal intermediate_rgb5 : STD_LOGIC_VECTOR (2 downto 0); -- game over
-	signal intermediate_keys : STD_LOGIC_VECTOR (5 downto 0);
+	signal intermediate_keys : STD_LOGIC_VECTOR (6 downto 0);
 	signal intermediate_reset : bit;
+	signal intermediate_hold: std_logic;
 	
 begin
 
@@ -189,7 +190,7 @@ begin
 
 	male_balken : balken port map (
 		speed => global_speed(2),
-		hold => global_hold,
+		hold => intermediate_hold,
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
 		buttons => intermediate_keys (3 downto 0),
@@ -202,7 +203,7 @@ begin
 		
 	male_ball : ball port map (
 		speed => global_speed (1 downto 0),
-		hold => global_hold,		
+		hold => intermediate_hold,		
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
 		game_over => intermediate_game_over,
@@ -235,6 +236,13 @@ begin
 			global_vsync <= intermediat_vsync;
 		end if;
 	end process;
+	
+	tff: process
+	begin
+		if intermediate_clk25'event and intermediate_clk25='1' and intermediate_keys(6)='1' then
+			intermediate_hold<=not (intermediate_hold);
+		end if;
+	end process tff;
 
 end Behavioral;
 

@@ -32,7 +32,7 @@ entity keyboard is
 	kbclk: in std_logic;
 	kbdata: in std_logic;
 	clk: in std_logic;
-	keysout : out std_logic_vector(5 downto 0)
+	keysout : out std_logic_vector(6 downto 0)
 	);
 	
 end keyboard;
@@ -44,7 +44,7 @@ signal ready: std_logic;
 signal qclk: std_logic_vector (1 downto 0);
 signal X: std_logic;
 
-signal rup, rdown, lup, ldown, break_set, esc, space: std_logic;
+signal break_set,t: std_logic;
 begin
 
 	ausgabe: process (fullcode, ready, clk)
@@ -58,6 +58,7 @@ begin
 					when x"73" => keysout(3) <= '0'; break_set <='0'; --rdown
 					when x"76" => keysout(4) <= '0'; break_set <='0'; --esc
 					when x"29" => keysout(5) <= '0'; break_set <='0'; -- space
+					when x"4D" => keysout(6) <= '0'; break_set <='0'; -- p
 					when x"F0" => break_set <= '1'; break_set <='0';
 					when others => break_set <='0'; 
 				end case;		
@@ -70,7 +71,8 @@ begin
 					when x"73" => keysout(3) <= '1';
 					when x"76" => keysout(4) <= '1';
 					when x"29" => keysout(5) <= '1';
-					when others => rup <=rup;
+					when x"4D" => keysout(6) <= '1';
+					when others => t <= t;
 				end case;
 			end if;
 		end if;

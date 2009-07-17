@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity balken is
     Port ( speed : in std_logic;
-			  hold : in bit;
+			  hold : in std_logic;
 			  buttons : in std_logic_vector (3 downto 0);
 			  bar_left : out integer range 0 to 430;
 			  bar_right : out integer range 0 to 430;
@@ -45,7 +45,7 @@ architecture Behavioral of balken is
 	signal ltop,rtop : integer range 0 to 480 := 215;
 	signal countUp : integer range 0 to 78000 := 0;
 	signal speedCount : std_logic;
-	signal hold_intern : bit_vector (1 downto 0);
+	signal hold_intern : std_logic_vector (1 downto 0);
 begin
 
 	bar_left <= ltop;
