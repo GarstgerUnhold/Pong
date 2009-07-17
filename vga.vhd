@@ -113,7 +113,8 @@ architecture Behavioral of vga is
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
          clk25 : in  bit;
-			reset : in bit);
+			reset : in bit;
+			forward_score_over : out std_logic);
 	end component;
 	
 	component game_over_handler
@@ -141,6 +142,7 @@ architecture Behavioral of vga is
 	signal intermediate_keys : STD_LOGIC_VECTOR (6 downto 0);
 	signal intermediate_reset : bit;
 	signal intermediate_hold: std_logic;
+	signal intermediate_score_over: std_logic;
 	
 begin
 
@@ -212,7 +214,8 @@ begin
 		rgb_in => intermediate_rgb3,
 		rgb_out => intermediate_rgb4,
 		clk25 => intermediate_clk25,
-		reset => intermediate_reset);
+		reset => intermediate_reset,
+		forward_score_over => intermediate_score_over);
 		
 	male_gameover : game_over_handler port map (
 	   game_over => intermediate_game_over,
@@ -238,9 +241,9 @@ begin
 	end process;
 	
 	tff: process  -- for hold with p key
-	variable set: std_logic; -- taste gedrückt
+	variable set: std_logic; -- key pressed
 	begin
-		if intermediate_reset = '1' then intermediate_hold <='1';
+		if intermediate_reset = '1' or intermediate_score_over = '1' then intermediate_hold <='1';
 		elsif intermediate_keys(6)='1' then
 			intermediate_hold<=not (intermediate_hold);
 			set := '1';

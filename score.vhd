@@ -35,7 +35,8 @@ entity score is
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit;
-			reset : in bit);
+			reset : in bit;
+			score_over : out std_logic);
 end score;
 
 architecture Behavioral of score is
@@ -380,6 +381,13 @@ begin
 				rgb_out <= rgb_in;
 			end if;
 		end process;
+		
+		scoreover : process
+		begin
+			if left_player=9 or right_player = 9 then
+				score_over <= '1';
+			end if;		
+		end process scoreover;
 
 end Behavioral;
 

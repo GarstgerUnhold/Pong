@@ -38,7 +38,8 @@ entity ball is
 			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
            clk25 : in  bit;
-			  reset : in bit);
+			  reset : in bit;
+			  forward_score_over : out std_logic);
 end ball;
 
 architecture Behavioral of ball is
@@ -51,7 +52,8 @@ architecture Behavioral of ball is
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit;
-			reset : in bit);
+			reset : in bit;
+			score_over : out std_logic);
 	end component;
 
 	signal lr : bit := '0'; --left/right
@@ -74,7 +76,8 @@ begin
 		rgb_in => rgb_in,
 		rgb_out => intern_rgb,
 		clk25 => clk25,
-		reset => reset);
+		reset => reset,
+		score_over => forward_score_over);
 
 	process 
 	begin
