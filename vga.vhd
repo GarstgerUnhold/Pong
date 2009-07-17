@@ -67,15 +67,15 @@ architecture Behavioral of vga is
 			clk25 : in bit);
 	end component;
 	
---	component inverter
---		Port (
---			inverse : in bit;
---			X : in integer range 0 to 640;
---         Y : in integer range 0 to 480;
---			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
---			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
---			clk25 : in bit);
---	end component;
+	component inverter
+		Port (
+			inverse : in bit;
+			X : in integer range 0 to 640;
+         Y : in integer range 0 to 480;
+			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
+			clk25 : in bit);
+	end component;
 	
 	component background
 		Port (
@@ -179,13 +179,13 @@ begin
 		rgb_out => intermediate_rgb1,
 		clk25 => intermediate_clk25);
 		
---	invers : inverter port map (
---		inverse => global_inverse,
---		X => intermediate_X,
---		Y => intermediate_Y,
---		rgb_in => intermediate_rgb1,
---		rgb_out => intermediate_rgb2,
---		clk25 => intermediate_clk25);
+	invers : inverter port map (
+		inverse => global_inverse,
+		X => intermediate_X,
+		Y => intermediate_Y,
+		rgb_in => intermediate_rgb1,
+		rgb_out => intermediate_rgb2,
+		clk25 => intermediate_clk25);
 
 	male_balken : balken port map (
 		speed => global_speed(2),
@@ -195,7 +195,7 @@ begin
 		buttons => intermediate_keys (3 downto 0),
 		X => intermediate_X,
 		Y => intermediate_Y,
-		rgb_in => intermediate_rgb1, ---rgb2!!!
+		rgb_in => intermediate_rgb2,
 		rgb_out => intermediate_rgb3,
 		clk25 => intermediate_clk25,
 		reset => intermediate_reset);
