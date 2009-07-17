@@ -237,12 +237,15 @@ begin
 		end if;
 	end process;
 	
-	tff: process
+	tff: process  -- for hold with p key
+	variable set: std_logic; -- taste gedrückt
 	begin
-		if intermediate_clk25'event and intermediate_clk25='1' and intermediate_keys(6)='1' then
+		if intermediate_reset = '1' then intermediate_hold <='1';
+		elsif intermediate_keys(6)='1' then
 			intermediate_hold<=not (intermediate_hold);
-		end if;
+			set := '1';
+		elsif set ='1' and intermediate_keys(6)='0' then set:='0'; end if;
 	end process tff;
-
+	
 end Behavioral;
 
