@@ -54,10 +54,10 @@ architecture Behavioral of vga is
 		reset: in bit;
 		score_over: in std_logic;
 		clk25: in bit;
-		hold_out: buffer std_logic;
-		inverse_out: buffer bit;
+		hold_out: out std_logic;
+		inverse_out: out bit;
 		ballspeed_out : out bit_vector(1 downto 0);
-		paddlespeed_out : buffer bit
+		paddlespeed_out : out bit
 	);
 	end component;
 	
