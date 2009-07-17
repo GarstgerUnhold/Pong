@@ -29,13 +29,11 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity vga is
     Port ( clk50 : in  STD_LOGIC;
-			  global_speed : in bit_vector (2 downto 0);
-			  global_inverse : in bit;
-			  global_hold : in bit;
-           global_hsync : out bit;
-           global_vsync : out  bit;
-           global_rgb : out  STD_LOGIC_VECTOR (2 downto 0);
-		   global_kbclk: in std_logic;
+			global_speed : in bit_vector (2 downto 0);
+			global_hsync : out bit;
+			global_vsync : out  bit;
+			global_rgb : out  STD_LOGIC_VECTOR (2 downto 0);
+			global_kbclk: in std_logic;
 			global_kbdata: in std_logic);
 end vga;
 
@@ -46,7 +44,7 @@ architecture Behavioral of vga is
 			kbclk: in std_logic;
 			kbdata: in std_logic;
 			clk: in std_logic;
-			keysout : out std_logic_vector(6 downto 0)
+			keysout : out std_logic_vector(7 downto 0)
 	);
 	end component;
 	
@@ -94,7 +92,7 @@ architecture Behavioral of vga is
 			bar_left : out integer range 0 to 430;
 			bar_right : out integer range 0 to 430;
 			X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
+			Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in  bit;
@@ -139,11 +137,13 @@ architecture Behavioral of vga is
 	signal intermediate_rgb3 : STD_LOGIC_VECTOR (2 downto 0); -- balken
 	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- ball
 	signal intermediate_rgb5 : STD_LOGIC_VECTOR (2 downto 0); -- game over
-	signal intermediate_keys : STD_LOGIC_VECTOR (6 downto 0);
+	signal intermediate_keys : STD_LOGIC_VECTOR (7 downto 0);
 	signal intermediate_reset : bit;
 	signal intermediate_hold: std_logic;
+	signal intermediate_inverse: bit;
 	signal intermediate_score_over: std_logic;
-	signal set: std_logic; -- pause key 
+	signal set_pause_key: std_logic;
+	signal set_invers_key: std_logic;
 	
 begin
 
@@ -184,7 +184,7 @@ begin
 		clk25 => intermediate_clk25);
 		
 	invers : inverter port map (
-		inverse => global_inverse,
+		inverse => intermediate_inverse,
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_in => intermediate_rgb1,
@@ -241,16 +241,26 @@ begin
 		end if;
 	end process;
 	
-	tff: process  -- for hold with p key
+	pause_key: process
 	begin
 		if intermediate_clk25'event and intermediate_clk25='1' then
 			if intermediate_reset = '1' or intermediate_score_over = '1' then intermediate_hold <='1';
-			elsif intermediate_keys(6)='1' and set ='0'then 
+			elsif intermediate_keys(6)='1' and set_pause_key ='0'then 
 				intermediate_hold<=not (intermediate_hold);
-				set <= '1';
-			elsif set ='1' and intermediate_keys(6)='0' then set<='0'; end if;
+				set_pause_key <= '1';
+			elsif set ='1' and intermediate_keys(6)='0' then set_pause_key <= '0'; end if;
 		end if;
-	end process tff;
+	end process pause_key;
+	
+	invers_key: process
+	begin
+		if intermediate_clk25'event and intermediate_clk25='1' then
+			if intermediate_keys(7)='1' and set_invers_key ='0'then 
+				intermediate_inverse<=not (intermediate_inverse);
+				set_invers_key <= '1';
+			elsif set ='1' and intermediate_keys(7)='0' then set_inverse_key <= '0'; end if;
+		end if;
+	end process inverse_key;
 	
 end Behavioral;
 

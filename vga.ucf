@@ -6,9 +6,7 @@
 
 #PACE: Start of PACE I/O Pin Assignments
 NET "clk50"  LOC = "t9"  ; 
-NET "global_hold"  LOC = "f12"  ; 
 NET "global_hsync"  LOC = "r9"  ; 
-NET "global_inverse"  LOC = "g12"  ; 
 NET "global_kbclk"  LOC = "m16"  ; 
 NET "global_kbdata"  LOC = "m15"  ; 
 NET "global_rgb<0>"  LOC = "r12"  ; 
