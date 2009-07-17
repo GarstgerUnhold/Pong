@@ -143,6 +143,7 @@ architecture Behavioral of vga is
 	signal intermediate_reset : bit;
 	signal intermediate_hold: std_logic;
 	signal intermediate_score_over: std_logic;
+	signal set: std_logic; -- pause key 
 	
 begin
 
@@ -241,13 +242,14 @@ begin
 	end process;
 	
 	tff: process  -- for hold with p key
-	variable set: std_logic; -- key pressed
 	begin
-		if intermediate_reset = '1' or intermediate_score_over = '1' then intermediate_hold <='1';
-		elsif intermediate_keys(6)='1' then
-			intermediate_hold<=not (intermediate_hold);
-			set := '1';
-		elsif set ='1' and intermediate_keys(6)='0' then set:='0'; end if;
+		if intermediate_clk25'event and intermediate_clk25='1' then
+			if intermediate_reset = '1' or intermediate_score_over = '1' then intermediate_hold <='1';
+			elsif intermediate_keys(6)='1' and set ='0'then 
+				intermediate_hold<=not (intermediate_hold);
+				set <= '1';
+			elsif set ='1' and intermediate_keys(6)='0' then set<='0'; end if;
+		end if;
 	end process tff;
 	
 end Behavioral;

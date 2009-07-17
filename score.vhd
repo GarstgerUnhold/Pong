@@ -386,6 +386,7 @@ begin
 		begin
 			if left_player=9 or right_player = 9 then
 				score_over <= '1';
+			else score_over <= '0';
 			end if;		
 		end process scoreover;
 
