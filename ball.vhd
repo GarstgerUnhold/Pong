@@ -28,7 +28,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity ball is
-    Port ( hold : in bit;
+    Port ( speed : in std_logic_vector (1 downto 0);
+			  hold : in bit;
 			  bar_left : in integer range 0 to 430;
 			  bar_right : in integer range 0 to 430;
 			  X : in  integer range 0 to 640;
@@ -59,6 +60,7 @@ architecture Behavioral of ball is
 	signal x_pos : integer range 0 to 640 := 320;
 	signal y_pos : integer range 0 to 480 := 240;
 	signal countUp : integer range 0 to 208000 := 0;
+	signal speedCount : std_logic_vector (1 downto 0);
 	signal gameOver : bit;
 	signal leftOut, rightOut : bit := '0';
 	signal intern_rgb : STD_LOGIC_VECTOR (2 downto 0);
@@ -101,52 +103,56 @@ begin
 		if clk25'event and clk25='1' then --for movement
 			countUp <= countUp + 1;
 			gameOver <= reset;
-			if countUp = 208000 then
-
-				if x_pos < 27 then
-					if (bar_left < y_pos 
-					and bar_left + 50 > y_pos) then
-						lr <= '1';						
-					else
-						if x_pos < 9 then
-							leftOut <= '1';
-							gameOver <= '1';
-						end if;
-					end if;
-				end if;
-				
-				if x_pos > 611 then
-					if (bar_right < y_pos 
-					and bar_right + 50 > y_pos) then
-						lr <= '0';
-					else
-						if x_pos > 631 then
-							rightOut <= '1';
-							gameOver <= '1';
-						end if;
-					end if;
-				end if;
-				
-				if y_pos = 9 then
-					ud <= '1';
-				end if;
-				if y_pos = 471 then
-					ud <= '0';
-				end if;
-				
-				if hold = '0' then
-					case lr is
-						when '0' => x_pos <= x_pos - 1;
-						when '1' => x_pos <= x_pos + 1;
-					end case;
+			if countUp = 52000 then
+				if speedCount = (not speed(1) & not speed(0)) then
+					speedCount <= "00";
 					
-					case ud is
-						when '0' => y_pos <= y_pos - 1;
-						when '1' => y_pos <= y_pos + 1;
-					end case;
+					if x_pos < 27 then
+						if (bar_left < y_pos 
+						and bar_left + 50 > y_pos) then
+							lr <= '1';						
+						else
+							if x_pos < 9 then
+								leftOut <= '1';
+								gameOver <= '1';
+							end if;
+						end if;
+					end if;
+					
+					if x_pos > 611 then
+						if (bar_right < y_pos 
+						and bar_right + 50 > y_pos) then
+							lr <= '0';
+						else
+							if x_pos > 631 then
+								rightOut <= '1';
+								gameOver <= '1';
+							end if;
+						end if;
+					end if;
+					
+					if y_pos = 9 then
+						ud <= '1';
+					end if;
+					if y_pos = 471 then
+						ud <= '0';
+					end if;
+					
+					if hold = '0' then
+						case lr is
+							when '0' => x_pos <= x_pos - 1;
+							when '1' => x_pos <= x_pos + 1;
+						end case;
+						
+						case ud is
+							when '0' => y_pos <= y_pos - 1;
+							when '1' => y_pos <= y_pos + 1;
+						end case;
+					end if;
+				else
+					speedCount <= speedCount + "01";
 				end if;
-				
-				countUp <= 0;			
+				countUp <= 0;
 			end if;				
 			
 			if gameOver = '1' then -- this has to come synchronized for counting to work

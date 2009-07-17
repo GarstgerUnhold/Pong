@@ -28,8 +28,9 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity balken is
-    Port ( hold : in bit;
-			  buttons : in bit_vector (1 downto 0);
+    Port ( speed : in std_logic;
+			  hold : in bit;
+			  buttons : in std_logic_vector (3 downto 0);
 			  bar_left : out integer range 0 to 430;
 			  bar_right : out integer range 0 to 430;
 			  X : in  integer range 0 to 640;
@@ -42,7 +43,8 @@ end balken;
 
 architecture Behavioral of balken is
 	signal ltop,rtop : integer range 0 to 480 := 215;
-	signal countUp : integer range 0 to 156000 := 0;
+	signal countUp : integer range 0 to 78000 := 0;
+	signal speedCount : std_logic;
 	signal hold_intern : bit_vector (1 downto 0);
 begin
 
@@ -69,34 +71,34 @@ begin
 
 		if clk25'event and clk25='1' then --for movement
 			countUp <= countUp + 1;
-			if countUp = 156000 then
-				hold_intern <= hold & hold;
-				
-				-- move left
-				if (ltop < 2 and buttons(0) = '1')
-				or (ltop > 429 and buttons(0) = '0') then
-					hold_intern(0) <= '1';
+			if countUp = 78000 then
+				if speedCount = not speed then
+					speedCount <= '0';
+					hold_intern <= hold & hold;
+					
+					-- move left
+					if (ltop < 2 and buttons(0) = '1')
+					or (ltop > 429 and buttons(1) = '1') then
+						hold_intern(0) <= '1';
+					end if;
+					if hold_intern(0) = '0' then
+						if buttons(0) = '1' then ltop <= ltop - 1; end if;
+						if buttons(1) = '1' then ltop <= ltop + 1; end if;
+					end if;
+		
+					-- move right
+					if (rtop < 2 and buttons(2) = '1')
+					or (rtop > 429 and buttons(3) = '1') then
+						hold_intern(1) <= '1';
+					end if;
+					if hold_intern(1) = '0' then
+						if buttons(2) = '1' then rtop <= rtop - 1; end if;
+						if buttons(3) = '1' then rtop <= rtop + 1; end if;
+					end if;
+				else
+					speedCount <= '1';
 				end if;
-				if hold_intern(0) = '0' then
-					case buttons(0) is
-							when '0' => ltop <= ltop + 1;
-							when '1' => ltop <= ltop - 1;
-					end case;
-				end if;
-	
-				-- move right
-				if (rtop < 2 and buttons(1) = '1')
-				or (rtop > 429 and buttons(1) = '0') then
-					hold_intern(1) <= '1';
-				end if;
-				if hold_intern(1) = '0' then
-					case buttons(1) is
-						when '0' => rtop <= rtop + 1;
-						when '1' => rtop <= rtop - 1;
-					end case;
-				end if;
-				
-				countUp <= 0;			
+				countUp <= 0;
 			end if;
 		end if;
 		

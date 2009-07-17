@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity background is
     Port (
-		switch : in  bit;
+		switch : in std_logic;
 		X : in integer range 0 to 640;
 		Y : in integer range 0 to 480;
 		rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
@@ -75,7 +75,7 @@ begin
 				will_switch <= '1';
 			end if;
 			count_up <= count_up + 1;
-			if count_up = 6250000 then
+			if count_up = 25000000 then
 				if will_switch = '1' then
 					chosen_background <= chosen_background + "001";
 					will_switch <= '0';

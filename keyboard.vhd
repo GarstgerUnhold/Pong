@@ -27,36 +27,38 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity template is
+entity keyboard is
 	port (
 	kbclk: in std_logic;
 	kbdata: in std_logic;
 	clk: in std_logic;
-	tout : out std_logic_vector(3 downto 0);
-	rst: in std_logic
+	tout : out std_logic_vector(5 downto 0);
+	rst: in bit
 	);
 	
-end template;
+end keyboard;
 
-architecture Behavioral of template is
+architecture Behavioral of keyboard is
 signal fullcode: std_logic_vector(10 downto 0);
 signal scancode: std_logic_vector(7 downto 0);
 signal ready: std_logic;
 signal qclk: std_logic_vector (1 downto 0);
 signal X: std_logic;
 
-signal rup, rdown, lup, ldown, break_set: std_logic;
+signal rup, rdown, lup, ldown, break_set, esc, space: std_logic;
 begin
 
 	ausgabe: process (fullcode, ready, clk, rst)
 	begin	
-		if (ready = '1') then
+		if clk'event and clk = '1' and ready ='1' then
 			if (break_set='1')then
 				case scancode is
 					when x"1D" => rup <= '0'; break_set <='0';
 					when x"1B" => rdown <= '0'; break_set <='0';
-					when x"44" => lup <= '0'; break_set <='0';
-					when x"4B" => ldown <= '0'; break_set <='0';
+					when x"75" => lup <= '0'; break_set <='0';
+					when x"73" => ldown <= '0'; break_set <='0';
+					when x"76" => esc <= '0'; break_set <='0';
+					when x"29" => space <= '0'; break_set <='0';
 					when x"F0" => break_set <= '1'; break_set <='0';
 					when others => break_set <='0'; 
 				end case;		
@@ -65,8 +67,10 @@ begin
 					when x"F0" => break_set <= '1';
 					when x"1D" => rup <= '1';
 					when x"1B" => rdown <= '1';
-					when x"44" => lup <= '1';
-					when x"4B" => ldown <= '1';
+					when x"75" => lup <= '1';
+					when x"73" => ldown <= '1';
+					when x"76" => esc <= '1';
+					when x"29" => space <= '1';
 					when others => rup <=rup;
 				end case;
 			end if;
@@ -77,6 +81,8 @@ tout(0) <= rup;
 tout(1) <= rdown;
 tout(2) <= lup;
 tout(3) <= ldown;
+tout(4) <= esc;
+tout(5) <= space;
 
 sreg10: process (clk,rst,X)
 begin

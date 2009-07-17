@@ -29,18 +29,28 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity vga is
     Port ( clk50 : in  STD_LOGIC;
+			  global_speed : in bit_vector (2 downto 0);
 			  global_inverse : in bit;
 			  global_hold : in bit;
-			  global_buttons : in bit_vector (1 downto 0); -- steuerung
-			  global_bg_switch : in bit; -- background switching
-           global_reset : in  bit;
            global_hsync : out bit;
            global_vsync : out  bit;
-           global_rgb : out  STD_LOGIC_VECTOR (2 downto 0));
+           global_rgb : out  STD_LOGIC_VECTOR (2 downto 0);
+		   global_kbclk: in std_logic;
+			global_kbdata: in std_logic);
 end vga;
 
 architecture Behavioral of vga is
 
+	component keyboard  					
+		port (
+			kbclk: in std_logic;
+			kbdata: in std_logic;
+			clk: in std_logic;
+			tout : out std_logic_vector(5 downto 0);
+			rst: in bit
+	);
+	end component;
+	
 	component SignalTiming  
 		Port (						
 			hsync, vsync : out bit;
@@ -58,19 +68,19 @@ architecture Behavioral of vga is
 			clk25 : in bit);
 	end component;
 	
-	component inverter
-		Port (
-			inverse : in bit;
-			X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
-			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in bit);
-	end component;
+--	component inverter
+--		Port (
+--			inverse : in bit;
+--			X : in integer range 0 to 640;
+--         Y : in integer range 0 to 480;
+--			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+--			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
+--			clk25 : in bit);
+--	end component;
 	
 	component background
 		Port (
-			switch : in bit;
+			switch : in std_logic;
 			X : in integer range 0 to 640;
 			Y : in integer range 0 to 480;
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
@@ -79,8 +89,9 @@ architecture Behavioral of vga is
 	
 	component balken 
 		Port (
+			speed : in bit;
 			hold : in bit;
-			buttons : in bit_vector (1 downto 0);
+			buttons : in std_logic_vector (3 downto 0);
 			bar_left : out integer range 0 to 430;
 			bar_right : out integer range 0 to 430;
 			X : in integer range 0 to 640;
@@ -93,6 +104,7 @@ architecture Behavioral of vga is
 	
 	component ball is
 		Port (
+			speed : in bit_vector (1 downto 0);
 			hold : in bit;
 			bar_left : in integer range 0 to 430;
 			bar_right : in integer range 0 to 430;
@@ -127,6 +139,8 @@ architecture Behavioral of vga is
 	signal intermediate_rgb3 : STD_LOGIC_VECTOR (2 downto 0); -- balken
 	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- ball
 	signal intermediate_rgb5 : STD_LOGIC_VECTOR (2 downto 0); -- game over
+	signal intermediate_keys : STD_LOGIC_VECTOR (5 downto 0);
+	signal intermediate_reset : bit;
 	
 begin
 
@@ -135,12 +149,24 @@ begin
 		if clk50'event and clk50='1' then
 			if (intermediate_clk25 = '0') then
 				intermediate_clk25 <= '1';
+				if intermediate_keys(4) = '1' then
+					intermediate_reset <= '1';
+				else
+					intermediate_reset <= '0';
+				end if;
 			else
 				intermediate_clk25 <= '0';
 			end if;
 		end if;
 	end process;
 	
+	keys : keyboard	port map (
+			kbclk => global_kbclk,
+			kbdata => global_kbdata,
+			clk => clk50,
+			tout  => intermediate_keys,
+			rst => '0');
+
 	sigTime : SignalTiming port map (
 		hsync => intermediate_hsync,
 		vsync => intermediat_vsync,
@@ -149,33 +175,35 @@ begin
 		clk25 => intermediate_clk25);
 
 	bg : background port map (
-		switch => global_bg_switch,
+		switch => intermediate_keys(5), -- spacebar
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_out => intermediate_rgb1,
 		clk25 => intermediate_clk25);
 		
-	invers : inverter port map (
-		inverse => global_inverse,
-		X => intermediate_X,
-		Y => intermediate_Y,
-		rgb_in => intermediate_rgb1,
-		rgb_out => intermediate_rgb2,
-		clk25 => intermediate_clk25);
+--	invers : inverter port map (
+--		inverse => global_inverse,
+--		X => intermediate_X,
+--		Y => intermediate_Y,
+--		rgb_in => intermediate_rgb1,
+--		rgb_out => intermediate_rgb2,
+--		clk25 => intermediate_clk25);
 
 	male_balken : balken port map (
+		speed => global_speed(2),
 		hold => global_hold,
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
-		buttons => global_buttons,
+		buttons => intermediate_keys (3 downto 0),
 		X => intermediate_X,
 		Y => intermediate_Y,
-		rgb_in => intermediate_rgb2,
+		rgb_in => intermediate_rgb1, ---rgb2!!!
 		rgb_out => intermediate_rgb3,
 		clk25 => intermediate_clk25,
-		reset => global_reset);
+		reset => intermediate_reset);
 		
 	male_ball : ball port map (
+		speed => global_speed (1 downto 0),
 		hold => global_hold,		
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
@@ -185,7 +213,7 @@ begin
 		rgb_in => intermediate_rgb3,
 		rgb_out => intermediate_rgb4,
 		clk25 => intermediate_clk25,
-		reset => global_reset);
+		reset => intermediate_reset);
 		
 	male_gameover : game_over_handler port map (
 	   game_over => intermediate_game_over,
