@@ -1,31 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    14:07:55 07/10/2009 
--- Design Name: 
--- Module Name:    vga - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
-
----- Uncomment the following library declaration if instantiating
----- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity vga is
     Port ( clk50 : in  STD_LOGIC;
@@ -51,7 +27,7 @@ architecture Behavioral of vga is
 		port (
 		keys_in : in std_logic_vector(12 downto 6);
 		reset: in bit;
-		score_over: in std_logic;
+		game_over: in std_logic;
 		clk25: in bit;
 		hold_out: out std_logic;
 		inverse_out: out bit;
@@ -115,27 +91,19 @@ architecture Behavioral of vga is
 			hold : in std_logic;
 			bar_left : in integer range 0 to 430;
 			bar_right : in integer range 0 to 430;
-			game_over : out bit;
+			ball_out_inverse : out bit;
 			X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
+			Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
-         clk25 : in  bit;
+			clk25 : in  bit;
 			reset : in bit;
-			forward_score_over : out std_logic);
-	end component;
-	
-	component game_over_handler
-		Port (
-			game_over : in bit;
-			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in bit);
+			forward_game_over : out std_logic);
 	end component;
 	
 	signal intermediate_bar_left : integer range 0 to 430;
 	signal intermediate_bar_right : integer range 0 to 430;
-	signal intermediate_game_over : bit;
+	signal intermediate_ball_out_inverse : bit;
 	signal intermediate_X : integer range 0 to 640;
 	signal intermediate_Y : integer range 0 to 480;
 	signal intermediate_hsync, intermediat_vsync : bit;
@@ -149,7 +117,7 @@ architecture Behavioral of vga is
 	signal intermediate_reset : bit;
 	signal intermediate_hold: std_logic;
 	signal intermediate_inverse: bit;
-	signal intermediate_score_over: std_logic;
+	signal intermediate_game_over: std_logic;
 	signal intermediate_ballspeed: bit_vector (1 downto 0);
 	signal intermediate_paddlespeed: bit;
 	
@@ -180,7 +148,7 @@ begin
 	verarbeite_keys : process_keys	port map (
 		keys_in => intermediate_keys(12 downto 6),
 		reset => intermediate_reset,
-		score_over => intermediate_score_over,
+		game_over => intermediate_game_over,
 		clk25 => intermediate_clk25,
 		hold_out => intermediate_hold,
 		inverse_out => intermediate_inverse,
@@ -224,20 +192,19 @@ begin
 		hold => intermediate_hold,		
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
-		game_over => intermediate_game_over,
+		ball_out_inverse => intermediate_ball_out_inverse,
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_in => intermediate_rgb3,
 		rgb_out => intermediate_rgb4,
 		clk25 => intermediate_clk25,
 		reset => intermediate_reset,
-		forward_score_over => intermediate_score_over);
+		forward_game_over => intermediate_game_over);
 		
-	male_gameover : game_over_handler port map (
-	   game_over => intermediate_game_over,
+	ball_out_inverse : inverter port map (
+	   inverse => intermediate_ball_out_inverse,
 		rgb_in => intermediate_rgb4,
-		rgb_out => intermediate_rgb5,
-		clk25 => intermediate_clk25);
+		rgb_out => intermediate_rgb5);
 
 	aus : ausgabe port map (
 		X => intermediate_X,
@@ -246,13 +213,13 @@ begin
 		rgb_out => global_rgb
 		);
 
-	process (intermediate_clk25)
-	begin
-		if intermediate_clk25'event and intermediate_clk25='1' then
+--	process (intermediate_clk25)
+--	begin
+--		if intermediate_clk25'event and intermediate_clk25='1' then
 			global_hsync <= intermediate_hsync; 
 			global_vsync <= intermediat_vsync;
-		end if;
-	end process;
+--		end if;
+--	end process;
 	
 end Behavioral;
 

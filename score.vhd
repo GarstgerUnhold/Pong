@@ -1,31 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    20:53:59 07/15/2009 
--- Design Name: 
--- Module Name:    score - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
-
----- Uncomment the following library declaration if instantiating
----- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity score is
 	Port( pointLeft : in bit;
@@ -36,7 +12,7 @@ entity score is
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit;
 			reset : in bit;
-			score_over : out std_logic);
+			game_over : out std_logic);
 end score;
 
 architecture Behavioral of score is
@@ -382,13 +358,13 @@ begin
 			end if;
 		end process;
 		
-		scoreover : process (left_player, right_player)
+		gameover : process (left_player, right_player)
 		begin
 			if left_player=9 or right_player = 9 then
-				score_over <= '1';
-			else score_over <= '0';
+				game_over <= '1';
+			else game_over <= '0';
 			end if;		
-		end process scoreover;
+		end process gameover;
 
 end Behavioral;
 

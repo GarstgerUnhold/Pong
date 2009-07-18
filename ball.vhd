@@ -1,31 +1,7 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date:    16:45:00 07/10/2009 
--- Design Name: 
--- Module Name:    balken - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
-
----- Uncomment the following library declaration if instantiating
----- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity ball is
     Port ( speed : in std_logic_vector (1 downto 0);
@@ -33,13 +9,13 @@ entity ball is
 			  bar_left : in integer range 0 to 430;
 			  bar_right : in integer range 0 to 430;
 			  X : in  integer range 0 to 640;
-           Y : in  integer range 0 to 480;
-			  game_over : out bit;
+			  Y : in  integer range 0 to 480;
+			  ball_out_inverse : out bit;
 			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
-           clk25 : in  bit;
+			  clk25 : in  bit;
 			  reset : in bit;
-			  forward_score_over : out std_logic);
+			  forward_game_over : out std_logic);
 end ball;
 
 architecture Behavioral of ball is
@@ -53,7 +29,7 @@ architecture Behavioral of ball is
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit;
 			reset : in bit;
-			score_over : out std_logic);
+			game_over : out std_logic);
 	end component;
 
 	signal lr : bit := '0'; --left/right
@@ -63,9 +39,11 @@ architecture Behavioral of ball is
 	signal y_pos : integer range 0 to 480 := 240;
 	signal countUp : integer range 0 to 208000 := 0;
 	signal speedCount : std_logic_vector (1 downto 0);
-	signal gameOver : bit;
+	signal ballOut : bit;
 	signal leftOut, rightOut : bit := '0';
 	signal intern_rgb : STD_LOGIC_VECTOR (2 downto 0);
+	signal count_up : integer range 0 to 10250000 := 0;
+	signal ball_out : bit := '0';
 begin
 
 	count : score port map (
@@ -77,7 +55,7 @@ begin
 		rgb_out => intern_rgb,
 		clk25 => clk25,
 		reset => reset,
-		score_over => forward_score_over);
+		game_over => forward_game_over);
 
 	process (intern_rgb, x_pos, y_pos, clk25,X,Y)
 	begin
@@ -105,7 +83,7 @@ begin
 		
 		if clk25'event and clk25='1' then --for movement
 			countUp <= countUp + 1;
-			gameOver <= reset;
+			ballOut <= reset;
 			if countUp = 52000 then
 				if speedCount = (not speed(1) & not speed(0)) then
 					speedCount <= "00";
@@ -117,7 +95,7 @@ begin
 						else
 							if x_pos < 9 then
 								leftOut <= '1';
-								gameOver <= '1';
+								ballOut <= '1';
 							end if;
 						end if;
 					end if;
@@ -129,7 +107,7 @@ begin
 						else
 							if x_pos > 631 then
 								rightOut <= '1';
-								gameOver <= '1';
+								ballOut <= '1';
 							end if;
 						end if;
 					end if;
@@ -158,16 +136,32 @@ begin
 				countUp <= 0;
 			end if;				
 			
-			if gameOver = '1' then -- this has to come synchronized for counting to work
+			if ballOut = '1' then -- this has to come synchronized for counting to work
 				leftOut <= '0';
 				rightOut <= '0';
 				x_pos <= 320;
 				y_pos <= 240;
-				game_over <= '1';
+				ball_out <= '1';
 			else
-				game_over <= '0';
+				ball_out <= '0';
 			end if;
 			
+		end if;
+	end process;
+	
+	process (clk25, rgb_in) --for ball_out
+	begin
+		if clk25'event and clk25 = '1' then
+			if ball_out = '1' then
+				ball_out_inverse <= '1';
+			end if;
+			count_up <= count_up + 1;
+			if count_up = 10250000 then
+				--if ball_out_inverse = '1' then
+					ball_out_inverse <= '0';
+				--end if;
+				count_up <= 0;
+			end if;
 		end if;
 	end process;
 

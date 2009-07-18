@@ -7,7 +7,7 @@ entity process_keys is
 	port (
 		keys_in : in std_logic_vector(12 downto 6);
 		reset: in bit;
-		score_over: in std_logic;
+		game_over: in std_logic;
 		clk25: in bit;
 		hold_out: out std_logic;
 		inverse_out: out bit;
@@ -28,7 +28,7 @@ begin
 	pause_key: process (clk25)
 	begin
 		if clk25'event and clk25='1' then
-			if reset = '1' or score_over = '1' then Q_hold <='1';
+			if reset = '1' or game_over = '1' then Q_hold <='1';
 			elsif keys_in(6)='1' and set_pause_key ='0'then 
 				Q_hold <= not (Q_hold);
 				set_pause_key <= '1';
