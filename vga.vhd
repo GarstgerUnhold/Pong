@@ -29,7 +29,6 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity vga is
     Port ( clk50 : in  STD_LOGIC;
-			global_speed : in bit_vector (2 downto 0);
 			global_hsync : out bit;
 			global_vsync : out  bit;
 			global_rgb : out  STD_LOGIC_VECTOR (2 downto 0);
@@ -50,7 +49,7 @@ architecture Behavioral of vga is
 	
 	component process_keys  					
 		port (
-		keys_in : in std_logic_vector(12 downto 5);
+		keys_in : in std_logic_vector(12 downto 6);
 		reset: in bit;
 		score_over: in std_logic;
 		clk25: in bit;
@@ -74,18 +73,16 @@ architecture Behavioral of vga is
 			X : in integer range 0 to 640;
          Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in bit);
+			rgb_out: out STD_LOGIC_VECTOR (2 downto 0)
+			);
 	end component;
 	
 	component inverter
 		Port (
 			inverse : in bit;
-			X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in bit);
+			rgb_out: out STD_LOGIC_VECTOR (2 downto 0)
+			);
 	end component;
 	
 	component background
@@ -131,8 +128,6 @@ architecture Behavioral of vga is
 	component game_over_handler
 		Port (
 			game_over : in bit;
-			X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit);
@@ -183,7 +178,7 @@ begin
 		keysout  => intermediate_keys);
 			
 	verarbeite_keys : process_keys	port map (
-		keys_in => intermediate_keys(12 downto 5),
+		keys_in => intermediate_keys(12 downto 6),
 		reset => intermediate_reset,
 		score_over => intermediate_score_over,
 		clk25 => intermediate_clk25,
@@ -208,11 +203,8 @@ begin
 		
 	invers : inverter port map (
 		inverse => intermediate_inverse,
-		X => intermediate_X,
-		Y => intermediate_Y,
 		rgb_in => intermediate_rgb1,
-		rgb_out => intermediate_rgb2,
-		clk25 => intermediate_clk25);
+		rgb_out => intermediate_rgb2);
 
 	male_balken : balken port map (
 		speed => intermediate_paddlespeed,
@@ -243,8 +235,6 @@ begin
 		
 	male_gameover : game_over_handler port map (
 	   game_over => intermediate_game_over,
-		X => intermediate_X,
-		Y => intermediate_Y,
 		rgb_in => intermediate_rgb4,
 		rgb_out => intermediate_rgb5,
 		clk25 => intermediate_clk25);
@@ -253,8 +243,8 @@ begin
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_in => intermediate_rgb5,
-		rgb_out => global_rgb,
-		clk25 => intermediate_clk25);
+		rgb_out => global_rgb
+		);
 
 	process (intermediate_clk25)
 	begin

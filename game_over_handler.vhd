@@ -29,8 +29,6 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity game_over_handler is
 	Port ( game_over : in bit;
-			 X : in integer range 0 to 640;
-          Y : in integer range 0 to 480;
 			 rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			 rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			 clk25 : in bit);
@@ -41,7 +39,7 @@ architecture Behavioral of game_over_handler is
 	signal got_game_over : bit := '0';
 begin
 	
-	process
+	process (clk25, got_game_over, rgb_in)
 	begin
 		if clk25'event and clk25 = '1' then
 			if game_over = '1' then

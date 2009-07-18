@@ -38,7 +38,7 @@ architecture Behavioral of SignalTiming is
 	signal hcounter : integer range 0 to 800;
 	signal vcounter : integer range 0 to 521;
 begin
-	process
+	process (clk25)
 	begin
 		if clk25'event and clk25='1' then
 			hcounter <= hcounter + 1;

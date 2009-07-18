@@ -29,8 +29,6 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity farbwechsel is
     Port (
-		X : in integer range 0 to 640;
-		Y : in integer range 0 to 480;
 		rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 		clk25 : in bit);
 end farbwechsel;
@@ -40,7 +38,7 @@ architecture Behavioral of farbwechsel is
 	signal my_rgb : STD_LOGIC_VECTOR (2 downto 0);
 begin
 
-	process (clk25, countUp)
+	process (clk25)
 	begin
 		if clk25'event and clk25='1' then
 			countUp <= countUp + 1;

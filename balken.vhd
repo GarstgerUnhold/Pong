@@ -51,7 +51,7 @@ begin
 	bar_left <= ltop;
 	bar_right <= rtop;
 
-	process 
+	process (rgb_in,X,Y,clk25,reset,ltop,rtop)
 	begin
 		rgb_out <= rgb_in;
 	

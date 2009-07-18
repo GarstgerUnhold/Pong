@@ -43,10 +43,10 @@ signal scancode: std_logic_vector(7 downto 0);
 signal ready: std_logic;
 signal qclk: std_logic_vector (1 downto 0);
 signal X: std_logic;
-signal break_set,t: std_logic;
+signal break_set: std_logic;
 begin
 
-	ausgabe: process (fullcode, ready, clk)
+	ausgabe: process (clk)
 	begin	
 		if clk'event and clk = '1' and ready ='1' then
 			if (break_set='1')then
@@ -83,19 +83,19 @@ begin
 					when x"1E" => keysout(10) <= '1';
 					when x"26" => keysout(11) <= '1';
 					when x"25" => keysout(12) <= '1';
-					when others => t <= t;
+					when others =>
 				end case;
 			end if;
 		end if;
 	end process;
 
-sreg10: process (clk,X)
+sreg10: process (clk)
 begin
 	if clk'event and clk = '1' then
-	if ready='1' then fullcode <= (others => '1'); end if;
-		if X = '1' then 
-			fullcode <= kbdata & fullcode (10 downto 1);
-		end if;
+		if ready='1' then fullcode <= (others => '1'); end if;
+			if X = '1' then 
+				fullcode <= kbdata & fullcode (10 downto 1);
+			end if;
 	end if;
 end process sreg10;
 

@@ -79,7 +79,7 @@ begin
 		reset => reset,
 		score_over => forward_score_over);
 
-	process 
+	process (intern_rgb, x_pos, y_pos, clk25,X,Y)
 	begin
 		rgb_out <= intern_rgb;
 		

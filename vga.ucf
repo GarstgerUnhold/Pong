@@ -11,10 +11,7 @@ NET "global_kbclk"  LOC = "m16"  ;
 NET "global_kbdata"  LOC = "m15"  ; 
 NET "global_rgb<0>"  LOC = "r12"  ; 
 NET "global_rgb<1>"  LOC = "t12"  ; 
-NET "global_rgb<2>"  LOC = "r11"  ; 
-NET "global_speed<0>"  LOC = "k13"  ; 
-NET "global_speed<1>"  LOC = "k14"  ; 
-NET "global_speed<2>"  LOC = "j13"  ; 
+NET "global_rgb<2>"  LOC = "r11"  ;
 NET "global_vsync"  LOC = "t10"  ; 
 
 #PACE: Start of PACE Area Constraints

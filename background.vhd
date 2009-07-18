@@ -40,8 +40,6 @@ architecture Behavioral of background is
 
 	component farbwechsel
 		Port (
-			X : in integer range 0 to 640;
-			Y : in integer range 0 to 480;
 			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit);
 	end component;
@@ -58,15 +56,13 @@ architecture Behavioral of background is
 begin
 
 	farbw : farbwechsel port map (
-		X => X,
-		Y => Y,
 		rgb_out => rgb_farbw,
 		clk25 => clk25);
 	
 	deltaX <= X - 320 when X > 320 else 320 - X; 	
 	deltaY <= Y - 240 when Y > 240 else 240 - Y;
 
-	process
+	process (clk25)
 	begin
 	
 		if clk25'event and clk25 = '1' then
@@ -77,7 +73,7 @@ begin
 			count_up <= count_up + 1;
 			if count_up = 25000000 then
 				if will_switch = '1' then
-					chosen_background <= chosen_background + "001";
+					chosen_background <= chosen_background + "01";
 					will_switch <= '0';
 				end if;
 				count_up <= 0;
