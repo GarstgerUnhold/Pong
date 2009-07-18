@@ -91,7 +91,7 @@ architecture Behavioral of vga is
 			hold : in std_logic;
 			bar_left : in integer range 0 to 430;
 			bar_right : in integer range 0 to 430;
-			ball_out_inverse : out bit;
+			ball_out : out bit;
 			X : in integer range 0 to 640;
 			Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
@@ -101,9 +101,16 @@ architecture Behavioral of vga is
 			forward_game_over : out std_logic);
 	end component;
 	
+	component ball_out_handler is
+		Port ( ball_out : in bit;
+			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
+			clk25 : in bit);
+		end component;
+	
 	signal intermediate_bar_left : integer range 0 to 430;
 	signal intermediate_bar_right : integer range 0 to 430;
-	signal intermediate_ball_out_inverse : bit;
+	signal intermediate_ball_out : bit;
 	signal intermediate_X : integer range 0 to 640;
 	signal intermediate_Y : integer range 0 to 480;
 	signal intermediate_hsync, intermediat_vsync : bit;
@@ -192,7 +199,7 @@ begin
 		hold => intermediate_hold,		
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
-		ball_out_inverse => intermediate_ball_out_inverse,
+		ball_out => intermediate_ball_out,
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_in => intermediate_rgb3,
@@ -201,10 +208,11 @@ begin
 		reset => intermediate_reset,
 		forward_game_over => intermediate_game_over);
 		
-	ball_out_inverse : inverter port map (
-	   inverse => intermediate_ball_out_inverse,
+	ball_out_inverse : ball_out_handler port map (
+	   ball_out => intermediate_ball_out,
 		rgb_in => intermediate_rgb4,
-		rgb_out => intermediate_rgb5);
+		rgb_out => intermediate_rgb5,
+		clk25 => intermediate_clk25);
 
 	aus : ausgabe port map (
 		X => intermediate_X,

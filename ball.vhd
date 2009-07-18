@@ -10,7 +10,7 @@ entity ball is
 			  bar_right : in integer range 0 to 430;
 			  X : in  integer range 0 to 640;
 			  Y : in  integer range 0 to 480;
-			  ball_out_inverse : out bit;
+			  ball_out : out bit;
 			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 			  clk25 : in  bit;
@@ -42,8 +42,7 @@ architecture Behavioral of ball is
 	signal ballOut : bit;
 	signal leftOut, rightOut : bit := '0';
 	signal intern_rgb : STD_LOGIC_VECTOR (2 downto 0);
-	signal count_up : integer range 0 to 10250000 := 0;
-	signal ball_out : bit := '0';
+
 begin
 
 	count : score port map (
@@ -146,22 +145,6 @@ begin
 				ball_out <= '0';
 			end if;
 			
-		end if;
-	end process;
-	
-	process (clk25, rgb_in) --for ball_out
-	begin
-		if clk25'event and clk25 = '1' then
-			if ball_out = '1' then
-				ball_out_inverse <= '1';
-			end if;
-			count_up <= count_up + 1;
-			if count_up = 10250000 then
-				--if ball_out_inverse = '1' then
-					ball_out_inverse <= '0';
-				--end if;
-				count_up <= 0;
-			end if;
 		end if;
 	end process;
 
