@@ -22,7 +22,6 @@ architecture Behavioral of ball_out_handler is
 	
 	signal count_up : integer range 0 to 10250000 := 0;
 	signal ball_out_inverse : bit;
-	signal rgb_intern: STD_LOGIC_VECTOR (2 downto 0);
   
 begin
   

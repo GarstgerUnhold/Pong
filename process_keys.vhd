@@ -17,12 +17,12 @@ entity process_keys is
 	end process_keys;
 
 architecture Behavioral of process_keys	is
-	signal set_pause_key: std_logic;
-	signal set_inverse_key: std_logic;
-	signal set_paddlespeed_key: std_logic;
-	signal Q_hold: std_logic;
-	signal Q_inverse: bit;
-	signal Q_paddlespeed: bit;
+	signal set_pause_key: std_logic :='0';
+	signal set_inverse_key: std_logic := '0';
+	signal set_paddlespeed_key: std_logic :='0';
+	signal Q_hold: std_logic := '1';
+	signal Q_inverse: bit := '0';
+	signal Q_paddlespeed: bit := '0';
 begin
 	
 	pause_key: process (clk25)
@@ -32,8 +32,8 @@ begin
 			elsif keys_in(6)='1' and set_pause_key ='0'then 
 				Q_hold <= not (Q_hold);
 				set_pause_key <= '1';
-				hold_out <= Q_hold;
 			elsif set_pause_key ='1' and keys_in(6)='0' then set_pause_key <= '0'; end if;
+		hold_out <= Q_hold;
 		end if;
 	end process pause_key;
 	
@@ -43,14 +43,14 @@ begin
 			if keys_in(7)='1' and set_inverse_key ='0' then 
 				Q_inverse <= not (Q_inverse);
 				set_inverse_key <= '1';
-				inverse_out <= Q_inverse;
 			elsif set_inverse_key ='1' and keys_in(7)='0' then set_inverse_key <= '0'; end if;
+		inverse_out <= Q_inverse;
 		end if;
 	end process inverse_key;
 	
 	ballspeed_keys: process(keys_in(12 downto 9), clk25)
 	begin
-		--if clk25'event and clk25='1' then
+		if clk25'event and clk25='1' then
 			case keys_in(12 downto 9) is
 				when "0001" => ballspeed_out <= "00";
 				when "0010" => ballspeed_out <= "01";
@@ -58,7 +58,7 @@ begin
 				when "1000" => ballspeed_out <= "11";
 				when others =>
 			end case;
-		--end if;	
+		end if;	
 	end process ballspeed_keys;
 	
 	paddlespeed_key: process (clk25)
@@ -67,8 +67,8 @@ begin
 			if keys_in(8)='1' and set_paddlespeed_key ='0'then 
 				Q_paddlespeed <= not (Q_paddlespeed);
 				set_paddlespeed_key <= '1';
-				paddlespeed_out <= Q_paddlespeed;
 			elsif set_paddlespeed_key ='1' and keys_in(7)='0' then set_paddlespeed_key <= '0'; end if;
+		paddlespeed_out <= Q_paddlespeed;
 		end if;
 	end process paddlespeed_key;
 end Behavioral;
