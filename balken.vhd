@@ -49,7 +49,7 @@ bar_right <= rtopnew;
 		if clk25'event and clk25='1' then --for movement
 			countUp <= countUp + 1;
 			if countUp = 78000 then
-				if speedCount = speed and speed ='0' then
+				if speedCount = '0' and speed ='0' then
 					speedCount <= '1';
 				else
 					speedCount <= '0';
@@ -77,7 +77,7 @@ bar_right <= rtopnew;
 		end if;
 	end process;
 	
-	field_boundaries: process (ltop, rtop)
+	field_boundaries: process (ltopnew,rtopnew)
 	begin
 		if ltopnew < 2 then ltop <= 1;
 		elsif ltopnew > 429 then ltop <= 430;

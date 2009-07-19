@@ -24,8 +24,8 @@ architecture Behavioral of ball is
 	component score is
 		Port( pointLeft : in bit;
 			pointRight : in bit;
-		   X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
+			X : in integer range 0 to 640;
+			Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit;
@@ -58,6 +58,13 @@ begin
 		game_over => forward_game_over);
 		
 		ball_y_pos_out <= y_pos; -- for AI
+		
+--		game_over: process
+--		begin
+--		
+--			ballOut <= forward_game_over;
+--			
+--		end process game_over;
 
 	process (intern_rgb, x_pos, y_pos, clk25,X,Y)
 	begin

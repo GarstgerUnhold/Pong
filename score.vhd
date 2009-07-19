@@ -7,7 +7,7 @@ entity score is
 	Port( pointLeft : in bit;
 			pointRight : in bit;
 			X : in integer range 0 to 640;
-         Y : in integer range 0 to 480;
+			Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit;
