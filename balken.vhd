@@ -20,14 +20,13 @@ entity balken is
 end balken;
 
 architecture Behavioral of balken is
-	signal ltop,rtop : integer range 0 to 480 := 215;
+	signal ltop,rtop,ltopnew,rtopnew : integer range 0 to 430 := 215;
 	signal countUp : integer range 0 to 78000 := 0;
 	signal speedCount : std_logic;
-	signal hold_intern : std_logic_vector (1 downto 0);
 begin
-
-	bar_right <= rtop;
-	bar_left <= ltop;
+	
+bar_left <= ltopnew;
+bar_right <= rtopnew;
 
 	process (rgb_in,X,Y,clk25,reset,ltop,rtop)
 	begin
@@ -50,44 +49,45 @@ begin
 		if clk25'event and clk25='1' then --for movement
 			countUp <= countUp + 1;
 			if countUp = 78000 then
-				if speedCount = not speed then
-					speedCount <= '0';
-					hold_intern <= hold & hold;
-					
-					-- move left
-					if (ltop < 2 and buttons(0) = '1')
-					or (ltop > 429 and buttons(1) = '1') then
-						hold_intern(0) <= '1';
-					end if;
-					if hold_intern(0) = '0' then
-						if buttons(0) = '1' then ltop <= ltop - 1; end if;
-						if buttons(1) = '1' then ltop <= ltop + 1; end if;
-					end if;
-		
-					-- move right
-					if ai_enabled ='1' then	rtop <= right_ai;
-					else
-						if (rtop < 2 and buttons(2) = '1')
-						or (rtop > 429 and buttons(3) = '1') then
-							hold_intern(1) <= '1';
-						end if;
-						if hold_intern(1) = '0' then
-							if buttons(2) = '1' then rtop <= rtop - 1; end if;
-							if buttons(3) = '1' then rtop <= rtop + 1; end if;
-						end if;
-					end if;
-				else
+				if speedCount = speed and speed ='0' then
 					speedCount <= '1';
+				else
+					speedCount <= '0';
+					if hold = '0' then 
+							-- move left
+							if buttons(0) = '1' then ltopnew <= ltop - 1; end if;
+							if buttons(1) = '1' then ltopnew <= ltop + 1; end if;
+							
+							-- move right
+							if ai_enabled ='1' then	rtopnew <= right_ai;
+							else
+								if buttons(2) = '1' then rtopnew <= rtop - 1; end if;
+								if buttons(3) = '1' then rtopnew <= rtop + 1; end if;
+							end if;
+					end if;
 				end if;
 				countUp <= 0;
 			end if;
+
 		end if;
 		
 		if reset = '1' then
-			rtop <= 215;
-			ltop <= 215;
+			rtopnew <= 215;
+			ltopnew <= 215;
 		end if;
 	end process;
+	
+	field_boundaries: process (ltop, rtop)
+	begin
+		if ltopnew < 2 then ltop <= 1;
+		elsif ltopnew > 429 then ltop <= 430;
+		else ltop <= ltopnew;
+		end if;
+		if rtopnew < 2 then rtop <= 1;
+		elsif rtopnew > 429 then rtop <= 430;
+		else rtop <= rtopnew;
+		end if;
+	end process field_boundaries;
 
 end Behavioral;
 

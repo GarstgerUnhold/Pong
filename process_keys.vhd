@@ -98,7 +98,7 @@ begin
 			if keys_in(8)='1' and set_paddlespeed_key ='0'then 
 				Q_paddlespeed <= not (Q_paddlespeed);
 				set_paddlespeed_key <= '1';
-			elsif set_paddlespeed_key ='1' and keys_in(7)='0' then set_paddlespeed_key <= '0'; end if;
+			elsif set_paddlespeed_key ='1' and keys_in(8)='0' then set_paddlespeed_key <= '0'; end if;
 		paddlespeed_out <= Q_paddlespeed;
 		end if;
 	end process paddlespeed_key;
