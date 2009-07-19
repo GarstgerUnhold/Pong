@@ -19,20 +19,21 @@ architecture Behavioral of vga is
 			kbclk: in std_logic;
 			kbdata: in std_logic;
 			clk: in std_logic;
-			keysout : out std_logic_vector(12 downto 0)
+			keysout : out std_logic_vector(13 downto 0)
 	);
 	end component;
 	
 	component process_keys  					
 		port (
-		keys_in : in std_logic_vector(12 downto 6);
+		keys_in : in std_logic_vector(13 downto 6);
 		reset: in bit;
 		game_over: in std_logic;
 		clk25: in bit;
 		hold_out: out std_logic;
 		inverse_out: out bit;
-		ballspeed_out : out bit_vector(1 downto 0);
-		paddlespeed_out : out bit
+		ballspeed_out : out std_logic_vector(1 downto 0);
+		paddlespeed_out : out bit;
+		AI_out: out std_logic
 	);
 	end component;
 	
@@ -86,19 +87,19 @@ architecture Behavioral of vga is
 	end component;
 	
 	component ball is
-		Port (
-			speed : in bit_vector (1 downto 0);
-			hold : in std_logic;
-			bar_left : in integer range 0 to 430;
-			bar_right : in integer range 0 to 430;
-			ball_out : out bit;
-			X : in integer range 0 to 640;
-			Y : in integer range 0 to 480;
-			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
-			rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
-			clk25 : in  bit;
-			reset : in bit;
-			forward_game_over : out std_logic);
+    Port ( speed : in std_logic_vector (1 downto 0);
+			  hold : in std_logic;
+			  bar_left : in integer range 0 to 430;
+			  bar_right : in integer range 0 to 430;
+			  X : in  integer range 0 to 640;
+			  Y : in  integer range 0 to 480;
+			  ball_out : out bit;
+			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
+			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
+			  clk25 : in  bit;
+			  reset : in bit;
+			  forward_game_over : out std_logic;
+			  ball_y_pos_out: out integer range 0 to 480);
 	end component;
 	
 	component ball_out_handler is
@@ -107,8 +108,17 @@ architecture Behavioral of vga is
 			rgb_out: out STD_LOGIC_VECTOR (2 downto 0);
 			clk25 : in bit);
 		end component;
+		
+		component AI is
+    Port ( 
+			ai_enabled: in std_logic;
+			left_pos: in integer range 0 to 430;
+			left_pos_out: out integer range 0 to 430;
+			ball_pos: in integer range 0 to 480
+			);
+		end component;
 	
-	signal intermediate_bar_left : integer range 0 to 430;
+	signal intermediate_bar_left : integer range 0 to 430; -- to AI
 	signal intermediate_bar_right : integer range 0 to 430;
 	signal intermediate_ball_out : bit;
 	signal intermediate_X : integer range 0 to 640;
@@ -120,13 +130,16 @@ architecture Behavioral of vga is
 	signal intermediate_rgb3 : STD_LOGIC_VECTOR (2 downto 0); -- balken
 	signal intermediate_rgb4 : STD_LOGIC_VECTOR (2 downto 0); -- ball
 	signal intermediate_rgb5 : STD_LOGIC_VECTOR (2 downto 0); -- game over
-	signal intermediate_keys : STD_LOGIC_VECTOR (12 downto 0);
+	signal intermediate_keys : STD_LOGIC_VECTOR (13 downto 0);
 	signal intermediate_reset : bit;
 	signal intermediate_hold: std_logic;
 	signal intermediate_inverse: bit;
 	signal intermediate_game_over: std_logic;
-	signal intermediate_ballspeed: bit_vector (1 downto 0);
+	signal intermediate_ballspeed: std_logic_vector (1 downto 0);
 	signal intermediate_paddlespeed: bit;
+	signal intermediate_ballpos : integer range 0 to 480;
+	signal intermediate_ai_enabled : std_logic;
+	signal intermediate_bar_left2 : integer range 0 to 430; --after AI
 	
 begin
 
@@ -153,14 +166,15 @@ begin
 		keysout  => intermediate_keys);
 			
 	verarbeite_keys : process_keys	port map (
-		keys_in => intermediate_keys(12 downto 6),
+		keys_in => intermediate_keys(13 downto 6),
 		reset => intermediate_reset,
 		game_over => intermediate_game_over,
 		clk25 => intermediate_clk25,
 		hold_out => intermediate_hold,
 		inverse_out => intermediate_inverse,
 		ballspeed_out => intermediate_ballspeed,
-		paddlespeed_out => intermediate_paddlespeed);
+		paddlespeed_out => intermediate_paddlespeed,
+		AI_out => intermediate_ai_enabled);
 
 	sigTime : SignalTiming port map (
 		hsync => intermediate_hsync,
@@ -194,10 +208,17 @@ begin
 		clk25 => intermediate_clk25,
 		reset => intermediate_reset);
 		
+	KI : AI port map (
+		ai_enabled => intermediate_ai_enabled,
+		left_pos => intermediate_bar_left,
+		left_pos_out => intermediate_bar_left2,
+		ball_pos => intermediate_ballpos
+		);
+		
 	male_ball : ball port map (
 		speed => intermediate_ballspeed (1 downto 0),
 		hold => intermediate_hold,		
-		bar_left => intermediate_bar_left,
+		bar_left => intermediate_bar_left2,
 		bar_right => intermediate_bar_right,
 		ball_out => intermediate_ball_out,
 		X => intermediate_X,
@@ -206,7 +227,8 @@ begin
 		rgb_out => intermediate_rgb4,
 		clk25 => intermediate_clk25,
 		reset => intermediate_reset,
-		forward_game_over => intermediate_game_over);
+		forward_game_over => intermediate_game_over,
+		ball_y_pos_out => intermediate_ballpos);
 		
 	ball_out_inverse : ball_out_handler port map (
 	   ball_out => intermediate_ball_out,
@@ -221,13 +243,8 @@ begin
 		rgb_out => global_rgb
 		);
 
---	process (intermediate_clk25)
---	begin
---		if intermediate_clk25'event and intermediate_clk25='1' then
-			global_hsync <= intermediate_hsync; 
-			global_vsync <= intermediat_vsync;
---		end if;
---	end process;
+	global_hsync <= intermediate_hsync; 
+	global_vsync <= intermediat_vsync;
 	
 end Behavioral;
 

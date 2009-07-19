@@ -8,7 +8,7 @@ entity keyboard is
 	kbclk: in std_logic;
 	kbdata: in std_logic;
 	clk: in std_logic;
-	keysout : out std_logic_vector(12 downto 0)
+	keysout : out std_logic_vector(13 downto 0)
 	);
 	
 end keyboard;
@@ -40,6 +40,7 @@ begin
 					when x"1E" => keysout(10) <= '0'; break_set <='0'; -- 2
 					when x"26" => keysout(11) <= '0'; break_set <='0'; -- 3
 					when x"25" => keysout(12) <= '0'; break_set <='0'; -- 4
+					when x"1C" => keysout(13) <= '0'; break_set <='0'; -- a
 					when x"F0" => break_set <= '1'; break_set <='0';
 					when others => break_set <='0'; 
 				end case;		
@@ -59,6 +60,7 @@ begin
 					when x"1E" => keysout(10) <= '1';
 					when x"26" => keysout(11) <= '1';
 					when x"25" => keysout(12) <= '1';
+					when x"1C" => keysout(13) <= '1';
 					when others =>
 				end case;
 			end if;

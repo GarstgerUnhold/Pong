@@ -15,7 +15,8 @@ entity ball is
 			  rgb_out : out STD_LOGIC_VECTOR (2 downto 0);
 			  clk25 : in  bit;
 			  reset : in bit;
-			  forward_game_over : out std_logic);
+			  forward_game_over : out std_logic;
+			  ball_y_pos_out: out integer range 0 to 480);
 end ball;
 
 architecture Behavioral of ball is
@@ -55,6 +56,8 @@ begin
 		clk25 => clk25,
 		reset => reset,
 		game_over => forward_game_over);
+		
+		ball_y_pos_out <= y_pos; -- for AI
 
 	process (intern_rgb, x_pos, y_pos, clk25,X,Y)
 	begin

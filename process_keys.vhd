@@ -5,14 +5,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity process_keys is
 	port (
-		keys_in : in std_logic_vector(12 downto 6);
+		keys_in : in std_logic_vector(13 downto 6);
 		reset: in bit;
 		game_over: in std_logic;
 		clk25: in bit;
 		hold_out: out std_logic;
 		inverse_out: out bit;
-		ballspeed_out : out bit_vector(1 downto 0);
-		paddlespeed_out : out bit
+		ballspeed_out : out std_logic_vector(1 downto 0);
+		paddlespeed_out : out bit;
+		AI_out: out std_logic
 	);
 	end process_keys;
 
@@ -20,9 +21,11 @@ architecture Behavioral of process_keys	is
 	signal set_pause_key: std_logic :='0';
 	signal set_inverse_key: std_logic := '0';
 	signal set_paddlespeed_key: std_logic :='0';
+	signal set_AI_key: std_logic := '0';
 	signal Q_hold: std_logic := '1';
 	signal Q_inverse: bit := '0';
 	signal Q_paddlespeed: bit := '0';
+	signal Q_AI: std_logic := '0';
 begin
 	
 	pause_key: process (clk25)
@@ -47,6 +50,17 @@ begin
 		inverse_out <= Q_inverse;
 		end if;
 	end process inverse_key;
+	
+	ai_key: process (clk25)
+	begin
+		if clk25'event and clk25='1' then
+			if keys_in(13)='1' and set_inverse_key ='0' then 
+				Q_AI <= not (Q_AI);
+				set_AI_key <= '1';
+			elsif set_AI_key ='1' and keys_in(13)='0' then set_AI_key <= '0'; end if;
+		AI_out <= Q_AI;
+		end if;
+	end process ai_key;
 	
 	ballspeed_keys: process(keys_in(12 downto 9), clk25)
 	begin
