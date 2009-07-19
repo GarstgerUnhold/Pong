@@ -20,12 +20,10 @@ architecture Behavioral of background is
 			clk25 : in bit);
 	end component;
   
-  signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
+	signal chosen_background : STD_LOGIC_VECTOR (1 downto 0);
 	signal rgb_farbw : STD_LOGIC_VECTOR (2 downto 0);
-	signal will_switch : bit;
 	signal deltaX : integer range 0 to 320;
 	signal deltaY : integer range 0 to 240;
-	signal count_up : integer range 0 to 25000000;
 	signal wobble_clock : integer range 0 to 400000 := 0;
 	signal wobble : integer range 0 to 64 := 32; 
 	signal wobble_growing : bit := '1';
@@ -42,18 +40,7 @@ begin
 	begin
 	
 		if clk25'event and clk25 = '1' then
-		
-			if switch = '1' then
-				will_switch <= '1';
-			end if;
-			count_up <= count_up + 1;
-			if count_up = 25000000 then
-				if will_switch = '1' then
-					chosen_background <= chosen_background + "01";
-					will_switch <= '0';
-				end if;
-				count_up <= 0;
-			end if;
+			chosen_background <= chosen_background + ( '0' & switch);
 			
 			case chosen_background is
 			  

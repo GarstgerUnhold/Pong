@@ -25,7 +25,7 @@ architecture Behavioral of vga is
 	
 	component process_keys  					
 		port (
-		keys_in : in std_logic_vector(13 downto 6);
+		keys_in : in std_logic_vector(13 downto 5);
 		reset: in bit;
 		game_over: in std_logic;
 		clk25: in bit;
@@ -33,7 +33,8 @@ architecture Behavioral of vga is
 		inverse_out: out bit;
 		ballspeed_out : out std_logic_vector(1 downto 0);
 		paddlespeed_out : out bit;
-		AI_out: out std_logic
+		AI_out: out std_logic;
+		switch_out: out std_logic
 	);
 	end component;
 	
@@ -141,6 +142,7 @@ architecture Behavioral of vga is
 	signal intermediate_ballpos : integer range 0 to 480;
 	signal intermediate_ai_enabled : std_logic;
 	signal intermediate_bar_right2 : integer range 0 to 430; -- output of AI
+	signal intermediate_switch_out : std_logic;
 	
 begin
 
@@ -167,7 +169,7 @@ begin
 		keysout  => intermediate_keys);
 			
 	verarbeite_keys : process_keys	port map (
-		keys_in => intermediate_keys(13 downto 6),
+		keys_in => intermediate_keys(13 downto 5),
 		reset => intermediate_reset,
 		game_over => intermediate_game_over,
 		clk25 => intermediate_clk25,
@@ -175,7 +177,8 @@ begin
 		inverse_out => intermediate_inverse,
 		ballspeed_out => intermediate_ballspeed,
 		paddlespeed_out => intermediate_paddlespeed,
-		AI_out => intermediate_ai_enabled);
+		AI_out => intermediate_ai_enabled,
+		switch_out => intermediate_switch_out);
 
 	sigTime : SignalTiming port map (
 		hsync => intermediate_hsync,
@@ -185,7 +188,7 @@ begin
 		clk25 => intermediate_clk25);
 
 	bg : background port map (
-		switch => intermediate_keys(5), -- spacebar
+		switch => intermediate_switch_out, -- spacebar
 		X => intermediate_X,
 		Y => intermediate_Y,
 		rgb_out => intermediate_rgb1,

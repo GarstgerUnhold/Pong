@@ -1,11 +1,11 @@
-library IEEE;
+	library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity process_keys is
 	port (
-		keys_in : in std_logic_vector(13 downto 6);
+		keys_in : in std_logic_vector(13 downto 5);
 		reset: in bit;
 		game_over: in std_logic;
 		clk25: in bit;
@@ -13,7 +13,8 @@ entity process_keys is
 		inverse_out: out bit;
 		ballspeed_out : out std_logic_vector(1 downto 0);
 		paddlespeed_out : out bit;
-		AI_out: out std_logic
+		AI_out: out std_logic;
+		switch_out: out std_logic
 	);
 	end process_keys;
 
@@ -22,11 +23,27 @@ architecture Behavioral of process_keys	is
 	signal set_inverse_key: std_logic := '0';
 	signal set_paddlespeed_key: std_logic :='0';
 	signal set_AI_key: std_logic := '0';
+	signal set_switch_key: std_logic := '0';
 	signal Q_hold: std_logic := '1';
 	signal Q_inverse: bit := '0';
 	signal Q_paddlespeed: bit := '0';
 	signal Q_AI: std_logic := '0';
+	
 begin
+	
+	switch_key: process (clk25)
+	begin
+		if clk25'event and clk25='1' then
+			if keys_in(5)='1' and set_switch_key ='0' then 
+				switch_out <= '1';
+				set_switch_key <='1';
+			elsif set_switch_key ='1' then 
+				switch_out <= '0';
+				if keys_in(5)='0' then set_switch_key <= '0'; end if;
+			else switch_out <='0';
+			end if;
+		end if;
+	end process switch_key;
 	
 	pause_key: process (clk25)
 	begin
