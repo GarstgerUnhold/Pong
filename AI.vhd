@@ -4,10 +4,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity AI is
-    Port ( 
-			ai_enabled: in std_logic;
-			left_pos: in integer range 0 to 430;
-			left_pos_out: out integer range 0 to 430;
+    Port (
+			right_pos: in integer range 0 to 430;
+			right_pos_out: out integer range 0 to 430;
 			ball_pos: in integer range 0 to 480
 			);
 end AI;
@@ -15,12 +14,11 @@ end AI;
 architecture Behavioral of AI is
 begin
 
-	process (left_pos, ball_pos, ai_enabled)
+	process (right_pos, ball_pos)
 		begin
-		if ai_enabled ='0' then
-			left_pos_out <=left_pos;
-		else
-			left_pos_out <= ball_pos;
+		if ball_pos < 25 then right_pos_out <= 0;
+		elsif ball_pos > 455 then right_pos_out <= 430;
+		else right_pos_out <= (ball_pos - 25);
 		end if;
 	end process;
 

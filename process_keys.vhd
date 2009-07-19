@@ -54,7 +54,7 @@ begin
 	ai_key: process (clk25)
 	begin
 		if clk25'event and clk25='1' then
-			if keys_in(13)='1' and set_inverse_key ='0' then 
+			if keys_in(13)='1' and set_ai_key ='0' then 
 				Q_AI <= not (Q_AI);
 				set_AI_key <= '1';
 			elsif set_AI_key ='1' and keys_in(13)='0' then set_AI_key <= '0'; end if;

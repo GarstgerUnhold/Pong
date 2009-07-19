@@ -9,6 +9,8 @@ entity balken is
 			  buttons : in std_logic_vector (3 downto 0);
 			  bar_left : out integer range 0 to 430;
 			  bar_right : out integer range 0 to 430;
+			  right_ai: in integer range 0 to 430;
+			  ai_enabled: in std_logic;
 			  X : in  integer range 0 to 640;
            Y : in  integer range 0 to 480;
 			  rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
@@ -24,8 +26,8 @@ architecture Behavioral of balken is
 	signal hold_intern : std_logic_vector (1 downto 0);
 begin
 
-	bar_left <= ltop;
 	bar_right <= rtop;
+	bar_left <= ltop;
 
 	process (rgb_in,X,Y,clk25,reset,ltop,rtop)
 	begin
@@ -63,13 +65,16 @@ begin
 					end if;
 		
 					-- move right
-					if (rtop < 2 and buttons(2) = '1')
-					or (rtop > 429 and buttons(3) = '1') then
-						hold_intern(1) <= '1';
-					end if;
-					if hold_intern(1) = '0' then
-						if buttons(2) = '1' then rtop <= rtop - 1; end if;
-						if buttons(3) = '1' then rtop <= rtop + 1; end if;
+					if ai_enabled ='1' then	rtop <= right_ai;
+					else
+						if (rtop < 2 and buttons(2) = '1')
+						or (rtop > 429 and buttons(3) = '1') then
+							hold_intern(1) <= '1';
+						end if;
+						if hold_intern(1) = '0' then
+							if buttons(2) = '1' then rtop <= rtop - 1; end if;
+							if buttons(3) = '1' then rtop <= rtop + 1; end if;
+						end if;
 					end if;
 				else
 					speedCount <= '1';

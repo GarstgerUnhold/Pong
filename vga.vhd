@@ -78,6 +78,8 @@ architecture Behavioral of vga is
 			buttons : in std_logic_vector (3 downto 0);
 			bar_left : out integer range 0 to 430;
 			bar_right : out integer range 0 to 430;
+			right_ai: in integer range 0 to 430;
+			ai_enabled: in std_logic;
 			X : in integer range 0 to 640;
 			Y : in integer range 0 to 480;
 			rgb_in : in STD_LOGIC_VECTOR (2 downto 0);
@@ -111,14 +113,13 @@ architecture Behavioral of vga is
 		
 		component AI is
     Port ( 
-			ai_enabled: in std_logic;
-			left_pos: in integer range 0 to 430;
-			left_pos_out: out integer range 0 to 430;
+			right_pos: in integer range 0 to 430;
+			right_pos_out: out integer range 0 to 430;
 			ball_pos: in integer range 0 to 480
 			);
 		end component;
 	
-	signal intermediate_bar_left : integer range 0 to 430; -- to AI
+	signal intermediate_bar_left : integer range 0 to 430; -- output of balken
 	signal intermediate_bar_right : integer range 0 to 430;
 	signal intermediate_ball_out : bit;
 	signal intermediate_X : integer range 0 to 640;
@@ -139,7 +140,7 @@ architecture Behavioral of vga is
 	signal intermediate_paddlespeed: bit;
 	signal intermediate_ballpos : integer range 0 to 480;
 	signal intermediate_ai_enabled : std_logic;
-	signal intermediate_bar_left2 : integer range 0 to 430; --after AI
+	signal intermediate_bar_right2 : integer range 0 to 430; -- output of AI
 	
 begin
 
@@ -195,11 +196,19 @@ begin
 		rgb_in => intermediate_rgb1,
 		rgb_out => intermediate_rgb2);
 
+	KI : AI port map (
+		right_pos => intermediate_bar_right,
+		right_pos_out => intermediate_bar_right2,
+		ball_pos => intermediate_ballpos
+		);
+		
 	male_balken : balken port map (
 		speed => intermediate_paddlespeed,
 		hold => intermediate_hold,
 		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
+		right_ai => intermediate_bar_right2,
+		ai_enabled => intermediate_ai_enabled,
 		buttons => intermediate_keys (3 downto 0),
 		X => intermediate_X,
 		Y => intermediate_Y,
@@ -208,17 +217,10 @@ begin
 		clk25 => intermediate_clk25,
 		reset => intermediate_reset);
 		
-	KI : AI port map (
-		ai_enabled => intermediate_ai_enabled,
-		left_pos => intermediate_bar_left,
-		left_pos_out => intermediate_bar_left2,
-		ball_pos => intermediate_ballpos
-		);
-		
 	male_ball : ball port map (
 		speed => intermediate_ballspeed (1 downto 0),
 		hold => intermediate_hold,		
-		bar_left => intermediate_bar_left2,
+		bar_left => intermediate_bar_left,
 		bar_right => intermediate_bar_right,
 		ball_out => intermediate_ball_out,
 		X => intermediate_X,
