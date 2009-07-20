@@ -41,8 +41,12 @@ architecture Behavioral of ball is
 	signal countUp : integer range 0 to 208000 := 0;
 	signal speedCount : std_logic_vector (1 downto 0);
 	signal ballOut : bit;
+	signal ballOut1 : bit;
+	signal ballOut2 : bit;
 	signal leftOut, rightOut : bit := '0';
 	signal intern_rgb : STD_LOGIC_VECTOR (2 downto 0);
+	signal intern_game_over: std_logic;
+	signal game_over_count : integer range 0 to 25000000 := 12500000;
 
 begin
 
@@ -55,16 +59,25 @@ begin
 		rgb_out => intern_rgb,
 		clk25 => clk25,
 		reset => reset,
-		game_over => forward_game_over);
+		game_over => intern_game_over);
 		
 		ball_y_pos_out <= y_pos; -- for AI
 		
---		game_over: process
---		begin
---		
---			ballOut <= forward_game_over;
---			
---		end process game_over;
+	game_over: process (intern_game_over, ballOut1, ballOut2)
+	begin
+		if clk25'event and clk25='1' then
+			if intern_game_over = '1' then 
+				game_over_count <= game_over_count + 1;
+				if game_over_count > 12500000 then 
+					ballOut2 <= '1';
+				else ballOut2 <= '0'; end if;
+				if game_over_count = 25000000 then game_over_count <= 0; end if;
+			end if;
+		end if;
+	end process game_over;
+	
+	ballOut <= ballOut1 or ballOut2;
+	forward_game_over <= intern_game_over;
 
 	process (intern_rgb, x_pos, y_pos, clk25,X,Y)
 	begin
@@ -92,7 +105,7 @@ begin
 		
 		if clk25'event and clk25='1' then --for movement
 			countUp <= countUp + 1;
-			ballOut <= reset;
+			ballOut1 <= reset;
 			if countUp = 52000 then
 				if speedCount = (not speed(1) & not speed(0)) then
 					speedCount <= "00";
@@ -104,7 +117,7 @@ begin
 						else
 							if x_pos < 9 then
 								leftOut <= '1';
-								ballOut <= '1';
+								ballOut1 <= '1';
 							end if;
 						end if;
 					end if;
@@ -116,7 +129,7 @@ begin
 						else
 							if x_pos > 631 then
 								rightOut <= '1';
-								ballOut <= '1';
+								ballOut1 <= '1';
 							end if;
 						end if;
 					end if;
